@@ -1,0 +1,113 @@
+{
+  "cuadro": "dolor_toracico",
+  "descripcion": "Protocolo de evaluación clínica de dolor torácico — AEM v1.0",
+  "secuencia_preguntas": [
+    {
+      "id": 1,
+      "campo": "inicio",
+      "pregunta_guia": "¿Hace cuánto tiempo comenzó el dolor?",
+      "proposito": "Establecer cronología del evento",
+      "notas_clinicas": "Inicio súbito o < 1 hora es más alarmante. > 24 horas con estabilidad sugiere Clave 3."
+    },
+    {
+      "id": 2,
+      "campo": "tipo_dolor",
+      "pregunta_guia": "¿Cómo describiría el dolor: es como una presión, una quemadura, una puntada?",
+      "proposito": "Caracterizar la calidad del dolor",
+      "notas_clinicas": "Opresivo o urente → perfil Clave 2. Difuso, impreciso, que el paciente no puede caracterizar bien → perfil Clave 3."
+    },
+    {
+      "id": 3,
+      "campo": "intensidad",
+      "pregunta_guia": "En una escala del 1 al 10, ¿qué intensidad tiene el dolor?",
+      "proposito": "Cuantificar la intensidad",
+      "notas_clinicas": "Intensidad ≥ 7 con perfil clínico compatible → Clave 2. Intensidad ≤ 4 con perfil atípico → Clave 3."
+    },
+    {
+      "id": 4,
+      "campo": "localizacion",
+      "pregunta_guia": "¿Dónde exactamente siente el dolor: en el centro del pecho, del lado izquierdo, derecho?",
+      "proposito": "Localizar el dolor",
+      "notas_clinicas": "Retroesternal o precordial → criterio Clave 2. Localización difusa, lateral o atípica → perfil Clave 3."
+    },
+    {
+      "id": 5,
+      "campo": "irradiacion",
+      "pregunta_guia": "¿El dolor se corre hacia algún lado: brazo izquierdo, mandíbula, espalda o cuello?",
+      "proposito": "Detectar irradiación típica de origen cardíaco",
+      "notas_clinicas": "Irradiación a brazo izquierdo, mandíbula, cuello o espalda → criterio Clave 2. Sin irradiación → punto para Clave 3."
+    },
+    {
+      "id": 6,
+      "campo": "disnea",
+      "pregunta_guia": "¿Tiene dificultad para respirar?",
+      "proposito": "Evaluar disnea asociada",
+      "notas_clinicas": "Disnea severa (no puede completar una oración) → CLAVE 1 inmediata. Disnea leve o moderada → criterio Clave 2. Sin disnea → punto para Clave 3."
+    },
+    {
+      "id": 7,
+      "campo": "neurovegetativos",
+      "pregunta_guia": "¿Tiene náuseas, vómitos, sudoración o mareos?",
+      "proposito": "Detectar síntomas neurovegetativos",
+      "notas_clinicas": "Neurovegetativos intensos (vómitos incoercibles, sudoración profusa) → CLAVE 1. Neurovegetativos leves o moderados → criterio Clave 2. Ausentes → criterio Clave 3."
+    },
+    {
+      "id": 8,
+      "campo": "estado_consciencia",
+      "pregunta_guia": "¿Está consciente y orientado? ¿Se siente mareado al punto de desmayarse?",
+      "proposito": "Evaluar nivel de consciencia y riesgo de síncope",
+      "notas_clinicas": "PDC, síncope o sensación de desmayo inminente → CLAVE 1 inmediata. Consciente y orientado → excluye ese criterio de Clave 1."
+    },
+    {
+      "id": 9,
+      "campo": "capacidad_habla",
+      "pregunta_guia": "¿Puede hablar y respirar con normalidad mientras hablamos?",
+      "proposito": "Evaluar capacidad de comunicación — también se observa durante toda la conversación",
+      "notas_clinicas": "Habla entrecortada, frases cortas, jadea → CLAVE 1. Habla fluida y normal → excluye ese criterio de Clave 1, punto favorable para Clave 2 o 3."
+    },
+    {
+      "id": 10,
+      "campo": "antecedentes_cardiovasculares",
+      "pregunta_guia": "¿Tiene antecedentes de problemas cardíacos, hipertensión, diabetes o colesterol alto?",
+      "proposito": "Identificar factores de riesgo cardiovascular",
+      "notas_clinicas": "Antecedentes cardiovasculares con perfil clínico compatible → refuerza Clave 2. Sin antecedentes y perfil atípico → perfil Clave 3."
+    }
+  ],
+  "criterios_clasificacion": {
+    "clave1": {
+      "descripcion": "Emergencia absoluta — requiere respuesta inmediata",
+      "criterios": [
+        "Paciente inconsciente o no responde",
+        "No respira o dificultad respiratoria extrema",
+        "Dolor torácico con pérdida de conocimiento, desvanecimiento o síncope",
+        "Dolor torácico con disnea severa (no puede terminar una oración)",
+        "Elementos neurovegetativos intensos asociados al dolor torácico",
+        "Habla entrecortada o no puede hablar con normalidad"
+      ]
+    },
+    "clave2": {
+      "descripcion": "Emergencia — requiere respuesta urgente",
+      "criterios": [
+        "Dolor retroesternal o precordial de inicio reciente (< 24 horas)",
+        "Carácter opresivo, urente o puntada continua",
+        "Intensidad moderada a severa (≥ 5/10)",
+        "Consciencia normal, habla con fluidez",
+        "Irradiación a brazo izquierdo, mandíbula, cuello o espalda",
+        "Síntomas neurovegetativos presentes aunque leves o moderados",
+        "Factores de riesgo cardiovascular: HTA, DBT, dislipemia, antecedente cardíaco"
+      ]
+    },
+    "clave3": {
+      "descripcion": "Urgencia — requiere evaluación médica programada",
+      "criterios": [
+        "Dolor leve, difuso, que el paciente no puede precisar bien",
+        "Sin irradiación característica",
+        "Sin síntomas neurovegetativos",
+        "Síntomas de horas o días de evolución sin empeoramiento",
+        "Habla con normalidad, sin disnea",
+        "Sin palpitaciones ni mareos significativos",
+        "Sin antecedentes cardiovasculares de relevancia"
+      ]
+    }
+  }
+}
