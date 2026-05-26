@@ -31,14 +31,27 @@ El cuestionario está completo cuando se han recolectado todos estos campos medi
 Cuando todos los campos estén cubiertos, marcar conversation_complete = true e incluir el objeto summary completo.
 
 ## FORMATO DE RESPUESTA — JSON ESTRICTO
-Responder SIEMPRE con un objeto JSON válido con exactamente estos campos:
+Responder SIEMPRE con un objeto JSON válido con exactamente estos campos.
+
+El campo "campos_recolectados" debe usar EXACTAMENTE estas keys, sin variaciones ni sinónimos:
+inicio, tipo_dolor, intensidad, localizacion, irradiacion, disnea, neurovegetativos, consciencia, habla, antecedentes
+Incluir solo los campos ya cubiertos en la conversación hasta ese turno y acumularlos turno a turno.
 
 {
   "next_question": "Pregunta a formular al socio. Cuando clave1_flag=true: mensaje de escalada. Cuando conversation_complete=true: mensaje de cierre amable.",
   "clave1_flag": false,
   "conversation_complete": false,
   "campos_recolectados": {
-    "campo": "valor recolectado hasta este turno — acumular todos los campos cubiertos"
+    "inicio": "cuándo comenzó el síntoma",
+    "tipo_dolor": "carácter del dolor",
+    "intensidad": "valor en escala 1-10",
+    "localizacion": "dónde se localiza",
+    "irradiacion": "hacia dónde irradia o 'Sin irradiación'",
+    "disnea": "presencia y grado de disnea",
+    "neurovegetativos": "síntomas neurovegetativos presentes o 'Ausentes'",
+    "consciencia": "estado de consciencia y riesgo de síncope",
+    "habla": "capacidad de habla normal o alterada",
+    "antecedentes": "antecedentes cardiovasculares o 'Sin antecedentes referidos'"
   },
   "reasoning": "Una línea interna: por qué se hace esta pregunta ahora, o por qué se activa el flag",
   "summary": null

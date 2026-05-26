@@ -158,6 +158,14 @@ def main() -> None:
 
         # Cuestionario completo — mostrar resumen
         if conversation_complete:
+            campos = response.get("campos_recolectados", {})
+            if campos:
+                print(f"\n{SEP}")
+                print("      --- PERFIL CLÍNICO (campos_recolectados) ---")
+                print(SEP)
+                for key, val in campos.items():
+                    print(f"  {key:<32} {val}")
+                print(SEP)
             summary = response.get("summary")
             if summary:
                 print_summary(summary)
