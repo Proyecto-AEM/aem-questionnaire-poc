@@ -27,18 +27,31 @@ En cada turno el modelo recibe tres cosas:
 - **Árbol de protocolo** (`trees/dolor_toracico.json`): las 10 preguntas del protocolo clínico con su propósito, notas clínicas y criterios de clasificación para Clave 1, 2 y 3
 - **Historial completo** de la conversación hasta ese turno
 
-El modelo devuelve en cada turno un JSON con:
+El modelo devuelve en cada turno un JSON con seis campos: la pregunta a hacerle al socio en ese turno; un flag de Clave 1 que se activa si detectó una señal crítica; un flag que indica si el cuestionario ya está completo; un diccionario con los campos clínicos recolectados hasta ese punto, acumulados turno a turno; una línea de razonamiento interno; y el resumen clínico final, que viene vacío en todos los turnos intermedios y solo se completa cuando el cuestionario termina.
 
 ```json
 {
   "next_question": "...",
   "clave1_flag": false,
   "conversation_complete": false,
-  "campos_recolectados": {},
+  "campos_recolectados": {
+    "inicio": "...",
+    "tipo_dolor": "...",
+    "intensidad": "...",
+    "localizacion": "...",
+    "irradiacion": "...",
+    "disnea": "...",
+    "neurovegetativos": "...",
+    "consciencia": "...",
+    "habla": "...",
+    "antecedentes": "..."
+  },
   "reasoning": "...",
   "summary": null
 }
 ```
+
+El campo `campos_recolectados` usa exactamente estas diez keys, fijadas en el system prompt, sin variaciones. Solo se incluyen los campos ya cubiertos en la conversación hasta ese turno y se acumulan turno a turno. Cuando el cuestionario termina, el código captura este campo del último turno para usarlo como input del clasificador.
 
 El campo `reasoning` es un log interno que el sistema imprime en terminal durante las pruebas y se puede desactivar en producción.
 
@@ -176,9 +189,11 @@ En este prototipo el modelo clasifica sin haber visto ejemplos previos de clasif
 
 ### Few-shot prompting para clasificación calibrada
 
-La mejora más directa sobre las limitaciones de clasificación es incorporar **30 a 50 ejemplos sintéticos** en la llamada al modelo que ocurre al finalizar el cuestionario. Cada ejemplo mostraría un historial de conversación resumido con su clasificación correcta en Clave 1, 2 o 3. El modelo usaría esos ejemplos por analogía para clasificar el caso nuevo de forma consistente con el criterio de AEM.
+El few-shot prompting se aplica exclusivamente en la clasificación final. Cuando el cuestionario termina y todos los campos están recolectados, se hace una llamada separada al modelo cuyo único propósito es clasificar el caso en Clave 1, 2 o 3. En esa llamada, además del perfil clínico del socio, se incluyen casos de ejemplo, cada uno mostrando un conjunto de síntomas con su clasificación correcta y su justificación. El modelo usa esos ejemplos como referencia para clasificar el caso nuevo por analogía, en lugar de razonar desde cero con su conocimiento médico general. El efecto concreto es que la clasificación queda calibrada con el criterio operacional de AEM en lugar de depender de cómo el modelo interpreta los síntomas en abstracto, lo que reduce la ambigüedad en casos borderline.
 
-La fuente de esos casos está pendiente de definición: AEM cuenta con casos reales que podrían usarse como semilla para generar variaciones sintéticas, o los ejemplos podrían construirse enteramente a partir del protocolo clínico. Si se usan casos reales en cualquier forma, corresponde revisar el supuesto SUP-01 de la documentación del proyecto.
+La cantidad de ejemplos varía por cuadro según su complejidad. Los cuadros con tres niveles de clasificación y casos borde documentados — dolor torácico, trauma, disnea, pérdida de conocimiento, convulsión, diabetes e intento de autoeliminación — requieren entre 15 y 20 ejemplos cada uno para cubrir las presentaciones típicas y los bordes. Los cuadros con dos niveles y criterios más acotados requieren entre 8 y 12 ejemplos. Los cuadros de un solo nivel alcanzan con 4 a 6 ejemplos bien elegidos. En total, para los 26 cuadros del protocolo, la estimación es de entre 250 y 350 ejemplos. Los cuadros que el protocolo define como exclusivamente Clave 3 no requieren llamada al clasificador: la clasificación se asigna directamente en el código.
+
+Los casos de ejemplo se van a generar con IA generativa usando como base los documentos del protocolo clínico de AEM y los casos reales que el cliente compartió, que se usan como semilla para producir variaciones sintéticas que cubran los distintos cuadros clínicos y niveles de clasificación. Si se usan casos reales en cualquier forma, corresponde revisar el supuesto SUP-01 de la documentación del proyecto, que establece que el sistema opera con datos de prueba.
 
 ### Otras líneas de evolución
 
