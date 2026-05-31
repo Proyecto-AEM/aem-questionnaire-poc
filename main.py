@@ -60,7 +60,7 @@ def call_model(conversation: list[dict], tree: dict | None) -> dict:
     """Llama a GPT-4o y retorna el JSON parseado."""
     messages = [{"role": "system", "content": build_system_message(tree)}] + conversation
     response = client.chat.completions.create(
-        model="gpt-4o",
+        model="gpt-4o-mini",
         messages=messages,
         response_format={"type": "json_object"},
         temperature=0.2,

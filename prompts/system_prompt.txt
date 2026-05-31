@@ -34,7 +34,7 @@ Cuando todos los campos estén cubiertos, marcar conversation_complete = true e 
 Responder SIEMPRE con un objeto JSON válido con exactamente estos campos.
 
 El campo "campos_recolectados" debe usar EXACTAMENTE estas keys, sin variaciones ni sinónimos:
-inicio, tipo_dolor, intensidad, localizacion, irradiacion, disnea, neurovegetativos, consciencia, habla, antecedentes
+inicio, tipo_dolor, intensidad, localizacion, irradiacion, evolucion, actividad_previa, palpitaciones, disnea, neurovegetativos, consciencia, habla, antecedentes
 Incluir solo los campos ya cubiertos en la conversación hasta ese turno y acumularlos turno a turno.
 
 {
@@ -47,6 +47,9 @@ Incluir solo los campos ya cubiertos en la conversación hasta ese turno y acumu
     "intensidad": "valor en escala 1-10",
     "localizacion": "dónde se localiza",
     "irradiacion": "hacia dónde irradia o 'Sin irradiación'",
+    "evolucion": "patrón temporal del dolor: continuo o intermitente, si empeoró",
+    "actividad_previa": "qué hacía cuando comenzó el dolor",
+    "palpitaciones": "presencia o ausencia de palpitaciones",
     "disnea": "presencia y grado de disnea",
     "neurovegetativos": "síntomas neurovegetativos presentes o 'Ausentes'",
     "consciencia": "estado de consciencia y riesgo de síncope",

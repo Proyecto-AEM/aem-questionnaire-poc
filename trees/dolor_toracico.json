@@ -39,34 +39,55 @@
     },
     {
       "id": 6,
+      "campo": "evolucion",
+      "pregunta_guia": "¿El dolor es continuo o ha tenido momentos en que cede? ¿Empeoró desde que comenzó?",
+      "proposito": "Establecer el patrón temporal del dolor",
+      "notas_clinicas": "Dolor continuo sin variación desde inicio sugiere Clave 2. Intermitente que cede espontáneamente sugiere Clave 3."
+    },
+    {
+      "id": 7,
+      "campo": "actividad_previa",
+      "pregunta_guia": "¿Qué estaba haciendo cuando comenzó el dolor? ¿Estaba haciendo algún esfuerzo físico?",
+      "proposito": "Identificar contexto de aparición del dolor",
+      "notas_clinicas": "Inicio durante esfuerzo físico refuerza perfil de Clave 2. Inicio en reposo o sin desencadenante claro puede orientar a Clave 3."
+    },
+    {
+      "id": 8,
+      "campo": "palpitaciones",
+      "pregunta_guia": "¿Siente que el corazón le late muy rápido, fuerte o de forma irregular?",
+      "proposito": "Detectar arritmia asociada",
+      "notas_clinicas": "Palpitaciones asociadas a dolor torácico refuerzan perfil de Clave 2. Ausentes orientan a Clave 3."
+    },
+    {
+      "id": 9,
       "campo": "disnea",
       "pregunta_guia": "¿Tiene dificultad para respirar?",
       "proposito": "Evaluar disnea asociada",
       "notas_clinicas": "Disnea severa (no puede completar una oración) → CLAVE 1 inmediata. Disnea leve o moderada → criterio Clave 2. Sin disnea → punto para Clave 3."
     },
     {
-      "id": 7,
+      "id": 10,
       "campo": "neurovegetativos",
       "pregunta_guia": "¿Tiene náuseas, vómitos, sudoración o mareos?",
       "proposito": "Detectar síntomas neurovegetativos",
       "notas_clinicas": "Neurovegetativos intensos (vómitos incoercibles, sudoración profusa) → CLAVE 1. Neurovegetativos leves o moderados → criterio Clave 2. Ausentes → criterio Clave 3."
     },
     {
-      "id": 8,
+      "id": 11,
       "campo": "estado_consciencia",
       "pregunta_guia": "¿Está consciente y orientado? ¿Se siente mareado al punto de desmayarse?",
       "proposito": "Evaluar nivel de consciencia y riesgo de síncope",
       "notas_clinicas": "PDC, síncope o sensación de desmayo inminente → CLAVE 1 inmediata. Consciente y orientado → excluye ese criterio de Clave 1."
     },
     {
-      "id": 9,
+      "id": 12,
       "campo": "capacidad_habla",
       "pregunta_guia": "¿Puede hablar y respirar con normalidad mientras hablamos?",
       "proposito": "Evaluar capacidad de comunicación — también se observa durante toda la conversación",
       "notas_clinicas": "Habla entrecortada, frases cortas, jadea → CLAVE 1. Habla fluida y normal → excluye ese criterio de Clave 1, punto favorable para Clave 2 o 3."
     },
     {
-      "id": 10,
+      "id": 13,
       "campo": "antecedentes_cardiovasculares",
       "pregunta_guia": "¿Tiene antecedentes de problemas cardíacos, hipertensión, diabetes o colesterol alto?",
       "proposito": "Identificar factores de riesgo cardiovascular",
