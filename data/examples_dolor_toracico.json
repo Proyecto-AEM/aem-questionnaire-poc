@@ -1,0 +1,302 @@
+[
+  {
+    "id": 1,
+    "perfil": {
+      "inicio": "Súbito, hace 20 minutos",
+      "tipo_dolor": "Opresivo",
+      "intensidad": "9/10",
+      "localizacion": "Retroesternal",
+      "irradiacion": "Brazo izquierdo y mandíbula",
+      "evolucion": "Continuo, en aumento",
+      "actividad_previa": "En reposo, viendo televisión",
+      "palpitaciones": "No refiere",
+      "disnea": "Severa — no puede terminar una oración",
+      "neurovegetativos": "Sudoración profusa, náuseas",
+      "consciencia": "Consciente pero muy angustiado",
+      "habla": "Entrecortada, frases muy cortas",
+      "antecedentes": "Hipertensión arterial, infarto previo hace 3 años"
+    },
+    "clasificacion": "Clave 1",
+    "justificacion": "Disnea severa con incapacidad para hablar con normalidad y sudoración profusa asociadas a dolor torácico opresivo con irradiación típica en paciente con antecedente de IAM."
+  },
+  {
+    "id": 2,
+    "perfil": {
+      "inicio": "Hace 10 minutos",
+      "tipo_dolor": "Opresivo",
+      "intensidad": "8/10",
+      "localizacion": "Precordial",
+      "irradiacion": "Sin irradiación",
+      "evolucion": "Continuo",
+      "actividad_previa": "Subiendo escaleras",
+      "palpitaciones": "Sí, latidos irregulares",
+      "disnea": "Presente, no puede hablar más de dos palabras seguidas",
+      "neurovegetativos": "Vómitos incoercibles, diaforesis intensa",
+      "consciencia": "Sensación de desmayo inminente",
+      "habla": "Habla entrecortada",
+      "antecedentes": "Sin antecedentes cardíacos conocidos"
+    },
+    "clasificacion": "Clave 1",
+    "justificacion": "Vómitos incoercibles, diaforesis intensa y sensación de síncope inminente asociados a dolor torácico con disnea que impide habla normal."
+  },
+  {
+    "id": 3,
+    "perfil": {
+      "inicio": "Hace 5 minutos",
+      "tipo_dolor": "Opresivo intenso",
+      "intensidad": "10/10",
+      "localizacion": "Retroesternal con irradiación",
+      "irradiacion": "Cuello y brazo izquierdo",
+      "evolucion": "Continuo e in crescendo",
+      "actividad_previa": "En reposo",
+      "palpitaciones": "No refiere",
+      "disnea": "No puede terminar ninguna oración",
+      "neurovegetativos": "Palidez extrema, sudoración fría",
+      "consciencia": "Pérdida de conocimiento durante 30 segundos antes de la llamada",
+      "habla": "Habla muy entrecortada",
+      "antecedentes": "Diabetes tipo 2, dislipemia"
+    },
+    "clasificacion": "Clave 1",
+    "justificacion": "Pérdida de conocimiento transitoria asociada a dolor torácico con irradiación típica, disnea extrema y signos neurovegetativos intensos."
+  },
+  {
+    "id": 4,
+    "perfil": {
+      "inicio": "Hace 1 hora",
+      "tipo_dolor": "Opresivo",
+      "intensidad": "7/10",
+      "localizacion": "Retroesternal",
+      "irradiacion": "Brazo izquierdo",
+      "evolucion": "Continuo, no cede",
+      "actividad_previa": "Caminando rápido",
+      "palpitaciones": "Sí",
+      "disnea": "Leve a moderada",
+      "neurovegetativos": "Náuseas leves, sin vómitos",
+      "consciencia": "Consciente y orientado",
+      "habla": "Fluida, habla con normalidad",
+      "antecedentes": "Hipertensión arterial en tratamiento, fumador"
+    },
+    "clasificacion": "Clave 2",
+    "justificacion": "Dolor retroesternal opresivo con irradiación al brazo izquierdo, inicio durante esfuerzo, continuo por más de 1 hora. Habla normal excluye Clave 1. Perfil compatible con síndrome coronario agudo."
+  },
+  {
+    "id": 5,
+    "perfil": {
+      "inicio": "Hace 2 horas",
+      "tipo_dolor": "Urente",
+      "intensidad": "6/10",
+      "localizacion": "Retroesternal",
+      "irradiacion": "Mandíbula",
+      "evolucion": "Continuo",
+      "actividad_previa": "Haciendo esfuerzo físico intenso en el gimnasio",
+      "palpitaciones": "No refiere",
+      "disnea": "Leve",
+      "neurovegetativos": "Diaforesis moderada",
+      "consciencia": "Consciente y orientado",
+      "habla": "Normal",
+      "antecedentes": "Diabetes tipo 2, sin antecedentes cardíacos"
+    },
+    "clasificacion": "Clave 2",
+    "justificacion": "Dolor urente retroesternal con irradiación a mandíbula, inicio durante esfuerzo, continuo por 2 horas, con diaforesis moderada. Factor de riesgo: diabetes. Habla normal excluye Clave 1."
+  },
+  {
+    "id": 6,
+    "perfil": {
+      "inicio": "Hace 3 horas",
+      "tipo_dolor": "Opresivo",
+      "intensidad": "7/10",
+      "localizacion": "Precordial",
+      "irradiacion": "Espalda",
+      "evolucion": "Continuo, sin variación",
+      "actividad_previa": "En reposo, durmiendo",
+      "palpitaciones": "No refiere",
+      "disnea": "Sin disnea",
+      "neurovegetativos": "Náuseas, sin vómitos",
+      "consciencia": "Consciente",
+      "habla": "Normal",
+      "antecedentes": "Antecedente de bypass coronario hace 5 años"
+    },
+    "clasificacion": "Clave 2",
+    "justificacion": "Dolor precordial opresivo con irradiación a espalda, inicio nocturno en reposo, continuo por 3 horas, en paciente con antecedente de cirugía cardíaca."
+  },
+  {
+    "id": 7,
+    "perfil": {
+      "inicio": "Hace 45 minutos",
+      "tipo_dolor": "Opresivo",
+      "intensidad": "8/10",
+      "localizacion": "Retroesternal",
+      "irradiacion": "Brazo izquierdo",
+      "evolucion": "Continuo, fue aumentando",
+      "actividad_previa": "Discusión con familiar — situación de estrés emocional",
+      "palpitaciones": "Latidos rápidos",
+      "disnea": "Moderada",
+      "neurovegetativos": "Sudoración, náuseas",
+      "consciencia": "Consciente",
+      "habla": "Normal aunque angustiado",
+      "antecedentes": "Hipertensión arterial, dislipemia, fumador de 20 años"
+    },
+    "clasificacion": "Clave 2",
+    "justificacion": "Dolor retroesternal opresivo con irradiación al brazo, inicio en contexto de estrés emocional, continuo e in crescendo, con múltiples factores de riesgo cardiovascular."
+  },
+  {
+    "id": 8,
+    "perfil": {
+      "inicio": "Hace 30 minutos",
+      "tipo_dolor": "Opresivo",
+      "intensidad": "5/10",
+      "localizacion": "Precordial",
+      "irradiacion": "Sin irradiación",
+      "evolucion": "Continuo",
+      "actividad_previa": "Reposo",
+      "palpitaciones": "No refiere",
+      "disnea": "Leve",
+      "neurovegetativos": "Sin neurovegetativos",
+      "consciencia": "Consciente",
+      "habla": "Normal",
+      "antecedentes": "Cardiopatía isquémica conocida, angioplastia previa"
+    },
+    "clasificacion": "Clave 2",
+    "justificacion": "Dolor precordial opresivo en paciente con cardiopatía isquémica conocida. Aunque la intensidad es moderada y sin irradiación, el antecedente de angioplastia eleva la urgencia."
+  },
+  {
+    "id": 9,
+    "perfil": {
+      "inicio": "Hace 1 hora",
+      "tipo_dolor": "Opresivo",
+      "intensidad": "6/10",
+      "localizacion": "Retroesternal",
+      "irradiacion": "Cuello",
+      "evolucion": "Continuo",
+      "actividad_previa": "Subiendo escaleras",
+      "palpitaciones": "Sí, palpitaciones rápidas",
+      "disnea": "Leve",
+      "neurovegetativos": "Sin neurovegetativos",
+      "consciencia": "Consciente y orientado",
+      "habla": "Normal",
+      "antecedentes": "Sin antecedentes cardiovasculares conocidos, 58 años"
+    },
+    "clasificacion": "Clave 2",
+    "justificacion": "Dolor retroesternal con irradiación al cuello, inicio durante esfuerzo, con palpitaciones asociadas. Perfil de riesgo por edad y contexto de aparición."
+  },
+  {
+    "id": 10,
+    "perfil": {
+      "inicio": "Hace 20 minutos",
+      "tipo_dolor": "Urente",
+      "intensidad": "7/10",
+      "localizacion": "Retroesternal",
+      "irradiacion": "Brazo izquierdo",
+      "evolucion": "Continuo, no cede con reposo",
+      "actividad_previa": "En reposo",
+      "palpitaciones": "No refiere",
+      "disnea": "Sin disnea",
+      "neurovegetativos": "Sudoración leve",
+      "consciencia": "Consciente",
+      "habla": "Normal",
+      "antecedentes": "Sin antecedentes cardiovasculares, pero padre falleció de infarto a los 55 años"
+    },
+    "clasificacion": "Clave 2",
+    "justificacion": "Dolor urente retroesternal con irradiación típica al brazo izquierdo, de inicio en reposo, continuo y sin respuesta. Antecedente familiar de cardiopatía precoz refuerza urgencia."
+  },
+  {
+    "id": 11,
+    "perfil": {
+      "inicio": "Hace 5 días",
+      "tipo_dolor": "Difuso, impreciso",
+      "intensidad": "2/10",
+      "localizacion": "Lateral izquierda, debajo del brazo",
+      "irradiacion": "Sin irradiación",
+      "evolucion": "Intermitente, cede solo en minutos",
+      "actividad_previa": "En reposo y también con el movimiento",
+      "palpitaciones": "No refiere",
+      "disnea": "Sin disnea",
+      "neurovegetativos": "Sin neurovegetativos",
+      "consciencia": "Consciente, en buen estado general",
+      "habla": "Normal",
+      "antecedentes": "Sin antecedentes cardiovasculares, 32 años"
+    },
+    "clasificacion": "Clave 3",
+    "justificacion": "Dolor difuso e impreciso, lateral, de baja intensidad, intermitente y con evolución de días sin empeoramiento. Sin irradiación ni síntomas asociados. Perfil atípico para origen cardíaco."
+  },
+  {
+    "id": 12,
+    "perfil": {
+      "inicio": "Hace 3 días",
+      "tipo_dolor": "Puntada",
+      "intensidad": "3/10",
+      "localizacion": "Costado derecho del pecho",
+      "irradiacion": "Sin irradiación",
+      "evolucion": "Intermitente, se reproduce al respirar profundo",
+      "actividad_previa": "Al respirar profundo o al inclinarse",
+      "palpitaciones": "No",
+      "disnea": "Sin disnea",
+      "neurovegetativos": "Sin neurovegetativos",
+      "consciencia": "Consciente",
+      "habla": "Normal",
+      "antecedentes": "Sin antecedentes relevantes, 25 años"
+    },
+    "clasificacion": "Clave 3",
+    "justificacion": "Puntada lateral derecha reproducible con la respiración profunda y la posición, de carácter intermitente y baja intensidad. Patrón músculo-esquelético o pleurítico. Sin perfil cardíaco."
+  },
+  {
+    "id": 13,
+    "perfil": {
+      "inicio": "Hace 2 semanas, recurrente",
+      "tipo_dolor": "Ardor que sube",
+      "intensidad": "4/10",
+      "localizacion": "Epigastrio que asciende al pecho",
+      "irradiacion": "Sin irradiación a brazo ni mandíbula",
+      "evolucion": "Intermitente, empeora después de las comidas y al acostarse",
+      "actividad_previa": "Después de comer abundantemente",
+      "palpitaciones": "No",
+      "disnea": "Sin disnea",
+      "neurovegetativos": "Sin neurovegetativos",
+      "consciencia": "Consciente",
+      "habla": "Normal",
+      "antecedentes": "Sin antecedentes cardiovasculares. Refiere haber tenido episodios similares antes"
+    },
+    "clasificacion": "Clave 3",
+    "justificacion": "Ardor que asciende del epigastrio al pecho, relacionado con comidas y decúbito, intermitente, de semanas de evolución sin empeoramiento. Patrón compatible con origen digestivo. Sin perfil cardíaco."
+  },
+  {
+    "id": 14,
+    "perfil": {
+      "inicio": "Hoy, hace 1 hora, luego de levantar objetos pesados",
+      "tipo_dolor": "Puntada",
+      "intensidad": "4/10",
+      "localizacion": "Lateral izquierda",
+      "irradiacion": "Sin irradiación",
+      "evolucion": "Persiste pero no empeoró desde el inicio",
+      "actividad_previa": "Mudanza — esfuerzo físico con peso",
+      "palpitaciones": "No",
+      "disnea": "Sin disnea",
+      "neurovegetativos": "Sin neurovegetativos",
+      "consciencia": "Consciente, en buen estado",
+      "habla": "Normal",
+      "antecedentes": "Sin antecedentes, 40 años"
+    },
+    "clasificacion": "Clave 3",
+    "justificacion": "Puntada lateral izquierda de inicio claro tras esfuerzo físico con peso, sin irradiación ni síntomas asociados. Sin progresión desde el inicio. Patrón músculo-esquelético."
+  },
+  {
+    "id": 15,
+    "perfil": {
+      "inicio": "Hace 2 días, viene y va",
+      "tipo_dolor": "Molestia vaga, difícil de precisar",
+      "intensidad": "2/10",
+      "localizacion": "El paciente no puede señalar dónde exactamente",
+      "irradiacion": "Sin irradiación",
+      "evolucion": "Intermitente, dura minutos y cede solo",
+      "actividad_previa": "Sin relación con esfuerzo ni posición",
+      "palpitaciones": "No",
+      "disnea": "Sin disnea",
+      "neurovegetativos": "Sin neurovegetativos",
+      "consciencia": "Consciente, estado general conservado",
+      "habla": "Normal",
+      "antecedentes": "Sin antecedentes, 45 años"
+    },
+    "clasificacion": "Clave 3",
+    "justificacion": "Molestia vaga que el paciente no puede precisar, de mínima intensidad, intermitente y sin empeoramiento en 2 días. Sin síntomas asociados ni irradiación. Perfil inespecífico sin señales de urgencia."
+  }
+]

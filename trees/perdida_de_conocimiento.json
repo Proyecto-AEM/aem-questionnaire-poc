@@ -1,0 +1,115 @@
+{
+  "cuadro": "perdida_de_conocimiento",
+  "descripcion": "Protocolo de evaluación clínica de pérdida de conocimiento — AEM v1.0",
+  "preguntas_deterministas": [
+    {
+      "pregunta": "¿La persona está respirando en este momento?",
+      "campo": "respiracion",
+      "dispara_clave1_si": "no"
+    }
+  ],
+  "campos_schema": {
+    "respiracion": "si la persona respira o no respira al momento de la llamada",
+    "respuesta_estimulos": "si la persona responde cuando se le habla en voz alta o se le toca",
+    "movimientos_anormales": "si presenta movimientos anormales o convulsivos",
+    "cianosis": "coloración de labios y piel — cianótico, pálido o normal",
+    "contexto": "qué estaba haciendo cuando ocurrió el episodio",
+    "estres_angustia": "si cursaba estrés, angustia o ansiedad previo al episodio",
+    "antecedentes": "antecedentes de epilepsia, diabetes, cardiopatía u otras enfermedades relevantes — descartar hipoglucemia",
+    "tec_previo": "si hubo traumatismo de cráneo previo o asociado al episodio",
+    "recuperacion": "si el paciente comenzó a recuperarse y cómo está evolucionando"
+  },
+  "secuencia_preguntas": [
+    {
+      "id": 1,
+      "campo": "respuesta_estimulos",
+      "pregunta_guia": "¿La persona responde cuando le habla en voz alta o le toca el hombro?",
+      "proposito": "Evaluar nivel de consciencia con respiración confirmada",
+      "notas_clinicas": "No responde y respira → posición de seguridad, Clave 2. Responde aunque sea con gemidos → consciencia parcialmente preservada, orientar a Clave 2. IMPORTANTE: que el paciente no responda a estímulos con respiración ya confirmada NO es criterio de Clave 1 en este cuadro — es la presentación esperada de PDC. NO activar clave1_flag solo por esta respuesta."
+    },
+    {
+      "id": 2,
+      "campo": "movimientos_anormales",
+      "pregunta_guia": "¿Tiene algún movimiento anormal, como sacudidas o convulsiones?",
+      "proposito": "Detectar actividad convulsiva asociada",
+      "notas_clinicas": "Convulsión activa con PDC → Clave 1 si no respira, Clave 2 si respira. Movimientos post-ictales pueden persistir tras el cese de la convulsión."
+    },
+    {
+      "id": 3,
+      "campo": "cianosis",
+      "pregunta_guia": "¿Cómo está el color de la piel y los labios? ¿Están azulados, muy pálidos o se ven normales?",
+      "proposito": "Evaluar perfusión y oxigenación periférica",
+      "notas_clinicas": "Cianosis — labios o piel azulados — es señal de alarma cardiorrespiratoria, Clave 2. Palidez intensa sugiere hipoperfusión, Clave 2. Color normal es favorable."
+    },
+    {
+      "id": 4,
+      "campo": "contexto",
+      "pregunta_guia": "¿Qué estaba haciendo cuando ocurrió? ¿Estaba parado mucho tiempo, haciendo esfuerzo físico o estaba en reposo?",
+      "proposito": "Identificar contexto de aparición como criterio diferencial",
+      "notas_clinicas": "PDC durante esfuerzo físico → perfil cardíaco, Clave 2. PDC en bipedestación prolongada, calor o emoción fuerte → vasovagal, orientar a Clave 3."
+    },
+    {
+      "id": 5,
+      "campo": "estres_angustia",
+      "pregunta_guia": "¿Estaba cursando alguna situación de estrés, angustia o ansiedad antes de que ocurriera?",
+      "proposito": "Identificar desencadenante emocional como orientador de síncope vasovagal",
+      "notas_clinicas": "Desencadenante emocional claro con recuperación rápida → perfil vasovagal, Clave 3. Sin desencadenante claro → mayor atención."
+    },
+    {
+      "id": 6,
+      "campo": "antecedentes",
+      "pregunta_guia": "¿Tiene antecedentes de epilepsia, diabetes, enfermedades cardíacas u otras enfermedades importantes? ¿Se alimentó hoy?",
+      "proposito": "Identificar factores de riesgo y descartar hipoglucemia",
+      "notas_clinicas": "Diabético que no comió → descartar hipoglucemia, Clave 2. Epilepsia conocida con características post-ictales esperables → Clave 2 o 3 según duración y recuperación. Antecedentes cardíacos con PDC → Clave 2."
+    },
+    {
+      "id": 7,
+      "campo": "tec_previo",
+      "pregunta_guia": "¿Hubo algún golpe en la cabeza antes o durante el episodio?",
+      "proposito": "Detectar traumatismo de cráneo como causa o consecuencia de la PDC",
+      "notas_clinicas": "TEC previo a la PDC puede ser causa. TEC como consecuencia de la caída también requiere evaluación. En ambos casos refuerza Clave 2."
+    },
+    {
+      "id": 8,
+      "campo": "recuperacion",
+      "pregunta_guia": "¿Está comenzando a despertar o a responder? ¿Cómo está evolucionando en este momento?",
+      "proposito": "Evaluar recuperación espontánea como indicador pronóstico",
+      "notas_clinicas": "Recuperación rápida y completa en menos de 2 minutos en paciente joven sin síntomas acompañantes → perfil vasovagal, Clave 3. Sin recuperación o recuperación parcial y lenta → Clave 2."
+    }
+  ],
+  "criterios_clasificacion": {
+    "clave1": {
+      "descripcion": "Emergencia absoluta — requiere respuesta inmediata",
+      "criterios": [
+        "Paciente no respira — apnea",
+        "Respiración agónica o boqueos",
+        "Paro cardiorrespiratorio confirmado"
+      ]
+    },
+    "clave2": {
+      "descripcion": "Emergencia — requiere respuesta urgente",
+      "criterios": [
+        "PDC con respiración presente pero sin respuesta a estímulos",
+        "PDC con respiración presente y recuperación lenta o parcial",
+        "PDC durante esfuerzo físico",
+        "PDC con antecedentes cardíacos conocidos",
+        "PDC con cianosis o palidez intensa",
+        "PDC con movimientos anormales o convulsivos",
+        "PDC con TEC asociado",
+        "PDC en diabético que no comió — descartar hipoglucemia",
+        "Síncope o lipotimia con recuperación — Clave 2 por defecto salvo perfil vasovagal claro"
+      ]
+    },
+    "clave3": {
+      "descripcion": "Urgencia — requiere evaluación médica programada",
+      "criterios": [
+        "PDC espontánea recuperada en paciente joven sin síntomas acompañantes al momento del llamado",
+        "Síncope vasovagal con pródromos clásicos — náuseas, sudoración, visión borrosa en bipedestación",
+        "Recuperación completa en menos de 2 minutos con orientación normal",
+        "Desencadenante emocional o posicional claro",
+        "Sin antecedentes cardíacos ni factores de riesgo relevantes",
+        "Sin movimientos anormales ni TEC asociado"
+      ]
+    }
+  }
+}
