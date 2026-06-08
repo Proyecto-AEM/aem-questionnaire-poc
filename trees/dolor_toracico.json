@@ -1,6 +1,33 @@
 {
   "cuadro": "dolor_toracico",
   "descripcion": "Protocolo de evaluación clínica de dolor torácico — AEM v1.0",
+  "preguntas_deterministas": [
+    {
+      "pregunta": "¿La persona está consciente y puede responder cuando le habla?",
+      "campo": "consciencia",
+      "dispara_clave1_si": "no"
+    },
+    {
+      "pregunta": "¿Puede respirar con normalidad?",
+      "campo": "respiracion",
+      "dispara_clave1_si": "no"
+    }
+  ],
+  "campos_schema": {
+    "inicio": "cuándo comenzó el dolor (hace cuántos minutos, horas o días)",
+    "tipo_dolor": "carácter del dolor: opresivo, urente, puntada, difuso, etc.",
+    "intensidad": "intensidad en escala del 1 al 10",
+    "localizacion": "dónde se localiza el dolor: retroesternal, precordial, lateral, difuso",
+    "irradiacion": "hacia dónde irradia el dolor o 'Sin irradiación'",
+    "evolucion": "patrón temporal: continuo o intermitente, si empeoró desde el inicio",
+    "actividad_previa": "qué estaba haciendo cuando comenzó el dolor",
+    "palpitaciones": "presencia o ausencia de palpitaciones",
+    "disnea": "presencia y grado de dificultad respiratoria",
+    "neurovegetativos": "síntomas neurovegetativos: náuseas, vómitos, sudoración, mareos, o 'Ausentes'",
+    "consciencia": "estado de consciencia y riesgo de síncope",
+    "habla": "capacidad de habla: normal o alterada",
+    "antecedentes": "antecedentes cardiovasculares relevantes o 'Sin antecedentes referidos'"
+  },
   "secuencia_preguntas": [
     {
       "id": 1,
@@ -74,14 +101,14 @@
     },
     {
       "id": 11,
-      "campo": "estado_consciencia",
+      "campo": "consciencia",
       "pregunta_guia": "¿Está consciente y orientado? ¿Se siente mareado al punto de desmayarse?",
       "proposito": "Evaluar nivel de consciencia y riesgo de síncope",
       "notas_clinicas": "PDC, síncope o sensación de desmayo inminente → CLAVE 1 inmediata. Consciente y orientado → excluye ese criterio de Clave 1."
     },
     {
       "id": 12,
-      "campo": "capacidad_habla",
+      "campo": "habla",
       "pregunta_guia": "¿Puede hablar y respirar con normalidad mientras hablamos?",
       "proposito": "Evaluar capacidad de comunicación — también se observa durante toda la conversación",
       "notas_clinicas": "Habla entrecortada, frases cortas, jadea → CLAVE 1. Habla fluida y normal → excluye ese criterio de Clave 1, punto favorable para Clave 2 o 3."

@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-AEM Questionnaire POC
+AEM Questionnaire POC — Prototipo 2
 Microservicio de cuestionario clínico conversacional por terminal.
 """
 import json
@@ -9,21 +9,21 @@ from pathlib import Path
 
 from dotenv import load_dotenv
 from openai import OpenAI
+from pydantic import ValidationError
+
+from classifier import classify_cuadro
+from deterministic import run_screening
+from identifier import identify_cuadro
+from models import ClassificationResponse, TurnResponse
 
 load_dotenv()
-client = OpenAI()  # Lee OPENAI_API_KEY del .env
-
-# Palabras clave para detectar el cuadro clínico en la primera respuesta del socio
-CUADRO_KEYWORDS: dict[str, list[str]] = {
-    "dolor_toracico": [
-        "pecho", "corazón", "torácico", "tórax", "precordial",
-        "opresión", "oprime", "cardíaco", "me aprieta", "me presiona",
-        "duele el pecho", "dolor en el pecho", "dolor de pecho",
-        "puntada en el pecho", "quemación en el pecho",
-    ]
-}
+client = OpenAI()
 
 SEP = "─" * 54
+ESCALADA_MSG = (
+    "Por la información que me dio, su situación puede requerir "
+    "atención inmediata. Por favor llame al número de emergencias de AEM ahora."
+)
 
 
 def load_text(path: str) -> str:
@@ -34,86 +34,148 @@ def load_json(path: str) -> dict:
     return json.loads(Path(path).read_text(encoding="utf-8"))
 
 
-def detect_cuadro(text: str) -> str | None:
-    """Detecta el cuadro clínico a partir de la primera respuesta libre del socio."""
-    text_lower = text.lower()
-    for cuadro, keywords in CUADRO_KEYWORDS.items():
-        if any(kw in text_lower for kw in keywords):
-            return cuadro
-    return None
-
-
-def build_system_message(tree: dict | None) -> str:
-    """Combina el prompt base con el árbol de protocolo activo."""
+def build_system_message(tree: dict) -> str:
     prompt = load_text("prompts/system_prompt.txt")
-    if tree:
-        prompt += (
-            "\n\n## ÁRBOL DE PROTOCOLO ACTIVO\n"
-            "```json\n"
-            + json.dumps(tree, ensure_ascii=False, indent=2)
-            + "\n```"
-        )
+    campos_schema_json = json.dumps(
+        tree.get("campos_schema", {}), ensure_ascii=False, indent=2
+    )
+    prompt = prompt.replace("{{campos_schema}}", campos_schema_json)
+    prompt += (
+        "\n\n## ÁRBOL DE PROTOCOLO ACTIVO\n"
+        "```json\n"
+        + json.dumps(tree, ensure_ascii=False, indent=2)
+        + "\n```"
+    )
     return prompt
 
 
-def call_model(conversation: list[dict], tree: dict | None) -> dict:
-    """Llama a GPT-4o y retorna el JSON parseado."""
+def call_model_validated(
+    conversation: list[dict], tree: dict, max_retries: int = 3
+) -> TurnResponse:
     messages = [{"role": "system", "content": build_system_message(tree)}] + conversation
-    response = client.chat.completions.create(
-        model="gpt-4o-mini",
-        messages=messages,
-        response_format={"type": "json_object"},
-        temperature=0.2,
+    last_error: Exception | None = None
+
+    for _ in range(max_retries):
+        response = client.chat.completions.create(
+            model="gpt-4o-mini",
+            messages=messages,
+            response_format={"type": "json_object"},
+            temperature=0.2,
+        )
+        try:
+            raw = json.loads(response.choices[0].message.content)
+            return TurnResponse(**raw)
+        except (json.JSONDecodeError, ValidationError) as exc:
+            last_error = exc
+
+    raise RuntimeError(
+        f"La respuesta del modelo fue inválida luego de {max_retries} intentos: {last_error}"
     )
-    return json.loads(response.choices[0].message.content)
 
 
-def print_summary(summary: dict) -> None:
-    """Imprime el resumen clínico estructurado en terminal."""
+def print_results(campos: dict, clasificacion_result: ClassificationResponse) -> None:
     print(f"\n{SEP}")
-    print("         --- RESUMEN CLÍNICO AEM ---")
+    print("      --- PERFIL CLÍNICO (campos_recolectados) ---")
     print(SEP)
-
-    fields = [
-        ("Síntoma principal", "sintoma_principal"),
-        ("Inicio", "inicio"),
-        ("Tipo de dolor", "tipo"),
-        ("Intensidad", "intensidad"),
-        ("Localización", "localizacion"),
-        ("Irradiación", "irradiacion"),
-        ("Síntomas asociados", "sintomas_asociados"),
-        ("Antecedentes", "antecedentes"),
-        ("Señales de alarma", "senales_alarma"),
-    ]
-    for label, key in fields:
-        val = summary.get(key, "No referido")
-        if isinstance(val, list):
-            val = ", ".join(val) if val else "Ninguno"
-        print(f"  {label:<28} {val}")
-
-    clasificacion = summary.get("clasificacion_preliminar", "No determinada")
-    justificacion = summary.get("justificacion_clasificacion", "")
-    print(f"\n  {'Clasificación preliminar':<28} {clasificacion}")
-    if justificacion:
-        print(f"  {'Justificación':<28} {justificacion}")
+    for key, val in campos.items():
+        display = ", ".join(val) if isinstance(val, list) else str(val)
+        print(f"  {key:<32} {display}")
+    print(SEP)
+    print(f"\n  {'Clasificación':<28} {clasificacion_result.clasificacion}")
+    print(f"  {'Justificación':<28} {clasificacion_result.justificacion}")
     print(SEP)
 
 
-def main() -> None:
-    print(SEP)
+def phase_identify() -> tuple[str, str, dict]:
+    """
+    Identificación del cuadro clínico — llamada independiente al modelo.
+    Retorna (descripcion_inicial, cuadro, tree).
+    """
+    print(f"\n{SEP}")
     print("    AEM — Asistente de Emergencias Médicas")
     print(SEP)
 
-    conversation: list[dict] = []
-    tree: dict | None = None
-    cuadro: str | None = None
-
-    # Saludo inicial fijo — no generado por el modelo
     greeting = "Hola, soy el asistente de AEM. ¿Cuál es el motivo de su consulta?"
     print(f"\nAsistente: {greeting}")
-    conversation.append({"role": "assistant", "content": greeting})
+
+    try:
+        user_input = input("\nSocio: ").strip()
+    except (EOFError, KeyboardInterrupt):
+        print("\n\nSesión terminada.")
+        sys.exit(0)
+
+    if not user_input:
+        user_input = "No especificado"
+
+    descripcion_inicial = user_input
+    identification_context = user_input
 
     while True:
+        try:
+            identification = identify_cuadro(client, identification_context)
+        except Exception as exc:
+            print(f"\n[Error al identificar cuadro clínico: {exc}]")
+            sys.exit(1)
+
+        if identification.cuadro_identificado and identification.confianza == "alta":
+            cuadro = identification.cuadro_identificado
+            tree_path = Path(f"trees/{cuadro}.json")
+            if tree_path.exists():
+                return descripcion_inicial, cuadro, load_json(str(tree_path))
+
+        # Confianza media o baja — mostrar mensaje y pedir confirmación o más info
+        mensaje = identification.mensaje or "¿Puede contarme con más detalle cuál es el síntoma principal?"
+        print(f"\nAsistente: {mensaje}")
+
+        try:
+            more_info = input("\nSocio: ").strip()
+        except (EOFError, KeyboardInterrupt):
+            print("\n\nSesión terminada.")
+            sys.exit(0)
+
+        identification_context += f"\n{more_info}"
+
+
+def phase_questionnaire(
+    descripcion_inicial: str, screening_context: dict, tree: dict
+) -> tuple[dict, bool]:
+    """
+    Loop conversacional turno a turno con validación Pydantic y reintentos.
+    Retorna (campos_acumulados, clave1_activada).
+    """
+    conversation: list[dict] = []
+
+    first_message = descripcion_inicial
+    if screening_context:
+        context_note = "; ".join(f"{k}: {v}" for k, v in screening_context.items())
+        first_message += f"\n[Screening inicial: {context_note}]"
+
+    conversation.append({"role": "user", "content": first_message})
+
+    campos_acumulados: dict = {}
+
+    while True:
+        try:
+            response = call_model_validated(conversation, tree)
+        except RuntimeError as exc:
+            print(f"\n[{exc}]")
+            sys.exit(1)
+
+        campos_acumulados.update(response.campos_recolectados)
+
+        if response.reasoning:
+            print(f"  [interno] {response.reasoning}", flush=True)
+
+        if response.clave1_flag:
+            print(f"\nAsistente: {ESCALADA_MSG}")
+            return campos_acumulados, True
+
+        print(f"\nAsistente: {response.next_question}")
+        conversation.append({"role": "assistant", "content": response.next_question})
+
+        if response.conversation_complete:
+            return campos_acumulados, False
+
         try:
             user_input = input("\nSocio: ").strip()
         except (EOFError, KeyboardInterrupt):
@@ -125,51 +187,39 @@ def main() -> None:
 
         conversation.append({"role": "user", "content": user_input})
 
-        # Detectar cuadro clínico en el primer turno relevante
-        if cuadro is None:
-            cuadro = detect_cuadro(user_input)
-            if cuadro:
-                tree = load_json(f"trees/{cuadro}.json")
 
-        # Llamada al modelo
-        try:
-            response = call_model(conversation, tree)
-        except Exception as exc:
-            print(f"\n[Error al contactar el modelo: {exc}]")
-            continue
+def main() -> None:
+    # 1. Identificación del cuadro — llamada independiente al modelo
+    descripcion_inicial, cuadro, tree = phase_identify()
 
-        next_question: str = response.get(
-            "next_question", "¿Puede contarme más sobre su situación?"
+    # 2. Screening determinístico — código puro, sin modelo
+    clave1_result, screening_context = run_screening(tree)
+
+    if clave1_result:
+        print(f"\nAsistente: {ESCALADA_MSG}")
+        return
+
+    # 3. Cuestionario conversacional — loop turno a turno con validación Pydantic
+    campos, clave1_activada = phase_questionnaire(descripcion_inicial, screening_context, tree)
+
+    if clave1_activada:
+        return
+
+    # 4. Clasificación final — llamada independiente con few-shot
+    if tree.get("clasificacion_fija") == "Clave 3":
+        clasificacion_result = ClassificationResponse(
+            clasificacion="Clave 3",
+            justificacion="Clasificación Clave 3 asignada directamente por protocolo del cuadro.",
         )
-        clave1_flag: bool = response.get("clave1_flag", False)
-        conversation_complete: bool = response.get("conversation_complete", False)
+    else:
+        try:
+            clasificacion_result = classify_cuadro(client, cuadro, tree, campos)
+        except Exception as exc:
+            print(f"\n[Error en clasificación final: {exc}]")
+            return
 
-        # Log interno de razonamiento (opcional — comentar en producción)
-        reasoning = response.get("reasoning", "")
-        if reasoning:
-            print(f"  [interno] {reasoning}", flush=True)
-
-        print(f"\nAsistente: {next_question}")
-        conversation.append({"role": "assistant", "content": next_question})
-
-        # Clave 1 — escalada inmediata, fin del flujo
-        if clave1_flag:
-            break
-
-        # Cuestionario completo — mostrar resumen
-        if conversation_complete:
-            campos = response.get("campos_recolectados", {})
-            if campos:
-                print(f"\n{SEP}")
-                print("      --- PERFIL CLÍNICO (campos_recolectados) ---")
-                print(SEP)
-                for key, val in campos.items():
-                    print(f"  {key:<32} {val}")
-                print(SEP)
-            summary = response.get("summary")
-            if summary:
-                print_summary(summary)
-            break
+    # 5. Mostrar resumen y clasificación
+    print_results(campos, clasificacion_result)
 
 
 if __name__ == "__main__":
