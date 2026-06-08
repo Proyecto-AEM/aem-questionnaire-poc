@@ -1,0 +1,306 @@
+{
+  "global": {
+    "total": 18,
+    "evaluated": 18,
+    "correct": 15,
+    "accuracy": 0.8333,
+    "subtriage_count": 3,
+    "subtriage_rate": 0.1667,
+    "sobretriage_count": 0,
+    "sobretriage_rate": 0.0,
+    "fatal_subtriage_count": 3,
+    "confusion_matrix": {
+      "Clave 1": {
+        "Clave 1": 2,
+        "Clave 2": 3,
+        "Clave 3": 0
+      },
+      "Clave 2": {
+        "Clave 1": 0,
+        "Clave 2": 7,
+        "Clave 3": 0
+      },
+      "Clave 3": {
+        "Clave 1": 0,
+        "Clave 2": 0,
+        "Clave 3": 6
+      }
+    }
+  },
+  "per_cuadro": {
+    "dolor_toracico": {
+      "total": 9,
+      "evaluated": 9,
+      "correct": 7,
+      "accuracy": 0.7778,
+      "subtriage_count": 2,
+      "subtriage_rate": 0.2222,
+      "sobretriage_count": 0,
+      "sobretriage_rate": 0.0,
+      "fatal_subtriage_count": 2,
+      "confusion_matrix": {
+        "Clave 1": {
+          "Clave 1": 1,
+          "Clave 2": 2,
+          "Clave 3": 0
+        },
+        "Clave 2": {
+          "Clave 1": 0,
+          "Clave 2": 3,
+          "Clave 3": 0
+        },
+        "Clave 3": {
+          "Clave 1": 0,
+          "Clave 2": 0,
+          "Clave 3": 3
+        }
+      }
+    },
+    "perdida_de_conocimiento": {
+      "total": 9,
+      "evaluated": 9,
+      "correct": 8,
+      "accuracy": 0.8889,
+      "subtriage_count": 1,
+      "subtriage_rate": 0.1111,
+      "sobretriage_count": 0,
+      "sobretriage_rate": 0.0,
+      "fatal_subtriage_count": 1,
+      "confusion_matrix": {
+        "Clave 1": {
+          "Clave 1": 1,
+          "Clave 2": 1,
+          "Clave 3": 0
+        },
+        "Clave 2": {
+          "Clave 1": 0,
+          "Clave 2": 4,
+          "Clave 3": 0
+        },
+        "Clave 3": {
+          "Clave 1": 0,
+          "Clave 2": 0,
+          "Clave 3": 3
+        }
+      }
+    }
+  },
+  "cases": [
+    {
+      "cuadro": "dolor_toracico",
+      "id": 1,
+      "expected": "Clave 1",
+      "got": "Clave 1",
+      "correct": true,
+      "subtriage": false,
+      "sobretriage": false,
+      "fatal": false,
+      "justificacion": "Dolor retroesternal opresivo de intensidad 8/10, con disnea severa que impide completar frases y habla entrecortada, lo que indica una dificultad respiratoria extrema. La sudoración leve no excluye la gravedad del cuadro, cumpliendo con los criterios de emergencia absoluta del protocolo.",
+      "error": null
+    },
+    {
+      "cuadro": "dolor_toracico",
+      "id": 2,
+      "expected": "Clave 1",
+      "got": "Clave 2",
+      "correct": false,
+      "subtriage": true,
+      "sobretriage": false,
+      "fatal": true,
+      "justificacion": "Dolor precordial opresivo con irradiación al brazo izquierdo, inicio durante actividad física, continuo por 30 minutos. La presencia de vómitos incoercibles y diaforesis intensa, aunque el paciente está consciente y habla con normalidad, sugiere una urgencia cardiovascular. Sin antecedentes cardíacos conocidos y a la edad de 62 años, se considera un perfil de riesgo.",
+      "error": null
+    },
+    {
+      "cuadro": "dolor_toracico",
+      "id": 3,
+      "expected": "Clave 1",
+      "got": "Clave 2",
+      "correct": false,
+      "subtriage": true,
+      "sobretriage": false,
+      "fatal": true,
+      "justificacion": "Dolor retroesternal opresivo de intensidad 8/10 con irradiación a mandíbula, inicio hace 20 minutos en reposo, continuo y en aumento. Palidez intensa y mareos sugieren síntomas neurovegetativos, aunque la consciencia es normal y la dificultad para hablar no impide la comunicación. Antecedente de hipertensión arterial refuerza la urgencia.",
+      "error": null
+    },
+    {
+      "cuadro": "dolor_toracico",
+      "id": 4,
+      "expected": "Clave 2",
+      "got": "Clave 2",
+      "correct": true,
+      "subtriage": false,
+      "sobretriage": false,
+      "fatal": false,
+      "justificacion": "Dolor retroesternal opresivo con irradiación al brazo izquierdo, de inicio durante esfuerzo (subiendo escaleras), continuo por 1 hora. La intensidad de 6/10 y la disnea leve, junto con la ausencia de antecedentes cardiovasculares, indican una urgencia que no alcanza a ser crítica.",
+      "error": null
+    },
+    {
+      "cuadro": "dolor_toracico",
+      "id": 5,
+      "expected": "Clave 2",
+      "got": "Clave 2",
+      "correct": true,
+      "subtriage": false,
+      "sobretriage": false,
+      "fatal": false,
+      "justificacion": "Dolor precordial urente de intensidad 5/10, continuo desde hace 90 minutos, con diaforesis moderada. Aunque el paciente está consciente y habla con normalidad, la combinación de dolor en reposo y diaforesis moderada sugiere una urgencia que se alinea con los criterios de Clave 2.",
+      "error": null
+    },
+    {
+      "cuadro": "dolor_toracico",
+      "id": 6,
+      "expected": "Clave 2",
+      "got": "Clave 2",
+      "correct": true,
+      "subtriage": false,
+      "sobretriage": false,
+      "fatal": false,
+      "justificacion": "Dolor retroesternal opresivo de intensidad 6/10, continuo, con inicio durante trote leve. Aunque la disnea fue leve y ya cedió, la combinación de dolor y antecedentes de esfuerzo físico, junto con la presencia de palpitaciones rápidas, sugiere un riesgo cardiovascular que requiere atención urgente.",
+      "error": null
+    },
+    {
+      "cuadro": "dolor_toracico",
+      "id": 7,
+      "expected": "Clave 3",
+      "got": "Clave 3",
+      "correct": true,
+      "subtriage": false,
+      "sobretriage": false,
+      "fatal": false,
+      "justificacion": "Dolor punzante localizado en el costado izquierdo, de baja intensidad (4/10), intermitente y que se reproduce al palpar la zona. Sin irradiación, disnea ni síntomas neurovegetativos. Evolución de 2 días sin empeoramiento y en paciente consciente y en buen estado general, lo que sugiere un perfil no urgente.",
+      "error": null
+    },
+    {
+      "cuadro": "dolor_toracico",
+      "id": 8,
+      "expected": "Clave 3",
+      "got": "Clave 3",
+      "correct": true,
+      "subtriage": false,
+      "sobretriage": false,
+      "fatal": false,
+      "justificacion": "Dolor ardoroso en epigastrio que asciende, de baja intensidad y evolución intermitente, empeora después de las comidas y al acostarse. Sin irradiación, disnea ni síntomas neurovegetativos. Perfil compatible con origen digestivo y sin señales de urgencia.",
+      "error": null
+    },
+    {
+      "cuadro": "dolor_toracico",
+      "id": 9,
+      "expected": "Clave 3",
+      "got": "Clave 3",
+      "correct": true,
+      "subtriage": false,
+      "sobretriage": false,
+      "fatal": false,
+      "justificacion": "Molestia vaga y difusa de baja intensidad (2/10), intermitente y sin irradiación ni síntomas asociados. Sin disnea ni neurovegetativos, y sin antecedentes cardiovasculares. Perfil atípico para origen cardíaco.",
+      "error": null
+    },
+    {
+      "cuadro": "perdida_de_conocimiento",
+      "id": 1,
+      "expected": "Clave 1",
+      "got": "Clave 1",
+      "correct": true,
+      "subtriage": false,
+      "sobretriage": false,
+      "fatal": false,
+      "justificacion": "Apnea con cianosis perioral leve y ausencia total de respuesta. Cuadro compatible con paro cardiorrespiratorio, dado que no hay recuperación y el contexto sugiere una situación crítica.",
+      "error": null
+    },
+    {
+      "cuadro": "perdida_de_conocimiento",
+      "id": 2,
+      "expected": "Clave 1",
+      "got": "Clave 2",
+      "correct": false,
+      "subtriage": true,
+      "sobretriage": false,
+      "fatal": true,
+      "justificacion": "Respiración irregular con bocanadas esporádicas y ausencia de respuesta a estímulos en paciente con antecedentes de cardiopatía. La leve cianosis y la falta de recuperación indican un cuadro urgente que requiere atención inmediata.",
+      "error": null
+    },
+    {
+      "cuadro": "perdida_de_conocimiento",
+      "id": 3,
+      "expected": "Clave 2",
+      "got": "Clave 2",
+      "correct": true,
+      "subtriage": false,
+      "sobretriage": false,
+      "fatal": false,
+      "justificacion": "PDC con respiración normal pero sin respuesta a estímulos y sin recuperación tras la pérdida de conocimiento al finalizar una carrera. El contexto de esfuerzo físico y la falta de respuesta indican una situación de urgencia que requiere atención inmediata.",
+      "error": null
+    },
+    {
+      "cuadro": "perdida_de_conocimiento",
+      "id": 4,
+      "expected": "Clave 2",
+      "got": "Clave 2",
+      "correct": true,
+      "subtriage": false,
+      "sobretriage": false,
+      "fatal": false,
+      "justificacion": "PDC espontáneo en paciente con diabetes tipo 2 insulinorrequiriente, sin recuperación al momento de la llamada. Aunque respira con normalidad, la ausencia de respuesta a estímulos y la condición de diabetes elevan la urgencia a Clave 2.",
+      "error": null
+    },
+    {
+      "cuadro": "perdida_de_conocimiento",
+      "id": 5,
+      "expected": "Clave 2",
+      "got": "Clave 2",
+      "correct": true,
+      "subtriage": false,
+      "sobretriage": false,
+      "fatal": false,
+      "justificacion": "PDC con respiración normal pero sin respuesta a estímulos y recuperación incompleta. La situación de estrés emocional intenso y la angustia previa sugieren un cuadro de urgencia que requiere atención inmediata.",
+      "error": null
+    },
+    {
+      "cuadro": "perdida_de_conocimiento",
+      "id": 6,
+      "expected": "Clave 2",
+      "got": "Clave 2",
+      "correct": true,
+      "subtriage": false,
+      "sobretriage": false,
+      "fatal": false,
+      "justificacion": "PDC con respiración normal pero respuesta breve al llamado y recaída en la consciencia. La recuperación parcial y la pérdida de consciencia dos veces en 10 minutos indican un cuadro de urgencia que requiere atención inmediata.",
+      "error": null
+    },
+    {
+      "cuadro": "perdida_de_conocimiento",
+      "id": 7,
+      "expected": "Clave 3",
+      "got": "Clave 3",
+      "correct": true,
+      "subtriage": false,
+      "sobretriage": false,
+      "fatal": false,
+      "justificacion": "PDC en paciente joven tras estar de pie mucho tiempo en calor intenso, con recuperación completa al acostarse y elevar las piernas. Sin antecedentes ni síntomas acompañantes, lo que sugiere un síncope vasovagal clásico.",
+      "error": null
+    },
+    {
+      "cuadro": "perdida_de_conocimiento",
+      "id": 8,
+      "expected": "Clave 3",
+      "got": "Clave 3",
+      "correct": true,
+      "subtriage": false,
+      "sobretriage": false,
+      "fatal": false,
+      "justificacion": "PDC al levantarse rápido de la cama con recuperación completa e inmediata. Contexto posicional claro y paciente joven sin antecedentes ni síntomas acompañantes, lo que corresponde a un síncope ortostático breve.",
+      "error": null
+    },
+    {
+      "cuadro": "perdida_de_conocimiento",
+      "id": 9,
+      "expected": "Clave 3",
+      "got": "Clave 3",
+      "correct": true,
+      "subtriage": false,
+      "sobretriage": false,
+      "fatal": false,
+      "justificacion": "PDC resuelta hace 25 minutos en paciente joven, con recuperación completa y sin síntomas residuales. El episodio único en contexto de extracción de sangre, junto con la ausencia de antecedentes y la recuperación rápida, sugiere un síncope vasovagal, lo que corresponde a Clave 3.",
+      "error": null
+    }
+  ]
+}
