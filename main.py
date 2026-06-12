@@ -193,10 +193,12 @@ def main() -> None:
     descripcion_inicial, cuadro, tree = phase_identify()
 
     # 2. Screening determinístico — código puro, sin modelo
-    clave1_result, screening_context = run_screening(tree)
+    clave1_result, screening_context, instruccion_pre_arribo = run_screening(tree)
 
     if clave1_result:
         print(f"\nAsistente: {ESCALADA_MSG}")
+        if instruccion_pre_arribo:
+            print(f"  [pre-arribo] {instruccion_pre_arribo}")
         return
 
     # 3. Cuestionario conversacional — loop turno a turno con validación Pydantic

@@ -1,114 +1,106 @@
 {
   "cuadro": "perdida_de_conocimiento",
-  "descripcion": "Protocolo de evaluación clínica de pérdida de conocimiento — AEM v1.0",
+  "descripcion": "Paciente que perdió el conocimiento, ya sea que siga inconsciente al momento del llamado o que se haya recuperado. Incluye síncope, lipotimia y PDC espontánea recuperada.",
   "preguntas_deterministas": [
     {
-      "pregunta": "¿La persona está respirando en este momento?",
-      "campo": "respiracion",
-      "dispara_clave1_si": "no"
+      "pregunta": "¿El paciente está consciente ahora, o sigue sin responder?",
+      "campo": "estado_actual_consciencia",
+      "dispara_clave1_si": "no",
+      "condicion_activacion": null
+    },
+    {
+      "pregunta": "¿Está respirando?",
+      "campo": "respiracion_screening",
+      "dispara_clave1_si": "no",
+      "accion_si_respira": "Clave 1 igual — paciente inconsciente que respira. Instrucción de pre-arribo: colocar en posición de seguridad.",
+      "accion_si_no_respira": "Clave 1 — paciente inconsciente que no respira. Instrucción de pre-arribo: iniciar RCP.",
+      "condicion_activacion": "solo_si_inconsciente"
     }
   ],
   "campos_schema": {
-    "respiracion": "si la persona respira o no respira al momento de la llamada",
-    "respuesta_estimulos": "si la persona responde cuando se le habla en voz alta o se le toca",
-    "movimientos_anormales": "si presenta movimientos anormales o convulsivos",
-    "cianosis": "coloración de labios y piel — cianótico, pálido o normal",
-    "contexto": "qué estaba haciendo cuando ocurrió el episodio",
-    "estres_angustia": "si cursaba estrés, angustia o ansiedad previo al episodio",
-    "antecedentes": "antecedentes de epilepsia, diabetes, cardiopatía u otras enfermedades relevantes — descartar hipoglucemia",
-    "tec_previo": "si hubo traumatismo de cráneo previo o asociado al episodio",
-    "recuperacion": "si el paciente comenzó a recuperarse y cómo está evolucionando"
+    "tipo_episodio": "Descripción de cómo fue el episodio: si el paciente se desmayó de golpe, sintió que se iba antes de caer, o fue algo diferente.",
+    "edad": "Edad del paciente según la descripción del socio.",
+    "sintomas_actuales": "Estado del paciente tras la recuperación: presencia o ausencia de malestar, dolor, mareo u otros síntomas al momento del llamado.",
+    "contexto_previo": "Actividad que realizaba el paciente antes del episodio y presencia de estrés, angustia o ansiedad. Campo contextual.",
+    "movimientos_anormales": "Presencia o ausencia de movimientos anormales o convulsiones durante el episodio.",
+    "cianosis": "Presencia o ausencia de coloración azulada en labios o rostro durante el episodio.",
+    "antecedentes": "Antecedentes de diabetes, epilepsia, problemas cardíacos u otras enfermedades. Incluye si el paciente se alimentó hoy para descartar hipoglicemia."
   },
   "secuencia_preguntas": [
     {
-      "id": 1,
-      "campo": "respuesta_estimulos",
-      "pregunta_guia": "¿La persona responde cuando le habla en voz alta o le toca el hombro?",
-      "proposito": "Evaluar nivel de consciencia con respiración confirmada",
-      "notas_clinicas": "No responde y respira → posición de seguridad, Clave 2. Responde aunque sea con gemidos → consciencia parcialmente preservada, orientar a Clave 2. IMPORTANTE: que el paciente no responda a estímulos con respiración ya confirmada NO es criterio de Clave 1 en este cuadro — es la presentación esperada de PDC. NO activar clave1_flag solo por esta respuesta."
+      "campo": "tipo_episodio",
+      "pregunta": "¿Cómo fue el episodio? ¿El paciente se desmayó de golpe, sintió que se iba antes de caer, o fue algo diferente?",
+      "notas_clinicas": "Síncope o lipotimia apuntan a Clave 2. PDC espontánea sin aviso previo en paciente joven apunta a Clave 3. La distinción entre síncope y lipotimia no cambia la clasificación — ambos son Clave 2 según el manual."
     },
     {
-      "id": 2,
+      "campo": "edad",
+      "pregunta": "¿Qué edad tiene el paciente?",
+      "notas_clinicas": "Paciente joven es criterio explícito de Clave 3 en el manual. El manual no define un umbral numérico de edad — registrar la descripción del socio y evaluar en contexto."
+    },
+    {
+      "campo": "sintomas_actuales",
+      "pregunta": "¿Cómo está el paciente ahora que se recuperó? ¿Tiene algún malestar, dolor, mareo o cualquier otro síntoma?",
+      "notas_clinicas": "Ausencia de síntomas acompañantes al momento del llamado es criterio explícito de Clave 3. Cualquier síntoma presente tras la recuperación apunta a Clave 2."
+    },
+    {
+      "campo": "contexto_previo",
+      "pregunta": "¿Qué estaba haciendo el paciente antes de que ocurriera el episodio? ¿Estaba bajo estrés, angustia o ansiedad?",
+      "notas_clinicas": "Campo contextual. El manual lo lista como pregunta a realizar pero no lo usa como criterio de clasificación directo. Aporta contexto para el perfil clínico."
+    },
+    {
       "campo": "movimientos_anormales",
-      "pregunta_guia": "¿Tiene algún movimiento anormal, como sacudidas o convulsiones?",
-      "proposito": "Detectar actividad convulsiva asociada",
-      "notas_clinicas": "Convulsión activa con PDC → Clave 1 si no respira, Clave 2 si respira. Movimientos post-ictales pueden persistir tras el cese de la convulsión."
+      "pregunta": "¿Tuvo movimientos anormales o convulsiones durante el episodio?",
+      "notas_clinicas": "Presencia de movimientos anormales es señal de alarma — activar flag de Clave 1. Puede emerger espontáneamente en el relato del socio en cualquier turno."
     },
     {
-      "id": 3,
       "campo": "cianosis",
-      "pregunta_guia": "¿Cómo está el color de la piel y los labios? ¿Están azulados, muy pálidos o se ven normales?",
-      "proposito": "Evaluar perfusión y oxigenación periférica",
-      "notas_clinicas": "Cianosis — labios o piel azulados — es señal de alarma cardiorrespiratoria, Clave 2. Palidez intensa sugiere hipoperfusión, Clave 2. Color normal es favorable."
+      "pregunta": "¿Notó que el paciente se puso azulado en los labios o en el rostro durante el episodio?",
+      "notas_clinicas": "Presencia de cianosis es señal de alarma — activar flag de Clave 1."
     },
     {
-      "id": 4,
-      "campo": "contexto",
-      "pregunta_guia": "¿Qué estaba haciendo cuando ocurrió? ¿Estaba parado mucho tiempo, haciendo esfuerzo físico o estaba en reposo?",
-      "proposito": "Identificar contexto de aparición como criterio diferencial",
-      "notas_clinicas": "PDC durante esfuerzo físico → perfil cardíaco, Clave 2. PDC en bipedestación prolongada, calor o emoción fuerte → vasovagal, orientar a Clave 3."
-    },
-    {
-      "id": 5,
-      "campo": "estres_angustia",
-      "pregunta_guia": "¿Estaba cursando alguna situación de estrés, angustia o ansiedad antes de que ocurriera?",
-      "proposito": "Identificar desencadenante emocional como orientador de síncope vasovagal",
-      "notas_clinicas": "Desencadenante emocional claro con recuperación rápida → perfil vasovagal, Clave 3. Sin desencadenante claro → mayor atención."
-    },
-    {
-      "id": 6,
       "campo": "antecedentes",
-      "pregunta_guia": "¿Tiene antecedentes de epilepsia, diabetes, enfermedades cardíacas u otras enfermedades importantes? ¿Se alimentó hoy?",
-      "proposito": "Identificar factores de riesgo y descartar hipoglucemia",
-      "notas_clinicas": "Diabético que no comió → descartar hipoglucemia, Clave 2. Epilepsia conocida con características post-ictales esperables → Clave 2 o 3 según duración y recuperación. Antecedentes cardíacos con PDC → Clave 2."
+      "pregunta": "¿El paciente tiene antecedentes de diabetes, epilepsia, problemas cardíacos u otras enfermedades? ¿Se alimentó hoy?",
+      "notas_clinicas": "Antecedentes de hipoglicemia, TEC posterior o enfermedades crónicas relevantes aportan contexto para el perfil. La pregunta sobre alimentación apunta a descartar hipoglicemia como causa según indica el manual explícitamente."
+    }
+  ],
+  "condiciones_salida_lateral": [
+    {
+      "condicion": "El socio menciona en cualquier turno que el paciente que estaba recuperado volvió a perder la consciencia o dejó de respirar.",
+      "accion": "Interrumpir el cuestionario de inmediato. Activar flag de Clave 1 y emitir mensaje de escalada con instrucción de RCP si el paciente no respira."
     },
     {
-      "id": 7,
-      "campo": "tec_previo",
-      "pregunta_guia": "¿Hubo algún golpe en la cabeza antes o durante el episodio?",
-      "proposito": "Detectar traumatismo de cráneo como causa o consecuencia de la PDC",
-      "notas_clinicas": "TEC previo a la PDC puede ser causa. TEC como consecuencia de la caída también requiere evaluación. En ambos casos refuerza Clave 2."
+      "condicion": "El socio describe movimientos troncocónicos o convulsión en curso en cualquier turno.",
+      "accion": "Interrumpir el cuestionario de inmediato. Activar flag de Clave 1 y emitir mensaje de escalada."
     },
     {
-      "id": 8,
-      "campo": "recuperacion",
-      "pregunta_guia": "¿Está comenzando a despertar o a responder? ¿Cómo está evolucionando en este momento?",
-      "proposito": "Evaluar recuperación espontánea como indicador pronóstico",
-      "notas_clinicas": "Recuperación rápida y completa en menos de 2 minutos en paciente joven sin síntomas acompañantes → perfil vasovagal, Clave 3. Sin recuperación o recuperación parcial y lenta → Clave 2."
+      "condicion": "El socio menciona desviación de rasgos, incapacidad de mover un lado del cuerpo, disartria o confusión persistente tras la recuperación.",
+      "accion": "Activar flag de Clave 1."
     }
   ],
   "criterios_clasificacion": {
     "clave1": {
-      "descripcion": "Emergencia absoluta — requiere respuesta inmediata",
+      "descripcion": "Emergencia absoluta — requiere respuesta inmediata.",
       "criterios": [
-        "Paciente no respira — apnea",
-        "Respiración agónica o boqueos",
-        "Paro cardiorrespiratorio confirmado"
+        "Paciente inconsciente al momento del llamado, independientemente de si respira o no.",
+        "Si no respira: iniciar RCP.",
+        "Si respira: colocar en posición de seguridad.",
+        "Señales de alarma durante el cuestionario: deterioro con pérdida de consciencia o apnea, convulsión activa, focalidad neurológica de inicio reciente."
       ]
     },
     "clave2": {
-      "descripcion": "Emergencia — requiere respuesta urgente",
+      "descripcion": "Emergencia — requiere respuesta urgente.",
       "criterios": [
-        "PDC con respiración presente pero sin respuesta a estímulos",
-        "PDC con respiración presente y recuperación lenta o parcial",
-        "PDC durante esfuerzo físico",
-        "PDC con antecedentes cardíacos conocidos",
-        "PDC con cianosis o palidez intensa",
-        "PDC con movimientos anormales o convulsivos",
-        "PDC con TEC asociado",
-        "PDC en diabético que no comió — descartar hipoglucemia",
-        "Síncope o lipotimia con recuperación — Clave 2 por defecto salvo perfil vasovagal claro"
+        "PDC recuperada.",
+        "Síncope o lipotimia.",
+        "Presencia de síntomas acompañantes al momento del llamado."
       ]
     },
     "clave3": {
-      "descripcion": "Urgencia — requiere evaluación médica programada",
+      "descripcion": "Urgencia — requiere evaluación médica.",
       "criterios": [
-        "PDC espontánea recuperada en paciente joven sin síntomas acompañantes al momento del llamado",
-        "Síncope vasovagal con pródromos clásicos — náuseas, sudoración, visión borrosa en bipedestación",
-        "Recuperación completa en menos de 2 minutos con orientación normal",
-        "Desencadenante emocional o posicional claro",
-        "Sin antecedentes cardíacos ni factores de riesgo relevantes",
-        "Sin movimientos anormales ni TEC asociado"
+        "PDC espontánea recuperada.",
+        "Paciente joven.",
+        "Sin síntomas acompañantes al momento del llamado."
       ]
     }
   }
