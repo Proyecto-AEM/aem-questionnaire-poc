@@ -418,5 +418,105 @@
     },
     "clasificacion": "Clave 1",
     "justificacion": "Caso típico de Clave 1. Consciencia alterada con confusión y desorientación, habla imposibilitada, disnea severa. Múltiples señales de alarma simultáneas. El perfil no encaja en Clave 2 ni Clave 3."
+  },
+  {
+    "id": 22,
+    "perfil": {
+      "inicio": "reciente, hace menos de una hora",
+      "tipo_dolor": "opresivo",
+      "intensidad": "moderado",
+      "localizacion": "precordial",
+      "irradiacion": "ausente",
+      "evolucion": "continuo desde el inicio",
+      "actividad_previa": "reposo",
+      "palpitaciones": "ausentes",
+      "disnea": "ausente",
+      "neurovegetativos": "ausentes",
+      "consciencia": "normal",
+      "habla": "fluida",
+      "antecedentes": "HTA, diabetes tipo 2, tabaquismo"
+    },
+    "clasificacion": "Clave 2",
+    "justificacion": "Par borderline con ejemplo 23. Dolor opresivo precordial de inicio reciente, continuo, sin irradiación ni neurovegetativos. Los antecedentes cardiovasculares — HTA, diabetes y tabaquismo — son el criterio determinante de Clave 2 en ausencia de irradiación y neurovegetativos. El árbol establece que factores de riesgo cardiovascular presentes apuntan a Clave 2 independientemente de otros síntomas acompañantes."
+  },
+  {
+    "id": 23,
+    "perfil": {
+      "inicio": "reciente, hace menos de una hora",
+      "tipo_dolor": "opresivo",
+      "intensidad": "moderado",
+      "localizacion": "precordial",
+      "irradiacion": "ausente",
+      "evolucion": "continuo desde el inicio",
+      "actividad_previa": "reposo",
+      "palpitaciones": "ausentes",
+      "disnea": "ausente",
+      "neurovegetativos": "ausentes",
+      "consciencia": "normal",
+      "habla": "fluida",
+      "antecedentes": "sin antecedentes cardiovasculares, no fumador"
+    },
+    "clasificacion": "Clave 3",
+    "justificacion": "Par borderline con ejemplo 22. Mismo perfil base sin antecedentes cardiovasculares relevantes. Sin irradiación, sin neurovegetativos, sin factores de riesgo cardiovascular. El dolor opresivo precordial de inicio reciente sin ningún otro criterio de Clave 2 presente encaja en Clave 3."
+  },
+  {
+    "id": 24,
+    "perfil": {
+      "inicio": "reciente, menos de una hora",
+      "tipo_dolor": "opresivo",
+      "intensidad": "moderado",
+      "localizacion": "precordial",
+      "irradiacion": "ausente",
+      "evolucion": "continuo desde el inicio",
+      "actividad_previa": "reposo",
+      "palpitaciones": "ausentes",
+      "disnea": "ausente",
+      "neurovegetativos": "ausentes",
+      "consciencia": "normal",
+      "habla": "fluida",
+      "antecedentes": "diabetes tipo 2"
+    },
+    "clasificacion": "Clave 2",
+    "justificacion": "Par borderline con ejemplo 25. Dolor opresivo precordial de inicio reciente, continuo, sin irradiación ni neurovegetativos. La diabetes tipo 2 como único factor de riesgo cardiovascular es criterio suficiente para Clave 2 según el árbol — los factores de riesgo cardiovascular presentes apuntan a Clave 2 independientemente de la ausencia de irradiación y neurovegetativos."
+  },
+  {
+    "id": 25,
+    "perfil": {
+      "inicio": "reciente, menos de una hora",
+      "tipo_dolor": "opresivo",
+      "intensidad": "moderado",
+      "localizacion": "precordial",
+      "irradiacion": "ausente",
+      "evolucion": "continuo desde el inicio",
+      "actividad_previa": "reposo",
+      "palpitaciones": "ausentes",
+      "disnea": "ausente",
+      "neurovegetativos": "ausentes",
+      "consciencia": "normal",
+      "habla": "fluida",
+      "antecedentes": "sin antecedentes cardiovasculares, no fumador, sin diabetes"
+    },
+    "clasificacion": "Clave 3",
+    "justificacion": "Par borderline con ejemplo 25. Mismo perfil base sin ningún factor de riesgo cardiovascular. Sin irradiación, sin neurovegetativos, sin antecedentes relevantes. Dolor opresivo precordial de inicio reciente sin ningún criterio adicional de Clave 2 encaja en Clave 3."
+  },
+  {
+    "id": 26,
+    "perfil": {
+      "inicio": "reciente, menos de una hora",
+      "tipo_dolor": "puntada continua",
+      "intensidad": "moderado",
+      "localizacion": "precordial",
+      "irradiacion": "ausente",
+      "evolucion": "continuo desde el inicio",
+      "actividad_previa": "reposo",
+      "palpitaciones": "ausentes",
+      "disnea": "ausente",
+      "neurovegetativos": "ausentes",
+      "consciencia": "normal",
+      "habla": "fluida",
+      "antecedentes": "infarto previo hace dos años, tabaquismo activo"
+    },
+    "clasificacion": "Clave 2",
+    "justificacion": "Puntada continua precordial de inicio reciente, sin irradiación ni neurovegetativos. El antecedente de infarto previo y tabaquismo activo son factores de riesgo cardiovascular graves que elevan el perfil a Clave 2 independientemente del tipo de dolor y la ausencia de síntomas acompañantes. El árbol establece que factores de riesgo cardiovascular presentes apuntan a Clave 2."
   }
 ]

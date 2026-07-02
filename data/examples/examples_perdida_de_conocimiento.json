@@ -208,5 +208,47 @@
     },
     "clasificacion": "Clave 3",
     "justificacion": "Caso típico de Clave 3. PDC espontánea recuperada en paciente joven sin síntomas acompañantes al momento del llamado. PDC espontánea en paciente joven sin síntomas es criterio de Clave 3 según el árbol."
+  },
+  {
+    "id": 16,
+    "perfil": {
+      "tipo_episodio": "síncope — sintió que se iba antes de caer, pérdida breve de conocimiento",
+      "edad": "28 años",
+      "sintomas_actuales": "recuperado completamente, sin síntomas al momento del llamado",
+      "contexto_previo": "sin contexto explicativo, sin desencadenante identificado",
+      "movimientos_anormales": "ausentes",
+      "cianosis": "ausente",
+      "antecedentes": "ninguno conocido"
+    },
+    "clasificacion": "Clave 2",
+    "justificacion": "Síncope en paciente joven recuperado completamente sin síntomas actuales ni antecedentes. El tipo de episodio es determinante: el manual clasifica síncope como Clave 2 sin excepción por edad ni por ausencia de síntomas residuales. PDC espontánea recuperada sin síntomas sería Clave 3, pero síncope es siempre Clave 2."
+  },
+  {
+    "id": 17,
+    "perfil": {
+      "tipo_episodio": "PDC espontánea",
+      "edad": "38 años",
+      "sintomas_actuales": "sopor leve, recuperación lenta pero progresiva",
+      "contexto_previo": "movimientos tónicos durante el episodio, sin antecedentes de epilepsia",
+      "movimientos_anormales": "presentes durante el episodio",
+      "cianosis": "ausente",
+      "antecedentes": "sin antecedentes de epilepsia ni patología neurológica conocida"
+    },
+    "clasificacion": "Clave 2",
+    "justificacion": "PDC con movimientos anormales durante el episodio y recuperación lenta con sopor. Los movimientos anormales obligan a descartar convulsión y apuntan a Clave 2 — no son criterio de Clave 1 directa si el paciente está recuperado al momento del llamado. Clave 1 en PDC requiere inconsciencia al momento del llamado, no señales durante el episodio ya resuelto."
+  },
+  {
+    "id": 18,
+    "perfil": {
+      "tipo_episodio": "PDC espontánea",
+      "edad": "50 años",
+      "sintomas_actuales": "recuperado completamente, sin síntomas al momento del llamado",
+      "contexto_previo": "sin contexto explicativo",
+      "movimientos_anormales": "ausentes",
+      "cianosis": "observada durante el episodio, ya resuelta",
+      "antecedentes": "ninguno conocido"
+    },
+    "clasificacion": "Clave 2",
+    "justificacion": "PDC espontánea con cianosis observada durante el episodio. La cianosis durante el episodio es señal de alarma que apunta a Clave 2 independientemente de la recuperación posterior — no es criterio de Clave 1 directa si el paciente ya está recuperado al momento del llamado. Clave 1 en PDC requiere inconsciencia actual, no señales durante un episodio ya resuelto."
   }
 ]

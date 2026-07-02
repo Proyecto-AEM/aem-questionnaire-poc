@@ -24,6 +24,10 @@ ESCALADA_MSG = (
     "Por la información que me dio, su situación puede requerir "
     "atención inmediata. Por favor llame al número de emergencias de AEM ahora."
 )
+CIERRE_MSG = (
+    "Gracias por la información. Estamos procesando los datos "
+    "y en un momento le indicamos cómo proceder."
+)
 
 
 def load_text(path: str) -> str:
@@ -170,11 +174,12 @@ def phase_questionnaire(
             print(f"\nAsistente: {ESCALADA_MSG}")
             return campos_acumulados, True
 
+        if response.conversation_complete:
+            print(f"\nAsistente: {CIERRE_MSG}")
+            return campos_acumulados, False
+
         print(f"\nAsistente: {response.next_question}")
         conversation.append({"role": "assistant", "content": response.next_question})
-
-        if response.conversation_complete:
-            return campos_acumulados, False
 
         try:
             user_input = input("\nSocio: ").strip()
