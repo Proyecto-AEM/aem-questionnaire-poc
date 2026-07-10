@@ -1,0 +1,422 @@
+[
+  {
+    "id": 1,
+    "temporal": true,
+    "perfil": {
+      "inicio": "reciente, menos de una hora",
+      "tipo_dolor": "opresivo",
+      "intensidad": "7/10",
+      "localizacion": "precordial",
+      "irradiacion": "ausente",
+      "evolucion": "continuo desde el inicio",
+      "actividad_previa": "reposo",
+      "palpitaciones": "ausentes",
+      "disnea": "ausente",
+      "neurovegetativos": "ausentes",
+      "consciencia": "normal",
+      "habla": "fluida",
+      "antecedentes": "HTA"
+    },
+    "clasificacion": "Clave 2",
+    "justificacion": "Dolor opresivo precordial de inicio reciente con habla fluida y consciencia normal. Califica para Clave 2 por tipo de dolor, inicio reciente y antecedente de HTA como factor de riesgo CV."
+  },
+  {
+    "id": 2,
+    "temporal": true,
+    "perfil": {
+      "inicio": "reciente, menos de una hora",
+      "tipo_dolor": "opresivo",
+      "intensidad": "7/10",
+      "localizacion": "precordial",
+      "irradiacion": "ausente",
+      "evolucion": "continuo desde el inicio",
+      "actividad_previa": "reposo",
+      "palpitaciones": "ausentes",
+      "disnea": "ausente",
+      "neurovegetativos": "ausentes",
+      "consciencia": "comprometida, no responde adecuadamente",
+      "habla": "entrecortada",
+      "antecedentes": "HTA"
+    },
+    "clasificacion": "Clave 1",
+    "justificacion": "Perfil base identico al caso 1 pero con consciencia comprometida y habla entrecortada. Cruza la frontera Clave 1/2 por deterioro funcional."
+  },
+  {
+    "id": 3,
+    "temporal": true,
+    "perfil": {
+      "inicio": "reciente, aproximadamente una hora",
+      "tipo_dolor": "opresivo",
+      "intensidad": "6/10",
+      "localizacion": "retroesternal",
+      "irradiacion": "hombro izquierdo",
+      "evolucion": "continuo desde el inicio",
+      "actividad_previa": "reposo",
+      "palpitaciones": "ausentes",
+      "disnea": "ausente",
+      "neurovegetativos": "sudoracion leve",
+      "consciencia": "normal",
+      "habla": "fluida",
+      "antecedentes": "ninguno conocido"
+    },
+    "clasificacion": "Clave 2",
+    "justificacion": "Dolor opresivo retroesternal con irradiacion a hombro izquierdo e inicio reciente. Neurovegetativos leves presentes. Califica para Clave 2."
+  },
+  {
+    "id": 4,
+    "temporal": true,
+    "perfil": {
+      "inicio": "reciente, aproximadamente una hora",
+      "tipo_dolor": "opresivo",
+      "intensidad": "6/10",
+      "localizacion": "retroesternal",
+      "irradiacion": "hombro izquierdo",
+      "evolucion": "continuo desde el inicio",
+      "actividad_previa": "reposo",
+      "palpitaciones": "ausentes",
+      "disnea": "presente, progresiva",
+      "neurovegetativos": "sudoracion profusa, nauseas intensas",
+      "consciencia": "normal",
+      "habla": "fluida",
+      "antecedentes": "ninguno conocido"
+    },
+    "clasificacion": "Clave 1",
+    "justificacion": "Perfil base identico al caso 3 pero con neurovegetativos intensos y disnea progresiva. Cruza la frontera hacia Clave 1 por exclusion de Clave 2."
+  },
+  {
+    "id": 5,
+    "temporal": true,
+    "perfil": {
+      "inicio": "reciente, menos de una hora",
+      "tipo_dolor": "opresivo",
+      "intensidad": "6/10",
+      "localizacion": "precordial",
+      "irradiacion": "ausente",
+      "evolucion": "continuo desde el inicio",
+      "actividad_previa": "reposo",
+      "palpitaciones": "ausentes",
+      "disnea": "ausente",
+      "neurovegetativos": "ausentes",
+      "consciencia": "normal",
+      "habla": "fluida",
+      "antecedentes": "diabetes tipo 2"
+    },
+    "clasificacion": "Clave 2",
+    "justificacion": "Dolor opresivo precordial de inicio reciente con antecedente de diabetes como factor de riesgo CV. Califica para Clave 2."
+  },
+  {
+    "id": 6,
+    "temporal": true,
+    "perfil": {
+      "inicio": "hace dos dias",
+      "tipo_dolor": "disconfort vago, no logra precisarlo bien",
+      "intensidad": "4/10",
+      "localizacion": "precordial",
+      "irradiacion": "ausente",
+      "evolucion": "sin variacion desde el inicio",
+      "actividad_previa": "actividad habitual",
+      "palpitaciones": "ausentes",
+      "disnea": "ausente",
+      "neurovegetativos": "ausentes",
+      "consciencia": "normal",
+      "habla": "normal",
+      "antecedentes": "ninguno conocido"
+    },
+    "clasificacion": "Clave 3",
+    "justificacion": "Disconfort vago de dos dias sin variacion y sin antecedentes CV. Califica para Clave 3."
+  },
+  {
+    "id": 7,
+    "temporal": true,
+    "perfil": {
+      "inicio": "reciente, menos de una hora",
+      "tipo_dolor": "puntada continua",
+      "intensidad": "5/10",
+      "localizacion": "precordial",
+      "irradiacion": "ausente",
+      "evolucion": "continuo desde el inicio",
+      "actividad_previa": "reposo",
+      "palpitaciones": "ausentes",
+      "disnea": "ausente",
+      "neurovegetativos": "ausentes",
+      "consciencia": "normal",
+      "habla": "fluida",
+      "antecedentes": "infarto previo, tabaquismo"
+    },
+    "clasificacion": "Clave 2",
+    "justificacion": "Puntada continua precordial de inicio reciente. Antecedente de infarto previo y tabaquismo escalan el perfil a Clave 2."
+  },
+  {
+    "id": 8,
+    "temporal": true,
+    "perfil": {
+      "inicio": "hace varias horas",
+      "tipo_dolor": "puntada continua",
+      "intensidad": "4/10",
+      "localizacion": "precordial",
+      "irradiacion": "ausente",
+      "evolucion": "sin variacion desde el inicio",
+      "actividad_previa": "actividad habitual",
+      "palpitaciones": "ausentes",
+      "disnea": "ausente",
+      "neurovegetativos": "ausentes",
+      "consciencia": "normal",
+      "habla": "normal",
+      "antecedentes": "ninguno conocido"
+    },
+    "clasificacion": "Clave 3",
+    "justificacion": "Puntada continua de horas sin antecedentes cardiovasculares y evolucion sin cambios. Califica para Clave 3."
+  },
+  {
+    "id": 9,
+    "temporal": true,
+    "perfil": {
+      "inicio": "reciente, menos de una hora",
+      "tipo_dolor": "urente",
+      "intensidad": "6/10",
+      "localizacion": "retroesternal",
+      "irradiacion": "mandibula",
+      "evolucion": "continuo desde el inicio",
+      "actividad_previa": "reposo",
+      "palpitaciones": "presentes",
+      "disnea": "ausente",
+      "neurovegetativos": "ausentes",
+      "consciencia": "normal",
+      "habla": "fluida",
+      "antecedentes": "ninguno conocido"
+    },
+    "clasificacion": "Clave 2",
+    "justificacion": "Dolor urente retroesternal con irradiacion a mandibula y palpitaciones presentes, inicio reciente. Califica para Clave 2."
+  },
+  {
+    "id": 10,
+    "temporal": true,
+    "perfil": {
+      "inicio": "hace varias horas",
+      "tipo_dolor": "urente",
+      "intensidad": "4/10",
+      "localizacion": "retroesternal",
+      "irradiacion": "ausente",
+      "evolucion": "sin variacion desde el inicio",
+      "actividad_previa": "actividad habitual",
+      "palpitaciones": "ausentes",
+      "disnea": "ausente",
+      "neurovegetativos": "ausentes",
+      "consciencia": "normal",
+      "habla": "normal",
+      "antecedentes": "ninguno conocido"
+    },
+    "clasificacion": "Clave 3",
+    "justificacion": "Urente de horas sin irradiacion, sin palpitaciones y con evolucion sin variacion. Califica para Clave 3."
+  },
+  {
+    "id": 11,
+    "temporal": true,
+    "perfil": {
+      "inicio": "brusco",
+      "tipo_dolor": "opresivo intenso",
+      "intensidad": "9/10",
+      "localizacion": "precordial y retroesternal",
+      "irradiacion": "ausente",
+      "evolucion": "continuo y en aumento",
+      "actividad_previa": "reposo",
+      "palpitaciones": "ausentes",
+      "disnea": "ausente",
+      "neurovegetativos": "ausentes",
+      "consciencia": "perdida de consciencia, no responde",
+      "habla": "no habla",
+      "antecedentes": "cardiopatia isquemica conocida"
+    },
+    "clasificacion": "Clave 1",
+    "justificacion": "Dolor opresivo intenso con perdida de consciencia y ausencia de habla. Criterios que excluyen Clave 2."
+  },
+  {
+    "id": 12,
+    "temporal": true,
+    "perfil": {
+      "inicio": "brusco",
+      "tipo_dolor": "opresivo",
+      "intensidad": "8/10",
+      "localizacion": "retroesternal",
+      "irradiacion": "ausente",
+      "evolucion": "continuo y en aumento",
+      "actividad_previa": "esfuerzo fisico",
+      "palpitaciones": "presentes",
+      "disnea": "severa, no puede completar frases",
+      "neurovegetativos": "sudoracion profusa, palidez",
+      "consciencia": "normal",
+      "habla": "imposible por disnea",
+      "antecedentes": "HTA, tabaquismo"
+    },
+    "clasificacion": "Clave 1",
+    "justificacion": "Disnea severa que impide el habla, sudoracion profusa y palidez. Neurovegetativos intensos y habla imposible excluyen Clave 2."
+  },
+  {
+    "id": 13,
+    "temporal": true,
+    "perfil": {
+      "inicio": "brusco, hace aproximadamente 20 minutos",
+      "tipo_dolor": "opresivo",
+      "intensidad": "8/10",
+      "localizacion": "retroesternal",
+      "irradiacion": "dorso",
+      "evolucion": "continuo desde el inicio",
+      "actividad_previa": "reposo",
+      "palpitaciones": "ausentes",
+      "disnea": "ausente",
+      "neurovegetativos": "nauseas intensas",
+      "consciencia": "recuperado pero desorientado",
+      "habla": "incoherente",
+      "antecedentes": "infarto previo"
+    },
+    "clasificacion": "Clave 1",
+    "justificacion": "Sincope previo con desorientacion y habla incoherente. Estado de consciencia alterado y habla incoherente excluyen Clave 2."
+  },
+  {
+    "id": 14,
+    "temporal": true,
+    "perfil": {
+      "inicio": "reciente, aproximadamente 45 minutos",
+      "tipo_dolor": "opresivo",
+      "intensidad": "7/10",
+      "localizacion": "precordial",
+      "irradiacion": "hombro izquierdo",
+      "evolucion": "continuo desde el inicio",
+      "actividad_previa": "reposo",
+      "palpitaciones": "ausentes",
+      "disnea": "ausente",
+      "neurovegetativos": "sudoracion leve",
+      "consciencia": "normal",
+      "habla": "fluida",
+      "antecedentes": "HTA, diabetes tipo 2"
+    },
+    "clasificacion": "Clave 2",
+    "justificacion": "Dolor opresivo precordial de inicio reciente con irradiacion a hombro izquierdo, sudoracion leve, habla fluida y multiples factores de riesgo CV."
+  },
+  {
+    "id": 15,
+    "temporal": true,
+    "perfil": {
+      "inicio": "reciente, hace una hora",
+      "tipo_dolor": "urente",
+      "intensidad": "6/10",
+      "localizacion": "retroesternal",
+      "irradiacion": "ausente",
+      "evolucion": "continuo desde el inicio",
+      "actividad_previa": "reposo",
+      "palpitaciones": "presentes",
+      "disnea": "ausente",
+      "neurovegetativos": "ausentes",
+      "consciencia": "normal",
+      "habla": "fluida",
+      "antecedentes": "tabaquismo activo"
+    },
+    "clasificacion": "Clave 2",
+    "justificacion": "Dolor urente retroesternal de inicio reciente con palpitaciones presentes y tabaquismo como factor de riesgo CV."
+  },
+  {
+    "id": 16,
+    "temporal": true,
+    "perfil": {
+      "inicio": "reciente, hace aproximadamente una hora",
+      "tipo_dolor": "opresivo",
+      "intensidad": "6/10",
+      "localizacion": "precordial",
+      "irradiacion": "mandibula y cuello",
+      "evolucion": "continuo desde el inicio",
+      "actividad_previa": "actividad fisica moderada",
+      "palpitaciones": "ausentes",
+      "disnea": "ausente",
+      "neurovegetativos": "ausentes",
+      "consciencia": "normal",
+      "habla": "fluida",
+      "antecedentes": "infarto previo hace tres anos"
+    },
+    "clasificacion": "Clave 2",
+    "justificacion": "Dolor opresivo con irradiacion atipica a mandibula y cuello, inicio reciente durante actividad fisica. Antecedente de infarto previo."
+  },
+  {
+    "id": 17,
+    "temporal": true,
+    "perfil": {
+      "inicio": "reciente, hace menos de dos horas",
+      "tipo_dolor": "opresivo",
+      "intensidad": "5/10",
+      "localizacion": "precordial",
+      "irradiacion": "ausente",
+      "evolucion": "continuo desde el inicio",
+      "actividad_previa": "reposo",
+      "palpitaciones": "ausentes",
+      "disnea": "ausente",
+      "neurovegetativos": "ausentes",
+      "consciencia": "normal",
+      "habla": "fluida",
+      "antecedentes": "HTA, tabaquismo, diabetes tipo 2"
+    },
+    "clasificacion": "Clave 2",
+    "justificacion": "Dolor opresivo precordial de inicio reciente con multiples factores de riesgo CV acumulados. Sin irradiacion ni neurovegetativos pero el perfil de riesgo es determinante."
+  },
+  {
+    "id": 18,
+    "temporal": true,
+    "perfil": {
+      "inicio": "hace dos dias",
+      "tipo_dolor": "disconfort, molestia que no logra precisar",
+      "intensidad": "3/10",
+      "localizacion": "precordial",
+      "irradiacion": "ausente",
+      "evolucion": "sin variacion desde el inicio",
+      "actividad_previa": "actividad habitual",
+      "palpitaciones": "ausentes",
+      "disnea": "ausente",
+      "neurovegetativos": "ausentes",
+      "consciencia": "normal",
+      "habla": "normal",
+      "antecedentes": "ninguno conocido"
+    },
+    "clasificacion": "Clave 3",
+    "justificacion": "Disconfort precordial vago de dos dias sin variacion, leve intensidad, sin irradiacion, sin neurovegetativos y sin antecedentes CV."
+  },
+  {
+    "id": 19,
+    "temporal": true,
+    "perfil": {
+      "inicio": "hace varios dias, episodios repetidos",
+      "tipo_dolor": "presion leve, difusa",
+      "intensidad": "3/10",
+      "localizacion": "precordial difuso",
+      "irradiacion": "ausente",
+      "evolucion": "episodios que duran minutos y ceden solos, sin progresion",
+      "actividad_previa": "actividad habitual",
+      "palpitaciones": "ausentes",
+      "disnea": "ausente",
+      "neurovegetativos": "ausentes",
+      "consciencia": "normal",
+      "habla": "normal",
+      "antecedentes": "ninguno conocido"
+    },
+    "clasificacion": "Clave 3",
+    "justificacion": "El manual describe episodios de dolor toracico difuso leve que duran minutos y ceden espontaneamente como presentacion Clave 3. Sin irradiacion, sin neurovegetativos, sin antecedentes CV."
+  },
+  {
+    "id": 20,
+    "temporal": true,
+    "perfil": {
+      "inicio": "hace varios dias",
+      "tipo_dolor": "molestia leve, dificil de describir",
+      "intensidad": "3/10",
+      "localizacion": "retroesternal",
+      "irradiacion": "ausente",
+      "evolucion": "persistente sin variacion",
+      "actividad_previa": "actividad habitual",
+      "palpitaciones": "ausentes",
+      "disnea": "ausente",
+      "neurovegetativos": "ausentes",
+      "consciencia": "normal",
+      "habla": "normal",
+      "antecedentes": "ninguno conocido"
+    },
+    "clasificacion": "Clave 3",
+    "justificacion": "Molestia retroesternal leve de varios dias que el paciente no logra describir con precision, sin variacion, sin neurovegetativos, sin disnea y sin antecedentes CV."
+  }
+]

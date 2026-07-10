@@ -1,0 +1,254 @@
+[
+  {
+    "id": 1,
+    "perfil": {
+      "tipo_episodio": "Síncope — sintió que se iba antes de caer, perdió el conocimiento brevemente",
+      "edad": "67 años",
+      "sintomas_actuales": "Mareo persistente y debilidad general tras recuperarse",
+      "contexto_previo": "Estaba de pie en la cocina, sin esfuerzo previo",
+      "movimientos_anormales": "No",
+      "cianosis": "No",
+      "antecedentes": "Hipertensión, diabetes tipo 2"
+    },
+    "clasificacion": "Clave 2",
+    "justificacion": "Par borderline con ejemplo 2. Mismo perfil base con síntomas actuales presentes. Síncope en paciente mayor con mareo y debilidad persistentes tras la recuperación. Presencia de síntomas acompañantes al momento del llamado apunta a Clave 2 según el árbol."
+  },
+  {
+    "id": 2,
+    "perfil": {
+      "tipo_episodio": "Síncope — sintió que se iba antes de caer, perdió el conocimiento brevemente",
+      "edad": "67 años",
+      "sintomas_actuales": "Se recuperó completamente, sin síntomas al momento del llamado",
+      "contexto_previo": "Estaba de pie en la cocina, sin esfuerzo previo",
+      "movimientos_anormales": "No",
+      "cianosis": "No",
+      "antecedentes": "Hipertensión, diabetes tipo 2"
+    },
+    "clasificacion": "Clave 2",
+    "justificacion": "Par borderline con ejemplo 1. Mismo perfil base sin síntomas actuales. Síncope en paciente mayor. El tipo de episodio — síncope — es criterio de Clave 2 según el árbol independientemente de la ausencia de síntomas actuales."
+  },
+  {
+    "id": 3,
+    "perfil": {
+      "tipo_episodio": "Síncope — sintió mareo previo y se desmayó",
+      "edad": "24 años",
+      "sintomas_actuales": "Náuseas leves tras recuperarse",
+      "contexto_previo": "Estaba parado mucho tiempo bajo el sol",
+      "movimientos_anormales": "No",
+      "cianosis": "No",
+      "antecedentes": "Sin antecedentes"
+    },
+    "clasificacion": "Clave 2",
+    "justificacion": "Par borderline con ejemplo 4. Mismo perfil base con síntomas actuales presentes. Síncope en paciente joven con náuseas persistentes tras la recuperación. Presencia de síntomas acompañantes al momento del llamado apunta a Clave 2 según el árbol."
+  },
+  {
+    "id": 4,
+    "perfil": {
+      "tipo_episodio": "PDC espontánea — se cayó de golpe sin aviso previo",
+      "edad": "24 años",
+      "sintomas_actuales": "Se recuperó completamente, sin síntomas al momento del llamado",
+      "contexto_previo": "Estaba parado mucho tiempo bajo el sol",
+      "movimientos_anormales": "No",
+      "cianosis": "No",
+      "antecedentes": "Sin antecedentes"
+    },
+    "clasificacion": "Clave 3",
+    "justificacion": "Par borderline con ejemplo 3. Mismo perfil base con PDC espontánea sin aviso previo y sin síntomas actuales. PDC espontánea recuperada en paciente joven sin síntomas acompañantes. Tipo de episodio y ausencia de síntomas apuntan a Clave 3 según el árbol."
+  },
+  {
+    "id": 5,
+    "perfil": {
+      "tipo_episodio": "Síncope — sintió que se iba, perdió el conocimiento brevemente",
+      "edad": "22 años",
+      "sintomas_actuales": "Se recuperó completamente, sin síntomas al momento del llamado",
+      "contexto_previo": "Estaba bajo estrés por examen universitario",
+      "movimientos_anormales": "No",
+      "cianosis": "No",
+      "antecedentes": "Sin antecedentes"
+    },
+    "clasificacion": "Clave 2",
+    "justificacion": "Par borderline con ejemplo 6. Mismo perfil base con síncope como tipo de episodio. Paciente joven con síncope — aviso previo antes de la caída. Tipo de episodio síncope apunta a Clave 2 según el árbol independientemente de la edad."
+  },
+  {
+    "id": 6,
+    "perfil": {
+      "tipo_episodio": "PDC espontánea — se cayó de golpe sin aviso previo",
+      "edad": "22 años",
+      "sintomas_actuales": "Se recuperó completamente, sin síntomas al momento del llamado",
+      "contexto_previo": "Estaba bajo estrés por examen universitario",
+      "movimientos_anormales": "No",
+      "cianosis": "No",
+      "antecedentes": "Sin antecedentes"
+    },
+    "clasificacion": "Clave 3",
+    "justificacion": "Par borderline con ejemplo 5. Mismo perfil base con PDC espontánea como tipo de episodio. PDC espontánea sin aviso en paciente joven sin síntomas actuales. Tipo de episodio espontáneo sin aviso en paciente joven apunta a Clave 3 según el árbol."
+  },
+  {
+    "id": 7,
+    "perfil": {
+      "tipo_episodio": "Lipotimia — sensación de desmayo inminente, perdió brevemente el conocimiento",
+      "edad": "71 años",
+      "sintomas_actuales": "Cefalea leve y mareo tras recuperarse",
+      "contexto_previo": "Estaba sentado, sin desencadenante claro",
+      "movimientos_anormales": "No",
+      "cianosis": "No",
+      "antecedentes": "Hipertensión, antecedente de ACV hace cinco años"
+    },
+    "clasificacion": "Clave 2",
+    "justificacion": "Caso típico de Clave 2. Lipotimia en paciente mayor con síntomas acompañantes presentes tras la recuperación. Lipotimia es criterio de Clave 2 según el árbol. Síntomas actuales presentes refuerzan la clasificación."
+  },
+  {
+    "id": 8,
+    "perfil": {
+      "tipo_episodio": "Síncope — sintió mareo y náuseas previas, perdió el conocimiento",
+      "edad": "58 años",
+      "sintomas_actuales": "Sudoración y debilidad general persistentes",
+      "contexto_previo": "Estaba de pie lavando los platos",
+      "movimientos_anormales": "No",
+      "cianosis": "No",
+      "antecedentes": "Diabetes tipo 1, hipoglicemias frecuentes. Se alimentó normalmente hoy."
+    },
+    "clasificacion": "Clave 2",
+    "justificacion": "Caso típico de Clave 2. Síncope en paciente de mediana edad con síntomas acompañantes presentes — sudoración y debilidad persistentes. Antecedente de diabetes con hipoglicemias frecuentes aporta contexto clínico relevante. Síncope con síntomas actuales apunta a Clave 2."
+  },
+  {
+    "id": 9,
+    "perfil": {
+      "tipo_episodio": "Síncope — se sintió mal antes de caer, aviso previo claro",
+      "edad": "45 años",
+      "sintomas_actuales": "Mareo al intentar ponerse de pie",
+      "contexto_previo": "Acababa de levantarse de la cama bruscamente",
+      "movimientos_anormales": "No",
+      "cianosis": "No",
+      "antecedentes": "Sin antecedentes cardiovasculares"
+    },
+    "clasificacion": "Clave 2",
+    "justificacion": "Caso típico de Clave 2. Síncope con aviso previo claro, síntomas actuales presentes — mareo ortostático persistente. Síncope es criterio de Clave 2 según el árbol. Síntomas actuales presentes refuerzan la clasificación."
+  },
+  {
+    "id": 10,
+    "perfil": {
+      "tipo_episodio": "Lipotimia — sensación de desmayo, recuperación rápida",
+      "edad": "63 años",
+      "sintomas_actuales": "Palpitaciones leves tras recuperarse",
+      "contexto_previo": "Estaba en reposo, sin desencadenante identificado",
+      "movimientos_anormales": "No",
+      "cianosis": "No",
+      "antecedentes": "Arritmia conocida en tratamiento"
+    },
+    "clasificacion": "Clave 2",
+    "justificacion": "Caso típico de Clave 2. Lipotimia en paciente mayor con antecedente de arritmia y palpitaciones presentes tras la recuperación. Lipotimia es criterio de Clave 2. Síntomas actuales y antecedente relevante refuerzan la clasificación."
+  },
+  {
+    "id": 11,
+    "perfil": {
+      "tipo_episodio": "Síncope — mareo previo, pérdida breve de conocimiento",
+      "edad": "80 años",
+      "sintomas_actuales": "Confusión leve y desorientación tras recuperarse",
+      "contexto_previo": "Estaba tomando medicación antihipertensiva nueva",
+      "movimientos_anormales": "No",
+      "cianosis": "No",
+      "antecedentes": "Hipertensión, insuficiencia cardíaca leve"
+    },
+    "clasificacion": "Clave 2",
+    "justificacion": "Caso típico de Clave 2. Síncope en paciente anciano con confusión y desorientación persistentes tras la recuperación. Síncope es criterio de Clave 2. Síntomas actuales presentes y antecedentes cardiovasculares relevantes refuerzan la clasificación."
+  },
+  {
+    "id": 12,
+    "perfil": {
+      "tipo_episodio": "PDC espontánea — cayó de golpe sin aviso",
+      "edad": "19 años",
+      "sintomas_actuales": "Se recuperó completamente, sin síntomas al momento del llamado",
+      "contexto_previo": "Estaba haciendo ejercicio físico intenso",
+      "movimientos_anormales": "No",
+      "cianosis": "No",
+      "antecedentes": "Sin antecedentes"
+    },
+    "clasificacion": "Clave 3",
+    "justificacion": "Caso típico de Clave 3. PDC espontánea recuperada en paciente joven sin síntomas acompañantes al momento del llamado. PDC espontánea en paciente joven sin síntomas es criterio explícito de Clave 3 según el árbol."
+  },
+  {
+    "id": 13,
+    "perfil": {
+      "tipo_episodio": "PDC espontánea — se cayó sin previo aviso, recuperación rápida",
+      "edad": "17 años",
+      "sintomas_actuales": "Se recuperó completamente, sin síntomas al momento del llamado",
+      "contexto_previo": "Estaba en clase, bajo estrés por examen",
+      "movimientos_anormales": "No",
+      "cianosis": "No",
+      "antecedentes": "Sin antecedentes"
+    },
+    "clasificacion": "Clave 3",
+    "justificacion": "Caso típico de Clave 3. PDC espontánea recuperada en paciente joven sin síntomas acompañantes. PDC espontánea en paciente joven sin síntomas es criterio explícito de Clave 3 según el árbol."
+  },
+  {
+    "id": 14,
+    "perfil": {
+      "tipo_episodio": "PDC espontánea — cayó sin aviso, se recuperó solo en pocos minutos",
+      "edad": "28 años",
+      "sintomas_actuales": "Se recuperó completamente, sin síntomas al momento del llamado",
+      "contexto_previo": "Estaba en ayunas desde la noche anterior. No se alimentó hoy.",
+      "movimientos_anormales": "No",
+      "cianosis": "No",
+      "antecedentes": "Sin antecedentes. No es diabético."
+    },
+    "clasificacion": "Clave 3",
+    "justificacion": "Caso típico de Clave 3. PDC espontánea recuperada en paciente joven sin síntomas acompañantes. Contexto de ayuno prolongado aporta explicación probable sin cambiar la clasificación. PDC espontánea en paciente joven sin síntomas es criterio de Clave 3 según el árbol."
+  },
+  {
+    "id": 15,
+    "perfil": {
+      "tipo_episodio": "PDC espontánea — se cayó de golpe, recuperación espontánea en minutos",
+      "edad": "31 años",
+      "sintomas_actuales": "Se recuperó completamente, sin síntomas al momento del llamado",
+      "contexto_previo": "Estaba de pie en una reunión larga, ambiente cerrado y caluroso",
+      "movimientos_anormales": "No",
+      "cianosis": "No",
+      "antecedentes": "Sin antecedentes cardiovasculares"
+    },
+    "clasificacion": "Clave 3",
+    "justificacion": "Caso típico de Clave 3. PDC espontánea recuperada en paciente joven sin síntomas acompañantes al momento del llamado. PDC espontánea en paciente joven sin síntomas es criterio de Clave 3 según el árbol."
+  },
+  {
+    "id": 16,
+    "perfil": {
+      "tipo_episodio": "síncope — sintió que se iba antes de caer, pérdida breve de conocimiento",
+      "edad": "28 años",
+      "sintomas_actuales": "recuperado completamente, sin síntomas al momento del llamado",
+      "contexto_previo": "sin contexto explicativo, sin desencadenante identificado",
+      "movimientos_anormales": "ausentes",
+      "cianosis": "ausente",
+      "antecedentes": "ninguno conocido"
+    },
+    "clasificacion": "Clave 2",
+    "justificacion": "Síncope en paciente joven recuperado completamente sin síntomas actuales ni antecedentes. El tipo de episodio es determinante: el manual clasifica síncope como Clave 2 sin excepción por edad ni por ausencia de síntomas residuales. PDC espontánea recuperada sin síntomas sería Clave 3, pero síncope es siempre Clave 2."
+  },
+  {
+    "id": 17,
+    "perfil": {
+      "tipo_episodio": "PDC espontánea",
+      "edad": "38 años",
+      "sintomas_actuales": "sopor leve, recuperación lenta pero progresiva",
+      "contexto_previo": "movimientos tónicos durante el episodio, sin antecedentes de epilepsia",
+      "movimientos_anormales": "presentes durante el episodio",
+      "cianosis": "ausente",
+      "antecedentes": "sin antecedentes de epilepsia ni patología neurológica conocida"
+    },
+    "clasificacion": "Clave 2",
+    "justificacion": "PDC con movimientos anormales durante el episodio y recuperación lenta con sopor. Los movimientos anormales obligan a descartar convulsión y apuntan a Clave 2 — no son criterio de Clave 1 directa si el paciente está recuperado al momento del llamado. Clave 1 en PDC requiere inconsciencia al momento del llamado, no señales durante el episodio ya resuelto."
+  },
+  {
+    "id": 18,
+    "perfil": {
+      "tipo_episodio": "PDC espontánea",
+      "edad": "50 años",
+      "sintomas_actuales": "recuperado completamente, sin síntomas al momento del llamado",
+      "contexto_previo": "sin contexto explicativo",
+      "movimientos_anormales": "ausentes",
+      "cianosis": "observada durante el episodio, ya resuelta",
+      "antecedentes": "ninguno conocido"
+    },
+    "clasificacion": "Clave 2",
+    "justificacion": "PDC espontánea con cianosis observada durante el episodio. La cianosis durante el episodio es señal de alarma que apunta a Clave 2 independientemente de la recuperación posterior — no es criterio de Clave 1 directa si el paciente ya está recuperado al momento del llamado. Clave 1 en PDC requiere inconsciencia actual, no señales durante un episodio ya resuelto."
+  }
+]

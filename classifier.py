@@ -7,7 +7,7 @@ from models import ClassificationResponse
 
 
 def classify_cuadro(
-    client: OpenAI, cuadro: str, tree: dict, campos: dict
+    client: OpenAI, cuadro: str, tree: dict, campos: dict, examples: list | None = None
 ) -> ClassificationResponse:
     if cuadro == "fiebre":
         return ClassificationResponse(
@@ -15,8 +15,9 @@ def classify_cuadro(
             justificacion="Fiebre sin señales de alarma: clasificación Clave 3 asignada directamente por protocolo.",
         )
 
-    examples_path = Path(f"data/examples_{cuadro}.json")
-    examples = json.loads(examples_path.read_text(encoding="utf-8"))
+    if examples is None:
+        examples_path = Path(f"data/examples/examples_{cuadro}.json")
+        examples = json.loads(examples_path.read_text(encoding="utf-8"))
 
     prompt_template = Path("prompts/classify_cuadro_prompt.txt").read_text(encoding="utf-8")
 

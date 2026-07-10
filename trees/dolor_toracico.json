@@ -1,160 +1,143 @@
 {
   "cuadro": "dolor_toracico",
-  "descripcion": "Protocolo de evaluación clínica de dolor torácico — AEM v1.0",
+  "descripcion": "Dolor o molestia en la región torácica, retroesternal o precordial, de aparición reciente o con días de evolución. Incluye dolor opresivo, urente, puntada o disconfort impreciso. Puede presentarse con o sin síntomas acompañantes.",
   "preguntas_deterministas": [
     {
-      "pregunta": "¿La persona está consciente y puede responder cuando le habla?",
-      "campo": "consciencia",
+      "pregunta": "¿El paciente está consciente y puede responder?",
+      "campo": "consciencia_screening",
       "dispara_clave1_si": "no"
     },
     {
       "pregunta": "¿Puede respirar con normalidad?",
-      "campo": "respiracion",
+      "campo": "respiracion_screening",
       "dispara_clave1_si": "no"
     }
   ],
   "campos_schema": {
-    "inicio": "cuándo comenzó el dolor (hace cuántos minutos, horas o días)",
-    "tipo_dolor": "carácter del dolor: opresivo, urente, puntada, difuso, etc.",
-    "intensidad": "intensidad en escala del 1 al 10",
-    "localizacion": "dónde se localiza el dolor: retroesternal, precordial, lateral, difuso",
-    "irradiacion": "hacia dónde irradia el dolor o 'Sin irradiación'",
-    "evolucion": "patrón temporal: continuo o intermitente, si empeoró desde el inicio",
-    "actividad_previa": "qué estaba haciendo cuando comenzó el dolor",
-    "palpitaciones": "presencia o ausencia de palpitaciones",
-    "disnea": "presencia y grado de dificultad respiratoria",
-    "neurovegetativos": "síntomas neurovegetativos: náuseas, vómitos, sudoración, mareos, o 'Ausentes'",
-    "consciencia": "estado de consciencia y riesgo de síncope",
-    "habla": "capacidad de habla: normal o alterada",
-    "antecedentes": "antecedentes cardiovasculares relevantes o 'Sin antecedentes referidos'"
+    "inicio": "Momento de aparición del dolor y tiempo transcurrido desde entonces.",
+    "tipo_dolor": "Carácter del dolor: opresivo, urente, puntada, disconfort impreciso u otra descripción del socio.",
+    "intensidad": "Intensidad del dolor según la descripción del socio en lenguaje natural. No se usa escala numérica.",
+    "localizacion": "Localización del dolor: retroesternal, precordial, lateral u otra.",
+    "irradiacion": "Irradiación del dolor hacia brazo, hombro, dorso, cuello, mandíbula, epigastrio u otra zona, o ausencia de irradiación.",
+    "evolucion": "Carácter continuo o intermitente del dolor, variaciones desde el inicio, y si los episodios ceden espontáneamente. Contemplar que el paciente puede estar sin dolor al momento del interrogatorio.",
+    "actividad_previa": "Actividad que realizaba el paciente cuando comenzó el dolor. Campo contextual — no determina clasificación por sí solo.",
+    "palpitaciones": "Presencia o ausencia de palpitaciones asociadas al episodio.",
+    "disnea": "Presencia o ausencia de dificultad respiratoria o sensación de falta de aire.",
+    "neurovegetativos": "Presencia o ausencia de náuseas, vómitos, sudoración o mareo asociados al dolor.",
+    "consciencia": "Estado de consciencia y orientación del paciente durante el episodio.",
+    "habla": "Capacidad del paciente de hablar con normalidad o dificultad para hacerlo.",
+    "antecedentes": "Antecedentes de patología cardiovascular, hipertensión, diabetes, tabaquismo u otros factores de riesgo coronario."
   },
   "secuencia_preguntas": [
     {
-      "id": 1,
       "campo": "inicio",
-      "pregunta_guia": "¿Hace cuánto tiempo comenzó el dolor?",
-      "proposito": "Establecer cronología del evento",
-      "notas_clinicas": "Inicio súbito o < 1 hora es más alarmante. > 24 horas con estabilidad sugiere Clave 3."
+      "pregunta": "¿Cuándo comenzó el dolor? ¿Hace cuánto tiempo?",
+      "notas_clinicas": "Inicio reciente apunta a Clave 2. Horas o días de evolución sin empeoramiento apuntan a Clave 3."
     },
     {
-      "id": 2,
       "campo": "tipo_dolor",
-      "pregunta_guia": "¿Cómo describiría el dolor: es como una presión, una quemadura, una puntada?",
-      "proposito": "Caracterizar la calidad del dolor",
-      "notas_clinicas": "Opresivo o urente → perfil Clave 2. Difuso, impreciso, que el paciente no puede caracterizar bien → perfil Clave 3."
+      "pregunta": "¿Cómo describiría el dolor? ¿Es una opresión, un ardor, una puntada, o algo que no puede precisar bien?",
+      "notas_clinicas": "Carácter opresivo o urente apunta a Clave 2. Disconfort impreciso o puntada leve apunta a Clave 3."
     },
     {
-      "id": 3,
-      "campo": "intensidad",
-      "pregunta_guia": "En una escala del 1 al 10, ¿qué intensidad tiene el dolor?",
-      "proposito": "Cuantificar la intensidad",
-      "notas_clinicas": "Intensidad ≥ 7 con perfil clínico compatible → Clave 2. Intensidad ≤ 4 con perfil atípico → Clave 3."
-    },
-    {
-      "id": 4,
       "campo": "localizacion",
-      "pregunta_guia": "¿Dónde exactamente siente el dolor: en el centro del pecho, del lado izquierdo, derecho?",
-      "proposito": "Localizar el dolor",
-      "notas_clinicas": "Retroesternal o precordial → criterio Clave 2. Localización difusa, lateral o atípica → perfil Clave 3."
+      "pregunta": "¿Dónde siente el dolor exactamente? ¿En el centro del pecho, del lado izquierdo, o en otro lugar?",
+      "notas_clinicas": "Localización retroesternal o precordial es consistente con Clave 2 y Clave 3. Localización atípica no invalida ninguna clasificación por sí sola."
     },
     {
-      "id": 5,
       "campo": "irradiacion",
-      "pregunta_guia": "¿El dolor se corre hacia algún lado: brazo izquierdo, mandíbula, espalda o cuello?",
-      "proposito": "Detectar irradiación típica de origen cardíaco",
-      "notas_clinicas": "Irradiación a brazo izquierdo, mandíbula, cuello o espalda → criterio Clave 2. Sin irradiación → punto para Clave 3."
+      "pregunta": "¿El dolor se extiende hacia algún otro lugar? ¿Al brazo, al hombro, a la espalda, al cuello o a la mandíbula?",
+      "notas_clinicas": "Irradiación presente apunta a Clave 2. Ausencia de irradiación apunta a Clave 3 pero no es determinante por sí sola."
     },
     {
-      "id": 6,
       "campo": "evolucion",
-      "pregunta_guia": "¿El dolor es continuo o ha tenido momentos en que cede? ¿Empeoró desde que comenzó?",
-      "proposito": "Establecer el patrón temporal del dolor",
-      "notas_clinicas": "Dolor continuo sin variación desde inicio sugiere Clave 2. Intermitente que cede espontáneamente sugiere Clave 3."
+      "pregunta": "¿El dolor es continuo desde que comenzó o va y viene? Si va y viene, ¿cede completamente entre los episodios?",
+      "notas_clinicas": "Continuo sin ceder apunta a Clave 2. Episodios que ceden espontáneamente y sin empeoramiento apuntan a Clave 3. El paciente puede estar sin dolor al momento del interrogatorio — esto no descarta el cuadro."
     },
     {
-      "id": 7,
       "campo": "actividad_previa",
-      "pregunta_guia": "¿Qué estaba haciendo cuando comenzó el dolor? ¿Estaba haciendo algún esfuerzo físico?",
-      "proposito": "Identificar contexto de aparición del dolor",
-      "notas_clinicas": "Inicio durante esfuerzo físico refuerza perfil de Clave 2. Inicio en reposo o sin desencadenante claro puede orientar a Clave 3."
+      "pregunta": "¿Qué estaba haciendo cuando comenzó el dolor? ¿Estaba haciendo algún esfuerzo físico?",
+      "notas_clinicas": "Campo contextual. El inicio durante esfuerzo es dato relevante para el perfil clínico pero no determina clasificación por sí solo."
     },
     {
-      "id": 8,
       "campo": "palpitaciones",
-      "pregunta_guia": "¿Siente que el corazón le late muy rápido, fuerte o de forma irregular?",
-      "proposito": "Detectar arritmia asociada",
-      "notas_clinicas": "Palpitaciones asociadas a dolor torácico refuerzan perfil de Clave 2. Ausentes orientan a Clave 3."
+      "pregunta": "¿Siente o sintió palpitaciones, como si el corazón le latiera fuerte o de forma irregular?",
+      "notas_clinicas": "Presencia de palpitaciones apunta a Clave 2. Ausencia apunta a Clave 3."
     },
     {
-      "id": 9,
       "campo": "disnea",
-      "pregunta_guia": "¿Tiene dificultad para respirar?",
-      "proposito": "Evaluar disnea asociada",
-      "notas_clinicas": "Disnea severa (no puede completar una oración) → CLAVE 1 inmediata. Disnea leve o moderada → criterio Clave 2. Sin disnea → punto para Clave 3."
+      "pregunta": "¿Tiene dificultad para respirar o sensación de falta de aire?",
+      "notas_clinicas": "Presencia de disnea es señal de alarma que invalida Clave 3. Si el socio menciona que el paciente no puede terminar una oración o no puede hablar con normalidad, activar flag de Clave 1."
     },
     {
-      "id": 10,
       "campo": "neurovegetativos",
-      "pregunta_guia": "¿Tiene náuseas, vómitos, sudoración o mareos?",
-      "proposito": "Detectar síntomas neurovegetativos",
-      "notas_clinicas": "Neurovegetativos intensos (vómitos incoercibles, sudoración profusa) → CLAVE 1. Neurovegetativos leves o moderados → criterio Clave 2. Ausentes → criterio Clave 3."
+      "pregunta": "¿Tiene o tuvo náuseas, vómitos, sudoración o sensación de mareo asociados al dolor?",
+      "notas_clinicas": "Presencia de elementos neurovegetativos apunta a Clave 2 aunque sean leves. Ausencia apunta a Clave 3."
     },
     {
-      "id": 11,
       "campo": "consciencia",
-      "pregunta_guia": "¿Está consciente y orientado? ¿Se siente mareado al punto de desmayarse?",
-      "proposito": "Evaluar nivel de consciencia y riesgo de síncope",
-      "notas_clinicas": "PDC, síncope o sensación de desmayo inminente → CLAVE 1 inmediata. Consciente y orientado → excluye ese criterio de Clave 1."
+      "pregunta": "¿El paciente está consciente y orientado?",
+      "notas_clinicas": "Alteración de consciencia, desvanecimiento, síncope o lipotimia asociados al dolor son señales de alarma — activar flag de Clave 1."
     },
     {
-      "id": 12,
       "campo": "habla",
-      "pregunta_guia": "¿Puede hablar y respirar con normalidad mientras hablamos?",
-      "proposito": "Evaluar capacidad de comunicación — también se observa durante toda la conversación",
-      "notas_clinicas": "Habla entrecortada, frases cortas, jadea → CLAVE 1. Habla fluida y normal → excluye ese criterio de Clave 1, punto favorable para Clave 2 o 3."
+      "pregunta": "¿Puede hablar con normalidad o nota que le cuesta hablar?",
+      "notas_clinicas": "Habla fluida es criterio de Clave 2. Habla entrecortada o incapacidad de hablar es señal de alarma — activar flag de Clave 1."
     },
     {
-      "id": 13,
-      "campo": "antecedentes_cardiovasculares",
-      "pregunta_guia": "¿Tiene antecedentes de problemas cardíacos, hipertensión, diabetes o colesterol alto?",
-      "proposito": "Identificar factores de riesgo cardiovascular",
-      "notas_clinicas": "Antecedentes cardiovasculares con perfil clínico compatible → refuerza Clave 2. Sin antecedentes y perfil atípico → perfil Clave 3."
+      "campo": "intensidad",
+      "pregunta": "¿Cómo describiría la intensidad del dolor? ¿Es leve, moderado o intenso?",
+      "notas_clinicas": "Intensidad moderada apunta a Clave 2. Intensidad leve apunta a Clave 3. Registrar la descripción del socio en lenguaje natural — no forzar escala numérica."
+    },
+    {
+      "campo": "antecedentes",
+      "pregunta": "¿El paciente tiene antecedentes de problemas cardíacos, hipertensión, diabetes o es fumador?",
+      "notas_clinicas": "Factores de riesgo cardiovascular presentes apuntan a Clave 2. Su ausencia combinada con perfil leve apunta a Clave 3."
+    }
+  ],
+  "condiciones_salida_lateral": [
+    {
+      "condicion": "El socio menciona en cualquier turno que el paciente dejó de respirar, no responde o está en paro.",
+      "accion": "Interrumpir el cuestionario de inmediato. Activar flag de Clave 1 y emitir mensaje de escalada. Instruir al acompañante a iniciar RCP. No continuar con el cuestionario bajo ninguna circunstancia."
     }
   ],
   "criterios_clasificacion": {
     "clave1": {
-      "descripcion": "Emergencia absoluta — requiere respuesta inmediata",
+      "descripcion": "Emergencia absoluta — requiere respuesta inmediata.",
       "criterios": [
-        "Paciente inconsciente o no responde",
-        "No respira o dificultad respiratoria extrema",
-        "Dolor torácico con pérdida de conocimiento, desvanecimiento o síncope",
-        "Dolor torácico con disnea severa (no puede terminar una oración)",
-        "Elementos neurovegetativos intensos asociados al dolor torácico",
-        "Habla entrecortada o no puede hablar con normalidad"
+        "Clave 1 opera por exclusión: el perfil no encaja en los criterios de Clave 2 ni de Clave 3.",
+        "Señales de alarma que invalidan Clave 2 y Clave 3: alteración de consciencia, síncope o lipotimia asociados al dolor, incapacidad de hablar con normalidad, disnea severa, paro cardiorrespiratorio."
       ]
     },
     "clave2": {
-      "descripcion": "Emergencia — requiere respuesta urgente",
+      "descripcion": "Emergencia — requiere respuesta urgente.",
       "criterios": [
-        "Dolor retroesternal o precordial de inicio reciente (< 24 horas)",
-        "Carácter opresivo, urente o puntada continua",
-        "Intensidad moderada a severa (≥ 5/10)",
-        "Consciencia normal, habla con fluidez",
-        "Irradiación a brazo izquierdo, mandíbula, cuello o espalda",
-        "Síntomas neurovegetativos presentes aunque leves o moderados",
-        "Factores de riesgo cardiovascular: HTA, DBT, dislipemia, antecedente cardíaco"
+        "Dolor torácico de reciente inicio.",
+        "Localización retroesternal o precordial.",
+        "Carácter opresivo, urente o puntada de tipo continuo.",
+        "Intensidad moderada.",
+        "Paciente habla bien al teléfono.",
+        "Estado de consciencia normal.",
+        "Puede presentar elementos neurovegetativos aunque sean leves.",
+        "Puede tener irradiaciones.",
+        "Puede ser su único síntoma.",
+        "Factores de riesgo cardiovascular presentes."
       ]
     },
     "clave3": {
-      "descripcion": "Urgencia — requiere evaluación médica programada",
+      "descripcion": "Urgencia — requiere evaluación médica.",
       "criterios": [
-        "Dolor leve, difuso, que el paciente no puede precisar bien",
-        "Sin irradiación característica",
-        "Sin síntomas neurovegetativos",
-        "Síntomas de horas o días de evolución sin empeoramiento",
-        "Habla con normalidad, sin disnea",
-        "Sin palpitaciones ni mareos significativos",
-        "Sin antecedentes cardiovasculares de relevancia"
+        "Dolor retroesternal o precordial leve.",
+        "Puede describirse como puntada, disconfort o molestia que el paciente no logra precisar bien.",
+        "Sin características de opresión ni ardor.",
+        "Sin irradiaciones ni elementos neurovegetativos.",
+        "Continuo o intermitente sin variaciones desde su inicio.",
+        "Sintomatología con varias horas o días de evolución.",
+        "Habla normalmente, sin disnea.",
+        "Sin palpitaciones.",
+        "Evaluar factores de riesgo coronarios: tabaquismo, diabetes, HTA.",
+        "Puede presentar episodios de dolor difuso leve a moderado que duran minutos y ceden espontáneamente.",
+        "Al momento del interrogatorio el paciente puede estar sin dolor y sin síntomas acompañantes."
       ]
     }
   }

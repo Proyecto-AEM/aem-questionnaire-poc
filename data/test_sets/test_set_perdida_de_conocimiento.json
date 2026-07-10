@@ -1,0 +1,257 @@
+[
+  {
+    "id": 1,
+    "temporal": true,
+    "perfil": {
+      "tipo_episodio": "sincope",
+      "edad": "adulto joven, 28 anos",
+      "sintomas_actuales": "mareo persistente, cefalea leve",
+      "contexto_previo": "sin contexto explicativo",
+      "movimientos_anormales": "ausentes",
+      "cianosis": "ausente",
+      "antecedentes": "ninguno conocido"
+    },
+    "clasificacion": "Clave 2",
+    "justificacion": "Sincope con sintomas persistentes al momento del llamado sin contexto explicativo. Presencia de sintomas actuales y ausencia de causa aparente califican para Clave 2."
+  },
+  {
+    "id": 2,
+    "temporal": true,
+    "perfil": {
+      "tipo_episodio": "sincope",
+      "edad": "adulto joven, 28 anos",
+      "sintomas_actuales": "ninguno, recuperado completamente",
+      "contexto_previo": "sin contexto explicativo",
+      "movimientos_anormales": "ausentes",
+      "cianosis": "ausente",
+      "antecedentes": "ninguno conocido"
+    },
+    "clasificacion": "Clave 2",
+    "justificacion": "Sincope en paciente joven recuperado completamente sin sintomas actuales ni antecedentes. El manual clasifica sincope como Clave 2 sin excepcion por edad ni por ausencia de sintomas residuales."
+  },
+  {
+    "id": 3,
+    "temporal": true,
+    "perfil": {
+      "tipo_episodio": "PDC espontanea",
+      "edad": "adulto joven, 24 anos",
+      "sintomas_actuales": "ninguno, recuperado completamente",
+      "contexto_previo": "sin contexto explicativo, PDC sin causa aparente",
+      "movimientos_anormales": "ausentes",
+      "cianosis": "ausente",
+      "antecedentes": "ninguno conocido"
+    },
+    "clasificacion": "Clave 2",
+    "justificacion": "PDC espontanea sin contexto explicativo en paciente joven. La ausencia de causa aparente es criterio de Clave 2 aunque el paciente este recuperado y sin sintomas actuales."
+  },
+  {
+    "id": 4,
+    "temporal": true,
+    "perfil": {
+      "tipo_episodio": "PDC espontanea",
+      "edad": "adulto joven, 24 anos",
+      "sintomas_actuales": "ninguno, recuperado completamente",
+      "contexto_previo": "estres intenso y ayuno prolongado durante el dia",
+      "movimientos_anormales": "ausentes",
+      "cianosis": "ausente",
+      "antecedentes": "ninguno conocido"
+    },
+    "clasificacion": "Clave 3",
+    "justificacion": "Perfil base identico al caso 3 pero con contexto explicativo claro. El contexto explicativo en paciente joven sin sintomas actuales ni antecedentes cruza la frontera hacia Clave 3."
+  },
+  {
+    "id": 5,
+    "temporal": true,
+    "perfil": {
+      "tipo_episodio": "PDC espontanea",
+      "edad": "adulto, 45 anos",
+      "sintomas_actuales": "mareo leve persistente",
+      "contexto_previo": "sin contexto explicativo",
+      "movimientos_anormales": "ausentes",
+      "cianosis": "ausente",
+      "antecedentes": "episodios similares previos sin diagnostico, diabetes conocida"
+    },
+    "clasificacion": "Clave 2",
+    "justificacion": "PDC recuperada con mareo leve persistente, antecedente de episodios similares sin diagnostico y diabetes. Sintomas actuales y antecedentes relevantes califican para Clave 2."
+  },
+  {
+    "id": 6,
+    "temporal": true,
+    "perfil": {
+      "tipo_episodio": "PDC espontanea",
+      "edad": "adulto joven, 22 anos",
+      "sintomas_actuales": "mareo leve que cedio rapidamente",
+      "contexto_previo": "sin contexto explicativo",
+      "movimientos_anormales": "ausentes",
+      "cianosis": "ausente",
+      "antecedentes": "ninguno conocido"
+    },
+    "clasificacion": "Clave 3",
+    "justificacion": "Paciente joven sin antecedentes con mareo leve que cedio rapidamente. Resolucion espontanea de los sintomas en paciente joven califica para Clave 3."
+  },
+  {
+    "id": 7,
+    "temporal": true,
+    "perfil": {
+      "tipo_episodio": "sincope",
+      "edad": "adulto mayor, 72 anos",
+      "sintomas_actuales": "mareo y cefalea persistentes",
+      "contexto_previo": "sin contexto explicativo",
+      "movimientos_anormales": "ausentes",
+      "cianosis": "ausente",
+      "antecedentes": "HTA tratada"
+    },
+    "clasificacion": "Clave 2",
+    "justificacion": "Sincope en adulto mayor con sintomas persistentes y antecedente de HTA. Edad, sintomas actuales y antecedente cardiovascular apuntan inequivocamente a Clave 2."
+  },
+  {
+    "id": 8,
+    "temporal": true,
+    "perfil": {
+      "tipo_episodio": "lipotimia",
+      "edad": "adulto, 55 anos",
+      "sintomas_actuales": "nauseas persistentes, sudoracion",
+      "contexto_previo": "sin contexto explicativo",
+      "movimientos_anormales": "ausentes",
+      "cianosis": "ausente",
+      "antecedentes": "cardiopatia isquemica conocida"
+    },
+    "clasificacion": "Clave 2",
+    "justificacion": "Lipotimia en paciente con cardiopatia isquemica conocida, nauseas y sudoracion persistentes. Multiples criterios de Clave 2 presentes."
+  },
+  {
+    "id": 9,
+    "temporal": true,
+    "perfil": {
+      "tipo_episodio": "PDC espontanea",
+      "edad": "adulto, 40 anos",
+      "sintomas_actuales": "sopor leve, recuperacion lenta",
+      "contexto_previo": "movimientos tonicos durante el episodio",
+      "movimientos_anormales": "presentes durante el episodio",
+      "cianosis": "ausente",
+      "antecedentes": "sin antecedentes de epilepsia"
+    },
+    "clasificacion": "Clave 2",
+    "justificacion": "PDC con movimientos anormales durante el episodio y recuperacion lenta con sopor. Presencia de movimientos anormales obliga a descartar convulsion."
+  },
+  {
+    "id": 10,
+    "temporal": true,
+    "perfil": {
+      "tipo_episodio": "PDC espontanea",
+      "edad": "adulto, 48 anos",
+      "sintomas_actuales": "sudoracion y temblor persistentes",
+      "contexto_previo": "no se alimento en todo el dia",
+      "movimientos_anormales": "ausentes",
+      "cianosis": "ausente",
+      "antecedentes": "diabetes tipo 2 insulinorrequiriente"
+    },
+    "clasificacion": "Clave 2",
+    "justificacion": "PDC en paciente diabetico que no se alimento, con sudoracion y temblor persistentes. Contexto de hipoglicemia probable con sintomas actuales califica para Clave 2."
+  },
+  {
+    "id": 11,
+    "temporal": true,
+    "perfil": {
+      "tipo_episodio": "PDC espontanea",
+      "edad": "adulto, 50 anos",
+      "sintomas_actuales": "recuperado, sin sintomas",
+      "contexto_previo": "sin contexto explicativo",
+      "movimientos_anormales": "ausentes",
+      "cianosis": "observada durante el episodio",
+      "antecedentes": "ninguno conocido"
+    },
+    "clasificacion": "Clave 2",
+    "justificacion": "PDC sin contexto explicativo con cianosis observada durante el episodio. La cianosis durante el episodio califica para Clave 2 independientemente de la recuperacion posterior."
+  },
+  {
+    "id": 12,
+    "temporal": true,
+    "perfil": {
+      "tipo_episodio": "PDC espontanea",
+      "edad": "adulto, 38 anos",
+      "sintomas_actuales": "cefalea intensa persistente",
+      "contexto_previo": "TEC reciente hace tres dias",
+      "movimientos_anormales": "ausentes",
+      "cianosis": "ausente",
+      "antecedentes": "TEC reciente"
+    },
+    "clasificacion": "Clave 2",
+    "justificacion": "PDC recuperada con cefalea intensa persistente y antecedente de TEC reciente. Combinacion de sintoma actual relevante y contexto de TEC previo califica para Clave 2."
+  },
+  {
+    "id": 13,
+    "temporal": true,
+    "perfil": {
+      "tipo_episodio": "lipotimia",
+      "edad": "adulto joven, 21 anos",
+      "sintomas_actuales": "ninguno, recuperado completamente",
+      "contexto_previo": "ayuno prolongado y exposicion al calor",
+      "movimientos_anormales": "ausentes",
+      "cianosis": "ausente",
+      "antecedentes": "ninguno conocido"
+    },
+    "clasificacion": "Clave 3",
+    "justificacion": "Lipotimia en paciente joven con contexto explicativo claro recuperado completamente sin sintomas actuales ni antecedentes."
+  },
+  {
+    "id": 14,
+    "temporal": true,
+    "perfil": {
+      "tipo_episodio": "PDC espontanea",
+      "edad": "adulto joven, 19 anos",
+      "sintomas_actuales": "ninguno, recuperado completamente",
+      "contexto_previo": "episodio de angustia intensa previo al desmayo",
+      "movimientos_anormales": "ausentes",
+      "cianosis": "ausente",
+      "antecedentes": "ninguno conocido"
+    },
+    "clasificacion": "Clave 3",
+    "justificacion": "PDC breve en paciente joven tras angustia intensa, recuperado completamente sin sintomas actuales ni antecedentes. Contexto explicativo psicoemocional califica para Clave 3."
+  },
+  {
+    "id": 15,
+    "temporal": true,
+    "perfil": {
+      "tipo_episodio": "sincope",
+      "edad": "adulto joven, 23 anos",
+      "sintomas_actuales": "ninguno, recuperado completamente",
+      "contexto_previo": "extraccion de sangre, reaccion vasovagal",
+      "movimientos_anormales": "ausentes",
+      "cianosis": "ausente",
+      "antecedentes": "ninguno conocido"
+    },
+    "clasificacion": "Clave 3",
+    "justificacion": "Sincope vasovagal en paciente joven durante extraccion de sangre, recuperado completamente sin sintomas actuales ni antecedentes."
+  },
+  {
+    "id": 16,
+    "temporal": true,
+    "perfil": {
+      "tipo_episodio": "PDC espontanea",
+      "edad": "adulto joven, 26 anos",
+      "sintomas_actuales": "ninguno, recuperado completamente",
+      "contexto_previo": "deshidratacion por actividad fisica intensa",
+      "movimientos_anormales": "ausentes",
+      "cianosis": "ausente",
+      "antecedentes": "ninguno conocido"
+    },
+    "clasificacion": "Clave 3",
+    "justificacion": "PDC espontanea en paciente joven en contexto de deshidratacion por actividad fisica, recuperado completamente sin sintomas actuales ni antecedentes."
+  },
+  {
+    "id": 17,
+    "temporal": true,
+    "perfil": {
+      "tipo_episodio": "lipotimia",
+      "edad": "adulto joven, 25 anos",
+      "sintomas_actuales": "ninguno, recuperado completamente",
+      "contexto_previo": "estres laboral intenso sostenido",
+      "movimientos_anormales": "ausentes",
+      "cianosis": "ausente",
+      "antecedentes": "ninguno conocido"
+    },
+    "clasificacion": "Clave 3",
+    "justificacion": "Lipotimia en paciente joven en contexto de estres laboral, recuperado completamente sin sintomas actuales ni antecedentes."
+  }
+]

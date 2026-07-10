@@ -1,0 +1,535 @@
+{
+  "mode": "few-shot",
+  "global": {
+    "total": 37,
+    "evaluated": 37,
+    "correct": 35,
+    "accuracy": 0.9459,
+    "subtriage_count": 2,
+    "subtriage_rate": 0.0541,
+    "sobretriage_count": 0,
+    "sobretriage_rate": 0.0,
+    "fatal_subtriage_count": 0,
+    "confusion_matrix": {
+      "Clave 1": {
+        "Clave 1": 5,
+        "Clave 2": 0,
+        "Clave 3": 0
+      },
+      "Clave 2": {
+        "Clave 1": 0,
+        "Clave 2": 17,
+        "Clave 3": 2
+      },
+      "Clave 3": {
+        "Clave 1": 0,
+        "Clave 2": 0,
+        "Clave 3": 13
+      }
+    }
+  },
+  "per_cuadro": {
+    "dolor_toracico": {
+      "total": 20,
+      "evaluated": 20,
+      "correct": 19,
+      "accuracy": 0.95,
+      "subtriage_count": 1,
+      "subtriage_rate": 0.05,
+      "sobretriage_count": 0,
+      "sobretriage_rate": 0.0,
+      "fatal_subtriage_count": 0,
+      "confusion_matrix": {
+        "Clave 1": {
+          "Clave 1": 5,
+          "Clave 2": 0,
+          "Clave 3": 0
+        },
+        "Clave 2": {
+          "Clave 1": 0,
+          "Clave 2": 8,
+          "Clave 3": 1
+        },
+        "Clave 3": {
+          "Clave 1": 0,
+          "Clave 2": 0,
+          "Clave 3": 6
+        }
+      }
+    },
+    "perdida_de_conocimiento": {
+      "total": 17,
+      "evaluated": 17,
+      "correct": 16,
+      "accuracy": 0.9412,
+      "subtriage_count": 1,
+      "subtriage_rate": 0.0588,
+      "sobretriage_count": 0,
+      "sobretriage_rate": 0.0,
+      "fatal_subtriage_count": 0,
+      "confusion_matrix": {
+        "Clave 1": {
+          "Clave 1": 0,
+          "Clave 2": 0,
+          "Clave 3": 0
+        },
+        "Clave 2": {
+          "Clave 1": 0,
+          "Clave 2": 9,
+          "Clave 3": 1
+        },
+        "Clave 3": {
+          "Clave 1": 0,
+          "Clave 2": 0,
+          "Clave 3": 7
+        }
+      }
+    }
+  },
+  "cases": [
+    {
+      "cuadro": "dolor_toracico",
+      "id": 1,
+      "expected": "Clave 2",
+      "got": "Clave 2",
+      "correct": true,
+      "subtriage": false,
+      "sobretriage": false,
+      "fatal": false,
+      "justificacion": "Dolor opresivo precordial de inicio reciente, continuo, con intensidad moderada (7/10), sin irradiación ni neurovegetativos. La presencia de hipertensión como factor de riesgo cardiovascular es suficiente para clasificarlo en Clave 2, a pesar de la ausencia de otros síntomas acompañantes.",
+      "error": null
+    },
+    {
+      "cuadro": "dolor_toracico",
+      "id": 2,
+      "expected": "Clave 1",
+      "got": "Clave 1",
+      "correct": true,
+      "subtriage": false,
+      "sobretriage": false,
+      "fatal": false,
+      "justificacion": "Consciencia comprometida y habla entrecortada invalidan Clave 2. La alteración de la consciencia es una señal de alarma que indica la necesidad de respuesta inmediata. El perfil no encaja en Clave 2 ni Clave 3.",
+      "error": null
+    },
+    {
+      "cuadro": "dolor_toracico",
+      "id": 3,
+      "expected": "Clave 2",
+      "got": "Clave 3",
+      "correct": false,
+      "subtriage": true,
+      "sobretriage": false,
+      "fatal": false,
+      "justificacion": "El dolor opresivo retroesternal es de intensidad moderada, sin irradiación significativa ni neurovegetativos relevantes. La ausencia de disnea y palpitaciones, junto con la evolución continua desde el inicio y la consciencia normal, encajan en los criterios de Clave 3.",
+      "error": null
+    },
+    {
+      "cuadro": "dolor_toracico",
+      "id": 4,
+      "expected": "Clave 1",
+      "got": "Clave 1",
+      "correct": true,
+      "subtriage": false,
+      "sobretriage": false,
+      "fatal": false,
+      "justificacion": "La disnea progresiva y la sudoración profusa junto con náuseas intensas son elementos que invalidan Clave 2. Aunque el paciente tiene consciencia normal y habla fluida, la combinación de síntomas graves y la evolución continua del dolor opresivo retroesternal apuntan a una emergencia absoluta. El perfil no encaja en Clave 2 ni Clave 3.",
+      "error": null
+    },
+    {
+      "cuadro": "dolor_toracico",
+      "id": 5,
+      "expected": "Clave 2",
+      "got": "Clave 2",
+      "correct": true,
+      "subtriage": false,
+      "sobretriage": false,
+      "fatal": false,
+      "justificacion": "Dolor opresivo precordial de inicio reciente, continuo, con intensidad moderada (6/10), sin irradiación ni neurovegetativos. La diabetes tipo 2 como factor de riesgo cardiovascular es suficiente para clasificarlo en Clave 2, a pesar de la ausencia de otros síntomas acompañantes.",
+      "error": null
+    },
+    {
+      "cuadro": "dolor_toracico",
+      "id": 6,
+      "expected": "Clave 3",
+      "got": "Clave 3",
+      "correct": true,
+      "subtriage": false,
+      "sobretriage": false,
+      "fatal": false,
+      "justificacion": "El perfil presenta disconfort vago y leve, sin irradiación ni neurovegetativos, sin palpitaciones y sin disnea. La evolución es sin variaciones desde el inicio y el paciente tiene antecedentes conocidos. Encaja en los criterios de Clave 3.",
+      "error": null
+    },
+    {
+      "cuadro": "dolor_toracico",
+      "id": 7,
+      "expected": "Clave 2",
+      "got": "Clave 2",
+      "correct": true,
+      "subtriage": false,
+      "sobretriage": false,
+      "fatal": false,
+      "justificacion": "Dolor precordial de tipo puntada continua de inicio reciente, con intensidad moderada (5/10), sin irradiación ni neurovegetativos. Sin embargo, los antecedentes de infarto previo y tabaquismo son factores de riesgo cardiovascular que elevan el perfil a Clave 2, ya que el árbol establece que la presencia de estos factores es suficiente para clasificar en esta categoría.",
+      "error": null
+    },
+    {
+      "cuadro": "dolor_toracico",
+      "id": 8,
+      "expected": "Clave 3",
+      "got": "Clave 3",
+      "correct": true,
+      "subtriage": false,
+      "sobretriage": false,
+      "fatal": false,
+      "justificacion": "El dolor es de tipo puntada continua, con intensidad leve (4/10), sin irradiación ni neurovegetativos. La evolución es sin variaciones desde el inicio y el paciente está sin dolor al momento del llamado. Estos elementos encajan en los criterios de Clave 3, ya que no hay características de opresión ni ardor, y el paciente no presenta factores de riesgo cardiovascular conocidos.",
+      "error": null
+    },
+    {
+      "cuadro": "dolor_toracico",
+      "id": 9,
+      "expected": "Clave 2",
+      "got": "Clave 2",
+      "correct": true,
+      "subtriage": false,
+      "sobretriage": false,
+      "fatal": false,
+      "justificacion": "Dolor urente retroesternal de inicio reciente, continuo, con irradiación a la mandíbula, palpitaciones presentes, habla fluida y consciencia normal. Aunque no hay disnea ni neurovegetativos, la combinación de dolor de tipo urente, irradiación y palpitaciones, junto con la ausencia de antecedentes cardiovasculares, encaja en los criterios de Clave 2.",
+      "error": null
+    },
+    {
+      "cuadro": "dolor_toracico",
+      "id": 10,
+      "expected": "Clave 3",
+      "got": "Clave 3",
+      "correct": true,
+      "subtriage": false,
+      "sobretriage": false,
+      "fatal": false,
+      "justificacion": "El dolor urente retroesternal tiene una intensidad leve (4/10) y no presenta irradiación ni neurovegetativos. La evolución es sin variaciones desde el inicio y el paciente está sin síntomas acompañantes, lo que encaja en los criterios de Clave 3.",
+      "error": null
+    },
+    {
+      "cuadro": "dolor_toracico",
+      "id": 11,
+      "expected": "Clave 1",
+      "got": "Clave 1",
+      "correct": true,
+      "subtriage": false,
+      "sobretriage": false,
+      "fatal": false,
+      "justificacion": "La pérdida de consciencia y la incapacidad de responder invalidan Clave 2 y Clave 3. El perfil presenta un dolor opresivo intenso, continuo y en aumento, junto con antecedentes de cardiopatía isquémica conocida, lo que indica una emergencia absoluta que requiere respuesta inmediata.",
+      "error": null
+    },
+    {
+      "cuadro": "dolor_toracico",
+      "id": 12,
+      "expected": "Clave 1",
+      "got": "Clave 1",
+      "correct": true,
+      "subtriage": false,
+      "sobretriage": false,
+      "fatal": false,
+      "justificacion": "Disnea severa que impide hablar y habla imposible por disnea, junto con sudoración profusa y palidez, son señales de alarma que invalidan Clave 2. El perfil no encaja en Clave 2 ni Clave 3.",
+      "error": null
+    },
+    {
+      "cuadro": "dolor_toracico",
+      "id": 13,
+      "expected": "Clave 1",
+      "got": "Clave 1",
+      "correct": true,
+      "subtriage": false,
+      "sobretriage": false,
+      "fatal": false,
+      "justificacion": "La incoherencia en el habla y la desorientación indican una alteración de la consciencia, lo que invalida Clave 2. Además, las náuseas intensas y el dolor opresivo retroesternal de alta intensidad, junto con el antecedente de infarto previo, configuran un perfil que no encaja en Clave 2 ni Clave 3.",
+      "error": null
+    },
+    {
+      "cuadro": "dolor_toracico",
+      "id": 14,
+      "expected": "Clave 2",
+      "got": "Clave 2",
+      "correct": true,
+      "subtriage": false,
+      "sobretriage": false,
+      "fatal": false,
+      "justificacion": "Dolor opresivo precordial de inicio reciente, continuo, con irradiación al hombro izquierdo, sudoración leve presente, habla fluida y consciencia normal. Los antecedentes de HTA y diabetes tipo 2 son factores de riesgo cardiovascular que apuntan a Clave 2 según el protocolo.",
+      "error": null
+    },
+    {
+      "cuadro": "dolor_toracico",
+      "id": 15,
+      "expected": "Clave 2",
+      "got": "Clave 2",
+      "correct": true,
+      "subtriage": false,
+      "sobretriage": false,
+      "fatal": false,
+      "justificacion": "Dolor urente retroesternal de inicio reciente, continuo, con palpitaciones presentes. Aunque no hay disnea ni neurovegetativos, el tabaquismo activo es un factor de riesgo cardiovascular que apunta a Clave 2. Encaja en los criterios de Clave 2.",
+      "error": null
+    },
+    {
+      "cuadro": "dolor_toracico",
+      "id": 16,
+      "expected": "Clave 2",
+      "got": "Clave 2",
+      "correct": true,
+      "subtriage": false,
+      "sobretriage": false,
+      "fatal": false,
+      "justificacion": "Dolor opresivo precordial de inicio reciente, continuo, con irradiación a mandíbula y cuello. Aunque no presenta palpitaciones ni disnea, el antecedente de infarto previo es un factor de riesgo cardiovascular que eleva el perfil a Clave 2. Habla fluida y consciencia normal también apoyan esta clasificación.",
+      "error": null
+    },
+    {
+      "cuadro": "dolor_toracico",
+      "id": 17,
+      "expected": "Clave 2",
+      "got": "Clave 2",
+      "correct": true,
+      "subtriage": false,
+      "sobretriage": false,
+      "fatal": false,
+      "justificacion": "Dolor opresivo precordial de inicio reciente, continuo, sin irradiación ni neurovegetativos. Los antecedentes cardiovasculares — HTA, tabaquismo y diabetes tipo 2 — son factores de riesgo que apuntan a Clave 2, a pesar de la ausencia de síntomas acompañantes.",
+      "error": null
+    },
+    {
+      "cuadro": "dolor_toracico",
+      "id": 18,
+      "expected": "Clave 3",
+      "got": "Clave 3",
+      "correct": true,
+      "subtriage": false,
+      "sobretriage": false,
+      "fatal": false,
+      "justificacion": "El perfil presenta disconfort leve, sin irradiación ni neurovegetativos, con una evolución de dos días sin variaciones. La intensidad es leve (3/10) y el paciente está sin dolor al momento del llamado, lo que encaja en los criterios de Clave 3.",
+      "error": null
+    },
+    {
+      "cuadro": "dolor_toracico",
+      "id": 19,
+      "expected": "Clave 3",
+      "got": "Clave 3",
+      "correct": true,
+      "subtriage": false,
+      "sobretriage": false,
+      "fatal": false,
+      "justificacion": "El perfil presenta dolor precordial difuso leve, episodios que duran minutos y ceden solos, sin irradiación ni neurovegetativos. La evolución es de varios días sin progresión y el paciente está sin dolor al momento del llamado. Encaja en los criterios de Clave 3.",
+      "error": null
+    },
+    {
+      "cuadro": "dolor_toracico",
+      "id": 20,
+      "expected": "Clave 3",
+      "got": "Clave 3",
+      "correct": true,
+      "subtriage": false,
+      "sobretriage": false,
+      "fatal": false,
+      "justificacion": "El perfil presenta una molestia leve, difícil de describir, con una intensidad de 3/10 y sin irradiación ni neurovegetativos. La evolución es persistente sin variaciones y el paciente está sin dolor al momento del llamado. Estos elementos encajan en los criterios de Clave 3, ya que no hay características de opresión ni ardor, y la sintomatología tiene varios días de evolución.",
+      "error": null
+    },
+    {
+      "cuadro": "perdida_de_conocimiento",
+      "id": 1,
+      "expected": "Clave 2",
+      "got": "Clave 2",
+      "correct": true,
+      "subtriage": false,
+      "sobretriage": false,
+      "fatal": false,
+      "justificacion": "Síncope en paciente joven con mareo persistente y cefalea leve tras la recuperación. La presencia de síntomas actuales acompañantes al momento del llamado, como mareo y cefalea, apunta a Clave 2 según el protocolo.",
+      "error": null
+    },
+    {
+      "cuadro": "perdida_de_conocimiento",
+      "id": 2,
+      "expected": "Clave 2",
+      "got": "Clave 2",
+      "correct": true,
+      "subtriage": false,
+      "sobretriage": false,
+      "fatal": false,
+      "justificacion": "Síncope en paciente joven recuperado completamente sin síntomas actuales ni antecedentes. El tipo de episodio es determinante: el manual clasifica síncope como Clave 2 sin excepción por edad ni por ausencia de síntomas residuales.",
+      "error": null
+    },
+    {
+      "cuadro": "perdida_de_conocimiento",
+      "id": 3,
+      "expected": "Clave 2",
+      "got": "Clave 3",
+      "correct": false,
+      "subtriage": true,
+      "sobretriage": false,
+      "fatal": false,
+      "justificacion": "PDC espontánea en paciente joven, recuperado completamente y sin síntomas actuales. La ausencia de síntomas acompañantes y el hecho de que se trata de un episodio espontáneo sin aviso previo apuntan a Clave 3 según el protocolo.",
+      "error": null
+    },
+    {
+      "cuadro": "perdida_de_conocimiento",
+      "id": 4,
+      "expected": "Clave 3",
+      "got": "Clave 3",
+      "correct": true,
+      "subtriage": false,
+      "sobretriage": false,
+      "fatal": false,
+      "justificacion": "PDC espontánea recuperada en paciente joven sin síntomas actuales ni antecedentes. El contexto de estrés intenso y ayuno prolongado aporta una explicación probable, pero no cambia la clasificación. PDC espontánea en paciente joven sin síntomas es criterio explícito de Clave 3 según el protocolo.",
+      "error": null
+    },
+    {
+      "cuadro": "perdida_de_conocimiento",
+      "id": 5,
+      "expected": "Clave 2",
+      "got": "Clave 2",
+      "correct": true,
+      "subtriage": false,
+      "sobretriage": false,
+      "fatal": false,
+      "justificacion": "PDC espontánea en paciente de 45 años con mareo leve persistente. La presencia de síntomas actuales (mareo) y antecedentes de episodios similares sin diagnóstico apuntan a Clave 2, ya que el tipo de episodio y los síntomas acompañantes son criterios que requieren respuesta urgente.",
+      "error": null
+    },
+    {
+      "cuadro": "perdida_de_conocimiento",
+      "id": 6,
+      "expected": "Clave 3",
+      "got": "Clave 3",
+      "correct": true,
+      "subtriage": false,
+      "sobretriage": false,
+      "fatal": false,
+      "justificacion": "PDC espontánea en paciente joven con mareo leve que cedió rápidamente y sin síntomas acompañantes al momento del llamado. La ausencia de síntomas actuales y la edad del paciente apuntan a Clave 3 según el protocolo.",
+      "error": null
+    },
+    {
+      "cuadro": "perdida_de_conocimiento",
+      "id": 7,
+      "expected": "Clave 2",
+      "got": "Clave 2",
+      "correct": true,
+      "subtriage": false,
+      "sobretriage": false,
+      "fatal": false,
+      "justificacion": "Síncope en paciente mayor con mareo y cefalea persistentes tras la recuperación. La presencia de síntomas actuales acompañantes al momento del llamado, junto con la edad del paciente y el tipo de episodio, apuntan a Clave 2 según el protocolo.",
+      "error": null
+    },
+    {
+      "cuadro": "perdida_de_conocimiento",
+      "id": 8,
+      "expected": "Clave 2",
+      "got": "Clave 2",
+      "correct": true,
+      "subtriage": false,
+      "sobretriage": false,
+      "fatal": false,
+      "justificacion": "Lipotimia en paciente de 55 años con síntomas actuales de náuseas persistentes y sudoración. La presencia de síntomas acompañantes y el antecedente de cardiopatía isquémica conocido refuerzan la clasificación como Clave 2, ya que la lipotimia es criterio de Clave 2 según el protocolo.",
+      "error": null
+    },
+    {
+      "cuadro": "perdida_de_conocimiento",
+      "id": 9,
+      "expected": "Clave 2",
+      "got": "Clave 2",
+      "correct": true,
+      "subtriage": false,
+      "sobretriage": false,
+      "fatal": false,
+      "justificacion": "PDC espontánea con movimientos tónicos durante el episodio y sopor leve con recuperación lenta. La presencia de movimientos anormales durante el episodio y la recuperación lenta apuntan a Clave 2 según el protocolo, ya que se debe descartar la posibilidad de una convulsión.",
+      "error": null
+    },
+    {
+      "cuadro": "perdida_de_conocimiento",
+      "id": 10,
+      "expected": "Clave 2",
+      "got": "Clave 2",
+      "correct": true,
+      "subtriage": false,
+      "sobretriage": false,
+      "fatal": false,
+      "justificacion": "PDC espontánea en paciente de 48 años con síntomas actuales de sudoración y temblor persistentes. La falta de alimentación durante todo el día y la presencia de síntomas acompañantes apuntan a Clave 2 según el protocolo, ya que los síntomas actuales son relevantes y el contexto de diabetes tipo 2 insulinorrequiriente añade riesgo.",
+      "error": null
+    },
+    {
+      "cuadro": "perdida_de_conocimiento",
+      "id": 11,
+      "expected": "Clave 2",
+      "got": "Clave 2",
+      "correct": true,
+      "subtriage": false,
+      "sobretriage": false,
+      "fatal": false,
+      "justificacion": "PDC espontánea con cianosis observada durante el episodio. La cianosis durante el episodio es una señal de alarma que apunta a Clave 2, independientemente de la recuperación posterior y la ausencia de síntomas al momento del llamado.",
+      "error": null
+    },
+    {
+      "cuadro": "perdida_de_conocimiento",
+      "id": 12,
+      "expected": "Clave 2",
+      "got": "Clave 2",
+      "correct": true,
+      "subtriage": false,
+      "sobretriage": false,
+      "fatal": false,
+      "justificacion": "PDC espontánea en paciente de 38 años con cefalea intensa persistente y antecedente de TEC reciente. La cefalea intensa persistente es un síntoma acompañante que requiere atención urgente, lo que clasifica el caso como Clave 2 según el protocolo.",
+      "error": null
+    },
+    {
+      "cuadro": "perdida_de_conocimiento",
+      "id": 13,
+      "expected": "Clave 3",
+      "got": "Clave 3",
+      "correct": true,
+      "subtriage": false,
+      "sobretriage": false,
+      "fatal": false,
+      "justificacion": "Lipotimia en paciente joven recuperado completamente sin síntomas actuales ni antecedentes. El contexto de ayuno prolongado y exposición al calor puede explicar el episodio, pero la ausencia de síntomas acompañantes y la recuperación completa apuntan a Clave 3 según el protocolo.",
+      "error": null
+    },
+    {
+      "cuadro": "perdida_de_conocimiento",
+      "id": 14,
+      "expected": "Clave 3",
+      "got": "Clave 3",
+      "correct": true,
+      "subtriage": false,
+      "sobretriage": false,
+      "fatal": false,
+      "justificacion": "PDC espontánea en paciente joven, recuperado completamente sin síntomas actuales ni antecedentes. La ausencia de síntomas acompañantes y la recuperación total apuntan a Clave 3 según el protocolo.",
+      "error": null
+    },
+    {
+      "cuadro": "perdida_de_conocimiento",
+      "id": 15,
+      "expected": "Clave 3",
+      "got": "Clave 3",
+      "correct": true,
+      "subtriage": false,
+      "sobretriage": false,
+      "fatal": false,
+      "justificacion": "PDC espontánea recuperada en paciente joven sin síntomas actuales ni antecedentes. El contexto de reacción vasovagal tras extracción de sangre y la ausencia de síntomas acompañantes al momento del llamado apuntan a Clave 3 según el protocolo.",
+      "error": null
+    },
+    {
+      "cuadro": "perdida_de_conocimiento",
+      "id": 16,
+      "expected": "Clave 3",
+      "got": "Clave 3",
+      "correct": true,
+      "subtriage": false,
+      "sobretriage": false,
+      "fatal": false,
+      "justificacion": "PDC espontánea recuperada en paciente joven sin síntomas actuales ni antecedentes. La deshidratación por actividad física intensa proporciona un contexto explicativo, pero no cambia la clasificación. PDC espontánea en paciente joven sin síntomas es criterio de Clave 3 según el protocolo.",
+      "error": null
+    },
+    {
+      "cuadro": "perdida_de_conocimiento",
+      "id": 17,
+      "expected": "Clave 3",
+      "got": "Clave 3",
+      "correct": true,
+      "subtriage": false,
+      "sobretriage": false,
+      "fatal": false,
+      "justificacion": "Lipotimia en paciente joven recuperado completamente sin síntomas actuales ni antecedentes. La ausencia de síntomas acompañantes y la recuperación total apuntan a Clave 3 según el protocolo.",
+      "error": null
+    }
+  ]
+}

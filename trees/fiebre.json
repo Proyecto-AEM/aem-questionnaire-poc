@@ -1,98 +1,93 @@
 {
   "cuadro": "fiebre",
-  "descripcion": "Protocolo de evaluación clínica de fiebre — AEM v1.0",
+  "descripcion": "Paciente con fiebre, con o sin síntomas acompañantes. La clasificación base es siempre Clave 3, salvo que durante el cuestionario emerjan señales de alarma que indiquen que el cuadro real es otro.",
   "clasificacion_fija": "Clave 3",
-  "preguntas_deterministas": [
-    {
-      "pregunta": "¿La persona tiene convulsiones o está inconsciente en este momento?",
-      "campo": "convulsiones_o_inconsciente",
-      "dispara_clave1_si": "si"
-    },
-    {
-      "pregunta": "¿La persona tiene dificultad para respirar?",
-      "campo": "dificultad_respiratoria",
-      "dispara_clave1_si": "si"
-    }
-  ],
+  "preguntas_deterministas": [],
   "campos_schema": {
-    "temperatura": "temperatura corporal en °C o descripción verbal del nivel de fiebre",
-    "inicio_fiebre": "cuándo comenzó la fiebre en horas o días",
-    "sintomas_respiratorios": "presencia de tos, dificultad para respirar, dolor al respirar o 'Ausentes'",
-    "sintomas_digestivos": "presencia de náuseas, vómitos, diarrea, dolor abdominal o 'Ausentes'",
-    "sintomas_urinarios": "presencia de ardor al orinar, frecuencia aumentada, dolor lumbar o 'Ausentes'",
-    "focalidad_neurologica": "presencia de rigidez de nuca, confusión, alteración del estado general o 'Ausente'",
-    "temblores": "presencia de temblores o escalofríos y si se diferencia de chucho solemne",
-    "antecedentes": "enfermedades de base o antecedentes de salud relevantes"
+    "temperatura": "Valor de temperatura registrado con termómetro, o ausencia de medición disponible.",
+    "sintomas_respiratorios": "Presencia o ausencia de dificultad respiratoria o sensación de falta de aire.",
+    "focalidad_neurologica": "Presencia o ausencia de dificultad para hablar, para mover alguna parte del cuerpo, o confusión.",
+    "temblores": "Presencia o ausencia de temblores o escalofríos. Distinguir entre temblores leves febriles y chucho solemne — escalofrío intenso generalizado e incontrolable.",
+    "tiempo_evolucion": "Tiempo transcurrido desde el inicio de la fiebre.",
+    "sintomas_digestivos": "Presencia o ausencia de náuseas, vómitos o diarrea asociados a la fiebre.",
+    "sintomas_urinarios": "Presencia o ausencia de dolor o ardor al orinar, o cambios en la orina.",
+    "antecedentes": "Enfermedades crónicas o medicación habitual del paciente."
   },
   "secuencia_preguntas": [
     {
-      "id": 1,
       "campo": "temperatura",
-      "pregunta_guia": "¿Pudo medir la temperatura? ¿Cuánto marcó el termómetro?",
-      "proposito": "Cuantificar la fiebre",
-      "notas_clinicas": "Fiebre > 39°C o sin termómetro registrar descripción verbal. Lactantes menores de 3 meses con cualquier fiebre tienen umbral de alarma menor."
+      "pregunta": "¿Tomó la temperatura con termómetro? ¿Cuánto marcó?",
+      "notas_clinicas": "Campo de registro objetivo. Si el socio no tiene termómetro, registrar que no hay medición disponible y continuar."
     },
     {
-      "id": 2,
-      "campo": "inicio_fiebre",
-      "pregunta_guia": "¿Desde cuándo tiene fiebre? ¿Comenzó hoy o hace varios días?",
-      "proposito": "Establecer cronología del episodio",
-      "notas_clinicas": "Fiebre de inicio en horas es más relevante. Varios días con estabilidad clínica orienta a Clave 3 confirmado."
-    },
-    {
-      "id": 3,
-      "campo": "temblores",
-      "pregunta_guia": "¿Tiene temblores o escalofríos? ¿Son temblores leves o son sacudidas intensas de todo el cuerpo?",
-      "proposito": "Diferenciar escalofríos febriles comunes de chucho solemne",
-      "notas_clinicas": "Escalofríos leves asociados a fiebre son frecuentes y no alarman. Chucho solemne — sacudidas incontrolables de todo el cuerpo — es señal de mayor gravedad y puede indicar bacteriemia."
-    },
-    {
-      "id": 4,
       "campo": "sintomas_respiratorios",
-      "pregunta_guia": "¿Tiene tos, le duele al respirar o siente que le falta el aire?",
-      "proposito": "Detectar compromiso respiratorio asociado",
-      "notas_clinicas": "Disnea asociada a fiebre puede elevar la urgencia. Tos y dolor al respirar orientan a foco respiratorio."
+      "pregunta": "¿Tiene dificultad para respirar o sensación de falta de aire?",
+      "notas_clinicas": "Presencia de disnea es señal de alarma que apunta a un cuadro distinto — activar flag de Clave 1."
     },
     {
-      "id": 5,
-      "campo": "sintomas_digestivos",
-      "pregunta_guia": "¿Tiene náuseas, vómitos, diarrea o dolor en la panza?",
-      "proposito": "Detectar compromiso digestivo asociado",
-      "notas_clinicas": "Síntomas digestivos leves son frecuentes en cuadros febriles y no modifican la clasificación Clave 3. Vómitos incoercibles con fiebre alta requieren atención."
-    },
-    {
-      "id": 6,
-      "campo": "sintomas_urinarios",
-      "pregunta_guia": "¿Siente ardor al orinar, va al baño con más frecuencia de lo normal o tiene dolor en la zona de los riñones?",
-      "proposito": "Detectar compromiso urinario asociado",
-      "notas_clinicas": "Síntomas urinarios con fiebre orientan a infección urinaria. En adultos mayores la infección urinaria puede presentarse con compromiso del estado general."
-    },
-    {
-      "id": 7,
       "campo": "focalidad_neurologica",
-      "pregunta_guia": "¿Está orientado y responde con normalidad? ¿Tiene rigidez en el cuello o dolor intenso de cabeza?",
-      "proposito": "Detectar focalidad neurológica como señal de alarma",
-      "notas_clinicas": "Rigidez de nuca con fiebre es señal de alarma para meningitis. Confusión o alteración del estado general con fiebre eleva la urgencia más allá de Clave 3."
+      "pregunta": "¿Tiene algún problema para hablar, para mover alguna parte del cuerpo, o está confundido?",
+      "notas_clinicas": "Presencia de focalidad neurológica es señal de alarma que apunta a problemas neurológicos como cuadro principal — activar flag de Clave 1."
     },
     {
-      "id": 8,
+      "campo": "temblores",
+      "pregunta": "¿Tiene temblores o escalofríos intensos?",
+      "notas_clinicas": "Temblores leves acompañan la fiebre y no cambian la clasificación. Chucho solemne — escalofrío intenso con temblor generalizado e incontrolable — es señal de alarma. Activar flag de Clave 1 si el socio describe un episodio de temblor intenso e incontrolable."
+    },
+    {
+      "campo": "tiempo_evolucion",
+      "pregunta": "¿Hace cuánto tiempo tiene fiebre?",
+      "notas_clinicas": "Campo contextual para el perfil clínico. No cambia la clasificación."
+    },
+    {
+      "campo": "sintomas_digestivos",
+      "pregunta": "¿Tiene náuseas, vómitos o diarrea asociados a la fiebre?",
+      "notas_clinicas": "Campo contextual para el perfil clínico. No cambia la clasificación."
+    },
+    {
+      "campo": "sintomas_urinarios",
+      "pregunta": "¿Tiene dolor o ardor al orinar, o nota algo diferente en la orina?",
+      "notas_clinicas": "Campo contextual para el perfil clínico. No cambia la clasificación."
+    },
+    {
       "campo": "antecedentes",
-      "pregunta_guia": "¿Tiene alguna enfermedad de base o antecedente de salud importante?",
-      "proposito": "Identificar factores de riesgo que modifican la urgencia",
-      "notas_clinicas": "Inmunosupresión, embarazo, diabetes, enfermedad crónica o edad menor de 3 meses o mayor de 65 años requieren mayor atención aunque el cuadro clínico parezca leve."
+      "pregunta": "¿El paciente tiene alguna enfermedad crónica o está tomando alguna medicación?",
+      "notas_clinicas": "Campo contextual para el perfil clínico. No cambia la clasificación."
+    }
+  ],
+  "condiciones_salida_lateral": [
+    {
+      "condicion": "El socio menciona en cualquier turno que el paciente está convulsionando o perdió el conocimiento.",
+      "accion": "Interrumpir el cuestionario de inmediato. Activar flag de Clave 1 y emitir mensaje de escalada."
+    },
+    {
+      "condicion": "El socio describe dificultad respiratoria significativa en cualquier turno.",
+      "accion": "Activar flag de Clave 1 y emitir mensaje de escalada."
+    },
+    {
+      "condicion": "El socio menciona signos neurológicos focales en cualquier turno: desviación de rasgos, pérdida de fuerza, disartria o confusión persistente.",
+      "accion": "Activar flag de Clave 1 y emitir mensaje de escalada."
+    },
+    {
+      "condicion": "El socio describe un episodio de escalofrío intenso generalizado e incontrolable — chucho solemne.",
+      "accion": "Activar flag de Clave 1 y emitir mensaje de escalada."
     }
   ],
   "criterios_clasificacion": {
-    "clave3": {
-      "descripcion": "Urgencia — requiere evaluación médica programada",
+    "clave1": {
+      "descripcion": "Emergencia absoluta — requiere respuesta inmediata.",
       "criterios": [
-        "Fiebre sin señales de alarma",
-        "Sin convulsiones ni alteración de consciencia",
-        "Sin dificultad respiratoria",
-        "Sin rigidez de nuca ni focalidad neurológica",
-        "Con o sin síntomas acompañantes leves: tos, malestar, síntomas digestivos o urinarios leves",
-        "Paciente consciente y orientado",
-        "Sin chucho solemne"
+        "Clave 1 no es criterio del protocolo de fiebre. Solo aplica si durante el cuestionario emergen señales de alarma que indican que el cuadro real es otro: convulsión o inconsciencia, disnea severa, focalidad neurológica, chucho solemne."
+      ]
+    },
+    "clave2": {
+      "descripcion": "No aplica para este cuadro según el manual de AEM.",
+      "criterios": []
+    },
+    "clave3": {
+      "descripcion": "Urgencia — clasificación base para todo caso de fiebre sin señales de alarma.",
+      "criterios": [
+        "Fiebre sin señales de alarma. La clasificación es Clave 3 independientemente del perfil clínico recolectado."
       ]
     }
   }
