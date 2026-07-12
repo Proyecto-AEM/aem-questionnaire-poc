@@ -70,11 +70,21 @@ def call_model_validated(
             response_format={"type": "json_object"},
             temperature=0.2,
         )
+        contenido = response.choices[0].message.content
         try:
-            raw = json.loads(response.choices[0].message.content)
+            raw = json.loads(contenido)
             return TurnResponse(**raw)
         except (json.JSONDecodeError, ValidationError) as exc:
             last_error = exc
+            messages.append({"role": "assistant", "content": contenido})
+            messages.append({
+                "role": "user",
+                "content": (
+                    f"Tu respuesta anterior no es un JSON válido según el formato "
+                    f"esperado: {exc}. Corregí y respondé de nuevo únicamente con "
+                    f"el JSON en el formato indicado."
+                ),
+            })
 
     raise RuntimeError(
         f"La respuesta del modelo fue inválida luego de {max_retries} intentos: {last_error}"
