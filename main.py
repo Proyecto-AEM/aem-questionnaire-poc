@@ -28,6 +28,10 @@ CIERRE_MSG = (
     "Gracias por la información. Estamos procesando los datos "
     "y en un momento le indicamos cómo proceder."
 )
+FALLA_TECNICA_MSG = (
+    "Tuvimos un problema técnico y no podemos continuar con el cuestionario. "
+    "Por favor comuníquese con AEM para recibir atención."
+)
 
 
 def load_text(path: str) -> str:
@@ -118,7 +122,7 @@ def phase_identify() -> tuple[str, str, dict]:
         try:
             identification = identify_cuadro(client, identification_context)
         except Exception as exc:
-            print(f"\n[Error al identificar cuadro clínico: {exc}]")
+            print(f"\nAsistente: {FALLA_TECNICA_MSG}")
             sys.exit(1)
 
         if identification.cuadro_identificado and identification.confianza == "alta":
@@ -162,7 +166,7 @@ def phase_questionnaire(
         try:
             response = call_model_validated(conversation, tree)
         except RuntimeError as exc:
-            print(f"\n[{exc}]")
+            print(f"\nAsistente: {FALLA_TECNICA_MSG}")
             sys.exit(1)
 
         campos_acumulados.update(response.campos_recolectados)
@@ -222,7 +226,7 @@ def main() -> None:
         try:
             clasificacion_result = classify_cuadro(client, cuadro, tree, campos)
         except Exception as exc:
-            print(f"\n[Error en clasificación final: {exc}]")
+            print(f"\nAsistente: {FALLA_TECNICA_MSG}")
             return
 
     # 5. Mostrar resumen y clasificación
