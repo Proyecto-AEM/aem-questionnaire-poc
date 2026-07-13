@@ -189,6 +189,21 @@ def phase_questionnaire(
             return campos_acumulados, True
 
         if response.conversation_complete:
+            campos_faltantes = [
+                campo
+                for campo in tree.get("campos_schema", {})
+                if not campos_acumulados.get(campo)
+            ]
+            if campos_faltantes:
+                conversation.append({
+                    "role": "user",
+                    "content": (
+                        "Todavía faltan estos campos por cubrir antes de cerrar el "
+                        f"cuestionario: {', '.join(campos_faltantes)}. Continuá "
+                        "preguntando por ellos."
+                    ),
+                })
+                continue
             print(f"\nAsistente: {CIERRE_MSG}")
             return campos_acumulados, False
 
