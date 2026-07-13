@@ -1,10 +1,27 @@
 import sys
 
-_AFIRMATIVO = {"si", "sí", "s", "yes", "y", "1", "afirmativo", "correcto"}
 
+def _preguntar_si_no(pregunta: str) -> bool:
+    """
+    Muestra la pregunta con opciones numeradas y repregunta hasta recibir
+    una opción válida. Retorna True si el socio elige "Sí", False si elige "No".
+    """
+    print(f"\nAsistente: {pregunta}")
+    print("  1) Sí")
+    print("  2) No")
+    while True:
+        try:
+            respuesta = input("Socio (1 o 2): ").strip()
+        except (EOFError, KeyboardInterrupt):
+            print("\n\nSesión terminada.")
+            sys.exit(0)
 
-def _es_si(respuesta: str) -> bool:
-    return respuesta.strip().lower() in _AFIRMATIVO
+        if respuesta == "1":
+            return True
+        if respuesta == "2":
+            return False
+
+        print("  Opción no válida, por favor elija 1 o 2.")
 
 
 def _hay_downstream_condicional(preguntas: list, desde: int) -> bool:
@@ -43,14 +60,7 @@ def run_screening(tree: dict) -> tuple[str | None, dict, str | None]:
         dispara_si = pq["dispara_clave1_si"]
         campo = pq.get("campo")
 
-        print(f"\nAsistente: {pregunta} (responda sí o no)")
-        try:
-            respuesta = input("Socio: ").strip()
-        except (EOFError, KeyboardInterrupt):
-            print("\n\nSesión terminada.")
-            sys.exit(0)
-
-        es_si = _es_si(respuesta)
+        es_si = _preguntar_si_no(pregunta)
 
         if campo:
             contexto[campo] = "Sí" if es_si else "No"
