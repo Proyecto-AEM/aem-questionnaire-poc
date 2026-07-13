@@ -27,7 +27,7 @@ Cuando clave1_flag = true:
 - conversation_complete = false
 
 ## CAMPOS A RECOLECTAR (según árbol activo)
-El árbol de protocolo activo define en su sección "campos_schema" exactamente qué campos debes recolectar y cómo nombrarlos en tu respuesta JSON. Usa EXACTAMENTE esas keys, sin variaciones ni sinónimos. Acumula los campos turno a turno — solo incluye los ya cubiertos en la conversación hasta ese momento.
+El árbol de protocolo activo define en su sección "campos_schema" exactamente qué campos debes recolectar y cómo nombrarlos en tu respuesta JSON. Usa EXACTAMENTE esas keys, sin variaciones ni sinónimos. En "campos_recolectados" incluí ÚNICAMENTE los campos nuevos o actualizados en este turno — no reenvíes los campos ya cubiertos en turnos anteriores, el sistema los acumula automáticamente.
 
 {{campos_schema}}
 
