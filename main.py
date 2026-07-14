@@ -12,9 +12,9 @@ from openai import OpenAI
 from pydantic import ValidationError
 
 from classifier import classify_cuadro
-from deterministic import run_screening
+from deterministic import es_si, run_screening
 from identifier import identify_cuadro
-from models import ClassificationResponse, TurnResponse
+from models import ClassificationResponse, QuestionnaireOutcome, TurnResponse
 
 load_dotenv()
 client = OpenAI()
@@ -27,6 +27,13 @@ ESCALADA_MSG = (
 CIERRE_MSG = (
     "Gracias por la información. Estamos procesando los datos "
     "y en un momento le indicamos cómo proceder."
+)
+CONFIRMAR_TITULAR_MSG = "¿Está consultando por el titular de esta cuenta?"
+CORTE_TERCERO_MSG = (
+    "Este canal está habilitado exclusivamente para que el titular de la "
+    "cuenta consulte por sí mismo. Si necesita atención para otra persona, "
+    "esa persona debe ingresar con su propia cuenta, o puede comunicarse "
+    "telefónicamente con AEM."
 )
 
 
@@ -77,6 +84,17 @@ def call_model_validated(
     )
 
 
+def confirm_titular() -> bool:
+    """Pregunta al socio si consulta por el titular de la cuenta. Retorna True si confirma."""
+    print(f"\nAsistente: {CONFIRMAR_TITULAR_MSG}")
+    try:
+        confirmacion = input("\nSocio: ").strip()
+    except (EOFError, KeyboardInterrupt):
+        print("\n\nSesión terminada.")
+        sys.exit(0)
+    return es_si(confirmacion)
+
+
 def print_results(campos: dict, clasificacion_result: ClassificationResponse) -> None:
     print(f"\n{SEP}")
     print("      --- PERFIL CLÍNICO (campos_recolectados) ---")
@@ -90,10 +108,11 @@ def print_results(campos: dict, clasificacion_result: ClassificationResponse) ->
     print(SEP)
 
 
-def phase_identify() -> tuple[str, str, dict]:
+def phase_identify() -> tuple[str, str, dict, bool] | None:
     """
     Identificación del cuadro clínico — llamada independiente al modelo.
-    Retorna (descripcion_inicial, cuadro, tree).
+    Retorna (descripcion_inicial, cuadro, tree, titular_confirmado),
+    o None si se corta por tercero no confirmado como titular.
     """
     print(f"\n{SEP}")
     print("    AEM — Asistente de Emergencias Médicas")
@@ -114,6 +133,9 @@ def phase_identify() -> tuple[str, str, dict]:
     descripcion_inicial = user_input
     identification_context = user_input
 
+    titular_confirmado = False
+    tercero_detectado_id = False
+
     while True:
         try:
             identification = identify_cuadro(client, identification_context)
@@ -121,11 +143,18 @@ def phase_identify() -> tuple[str, str, dict]:
             print(f"\n[Error al identificar cuadro clínico: {exc}]")
             sys.exit(1)
 
+        if identification.tercero_detectado and not tercero_detectado_id:
+            tercero_detectado_id = True
+            if not confirm_titular():
+                print(f"\nAsistente: {CORTE_TERCERO_MSG}")
+                return None
+            titular_confirmado = True
+
         if identification.cuadro_identificado and identification.confianza == "alta":
             cuadro = identification.cuadro_identificado
             tree_path = Path(f"trees/{cuadro}.json")
             if tree_path.exists():
-                return descripcion_inicial, cuadro, load_json(str(tree_path))
+                return descripcion_inicial, cuadro, load_json(str(tree_path)), titular_confirmado
 
         # Confianza media o baja — mostrar mensaje y pedir confirmación o más info
         mensaje = identification.mensaje or "¿Puede contarme con más detalle cuál es el síntoma principal?"
@@ -141,11 +170,14 @@ def phase_identify() -> tuple[str, str, dict]:
 
 
 def phase_questionnaire(
-    descripcion_inicial: str, screening_context: dict, tree: dict
-) -> tuple[dict, bool]:
+    descripcion_inicial: str,
+    screening_context: dict,
+    tree: dict,
+    titular_confirmado: bool = False,
+) -> tuple[dict, QuestionnaireOutcome]:
     """
     Loop conversacional turno a turno con validación Pydantic y reintentos.
-    Retorna (campos_acumulados, clave1_activada).
+    Retorna (campos_acumulados, outcome).
     """
     conversation: list[dict] = []
 
@@ -172,11 +204,18 @@ def phase_questionnaire(
 
         if response.clave1_flag:
             print(f"\nAsistente: {ESCALADA_MSG}")
-            return campos_acumulados, True
+            return campos_acumulados, QuestionnaireOutcome.CLAVE1
+
+        if response.tercero_detectado and not titular_confirmado:
+            if confirm_titular():
+                titular_confirmado = True
+            else:
+                print(f"\nAsistente: {CORTE_TERCERO_MSG}")
+                return campos_acumulados, QuestionnaireOutcome.TERCERO_NO_TITULAR
 
         if response.conversation_complete:
             print(f"\nAsistente: {CIERRE_MSG}")
-            return campos_acumulados, False
+            return campos_acumulados, QuestionnaireOutcome.OK
 
         print(f"\nAsistente: {response.next_question}")
         conversation.append({"role": "assistant", "content": response.next_question})
@@ -195,7 +234,10 @@ def phase_questionnaire(
 
 def main() -> None:
     # 1. Identificación del cuadro — llamada independiente al modelo
-    descripcion_inicial, cuadro, tree = phase_identify()
+    identify_result = phase_identify()
+    if identify_result is None:
+        return
+    descripcion_inicial, cuadro, tree, titular_confirmado = identify_result
 
     # 2. Screening determinístico — código puro, sin modelo
     clave1_result, screening_context, instruccion_pre_arribo = run_screening(tree)
@@ -207,9 +249,11 @@ def main() -> None:
         return
 
     # 3. Cuestionario conversacional — loop turno a turno con validación Pydantic
-    campos, clave1_activada = phase_questionnaire(descripcion_inicial, screening_context, tree)
+    campos, outcome = phase_questionnaire(
+        descripcion_inicial, screening_context, tree, titular_confirmado
+    )
 
-    if clave1_activada:
+    if outcome != QuestionnaireOutcome.OK:
         return
 
     # 4. Clasificación final — llamada independiente con few-shot
