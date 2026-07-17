@@ -35,6 +35,10 @@ CORTE_TERCERO_MSG = (
     "esa persona debe ingresar con su propia cuenta, o puede comunicarse "
     "telefónicamente con AEM."
 )
+FALLA_TECNICA_MSG = (
+    "Tuvimos un problema técnico y no podemos continuar con el cuestionario. "
+    "Por favor comuníquese con AEM para recibir atención."
+)
 
 
 def load_text(path: str) -> str:
@@ -73,11 +77,21 @@ def call_model_validated(
             response_format={"type": "json_object"},
             temperature=0.2,
         )
+        contenido = response.choices[0].message.content
         try:
-            raw = json.loads(response.choices[0].message.content)
+            raw = json.loads(contenido)
             return TurnResponse(**raw)
         except (json.JSONDecodeError, ValidationError) as exc:
             last_error = exc
+            messages.append({"role": "assistant", "content": contenido})
+            messages.append({
+                "role": "user",
+                "content": (
+                    f"Tu respuesta anterior no es un JSON válido según el formato "
+                    f"esperado: {exc}. Corregí y respondé de nuevo únicamente con "
+                    f"el JSON en el formato indicado."
+                ),
+            })
 
     raise RuntimeError(
         f"La respuesta del modelo fue inválida luego de {max_retries} intentos: {last_error}"
@@ -140,7 +154,7 @@ def phase_identify() -> tuple[str, str, dict, bool] | None:
         try:
             identification = identify_cuadro(client, identification_context)
         except Exception as exc:
-            print(f"\n[Error al identificar cuadro clínico: {exc}]")
+            print(f"\nAsistente: {FALLA_TECNICA_MSG}")
             sys.exit(1)
 
         if identification.tercero_detectado and not tercero_detectado_id:
@@ -193,8 +207,8 @@ def phase_questionnaire(
     while True:
         try:
             response = call_model_validated(conversation, tree)
-        except RuntimeError as exc:
-            print(f"\n[{exc}]")
+        except Exception as exc:
+            print(f"\nAsistente: {FALLA_TECNICA_MSG}")
             sys.exit(1)
 
         campos_acumulados.update(response.campos_recolectados)
@@ -266,7 +280,7 @@ def main() -> None:
         try:
             clasificacion_result = classify_cuadro(client, cuadro, tree, campos)
         except Exception as exc:
-            print(f"\n[Error en clasificación final: {exc}]")
+            print(f"\nAsistente: {FALLA_TECNICA_MSG}")
             return
 
     # 5. Mostrar resumen y clasificación
