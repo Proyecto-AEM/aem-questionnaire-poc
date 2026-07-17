@@ -12,12 +12,17 @@ from openai import OpenAI
 from pydantic import ValidationError
 
 from classifier import classify_cuadro
-from deterministic import es_si, run_screening
 from identifier import identify_cuadro
 from models import ClassificationResponse, QuestionnaireOutcome, TurnResponse
 
 load_dotenv()
 client = OpenAI()
+
+_AFIRMATIVO = {"si", "sí", "s", "yes", "y", "1", "afirmativo", "correcto"}
+
+
+def es_si(respuesta: str) -> bool:
+    return respuesta.strip().lower() in _AFIRMATIVO
 
 SEP = "─" * 54
 ESCALADA_MSG = (
@@ -185,7 +190,6 @@ def phase_identify() -> tuple[str, str, dict, bool] | None:
 
 def phase_questionnaire(
     descripcion_inicial: str,
-    screening_context: dict,
     tree: dict,
     titular_confirmado: bool = False,
 ) -> tuple[dict, QuestionnaireOutcome]:
@@ -193,14 +197,7 @@ def phase_questionnaire(
     Loop conversacional turno a turno con validación Pydantic y reintentos.
     Retorna (campos_acumulados, outcome).
     """
-    conversation: list[dict] = []
-
-    first_message = descripcion_inicial
-    if screening_context:
-        context_note = "; ".join(f"{k}: {v}" for k, v in screening_context.items())
-        first_message += f"\n[Screening inicial: {context_note}]"
-
-    conversation.append({"role": "user", "content": first_message})
+    conversation: list[dict] = [{"role": "user", "content": descripcion_inicial}]
 
     campos_acumulados: dict = {}
 
@@ -253,24 +250,13 @@ def main() -> None:
         return
     descripcion_inicial, cuadro, tree, titular_confirmado = identify_result
 
-    # 2. Screening determinístico — código puro, sin modelo
-    clave1_result, screening_context, instruccion_pre_arribo = run_screening(tree)
-
-    if clave1_result:
-        print(f"\nAsistente: {ESCALADA_MSG}")
-        if instruccion_pre_arribo:
-            print(f"  [pre-arribo] {instruccion_pre_arribo}")
-        return
-
-    # 3. Cuestionario conversacional — loop turno a turno con validación Pydantic
-    campos, outcome = phase_questionnaire(
-        descripcion_inicial, screening_context, tree, titular_confirmado
-    )
+    # 2. Cuestionario conversacional — loop turno a turno con validación Pydantic
+    campos, outcome = phase_questionnaire(descripcion_inicial, tree, titular_confirmado)
 
     if outcome != QuestionnaireOutcome.OK:
         return
 
-    # 4. Clasificación final — llamada independiente con few-shot
+    # 3. Clasificación final — llamada independiente con few-shot
     if tree.get("clasificacion_fija") == "Clave 3":
         clasificacion_result = ClassificationResponse(
             clasificacion="Clave 3",
@@ -283,7 +269,7 @@ def main() -> None:
             print(f"\nAsistente: {FALLA_TECNICA_MSG}")
             return
 
-    # 5. Mostrar resumen y clasificación
+    # 4. Mostrar resumen y clasificación
     print_results(campos, clasificacion_result)
 
 

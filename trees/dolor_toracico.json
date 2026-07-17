@@ -1,18 +1,6 @@
 {
   "cuadro": "dolor_toracico",
   "descripcion": "Dolor o molestia en la región torácica, retroesternal o precordial, de aparición reciente o con días de evolución. Incluye dolor opresivo, urente, puntada o disconfort impreciso. Puede presentarse con o sin síntomas acompañantes.",
-  "preguntas_deterministas": [
-    {
-      "pregunta": "¿El paciente está consciente y puede responder?",
-      "campo": "consciencia_screening",
-      "dispara_clave1_si": "no"
-    },
-    {
-      "pregunta": "¿Puede respirar con normalidad?",
-      "campo": "respiracion_screening",
-      "dispara_clave1_si": "no"
-    }
-  ],
   "campos_schema": {
     "inicio": "Momento de aparición del dolor y tiempo transcurrido desde entonces.",
     "tipo_dolor": "Carácter del dolor: opresivo, urente, puntada, disconfort impreciso u otra descripción del socio.",

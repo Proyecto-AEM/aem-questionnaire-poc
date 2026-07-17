@@ -1,22 +1,6 @@
 {
   "cuadro": "perdida_de_conocimiento",
   "descripcion": "Paciente que perdió el conocimiento, ya sea que siga inconsciente al momento del llamado o que se haya recuperado. Incluye síncope, lipotimia y PDC espontánea recuperada.",
-  "preguntas_deterministas": [
-    {
-      "pregunta": "¿El paciente está consciente ahora, o sigue sin responder?",
-      "campo": "estado_actual_consciencia",
-      "dispara_clave1_si": "no",
-      "condicion_activacion": null
-    },
-    {
-      "pregunta": "¿Está respirando?",
-      "campo": "respiracion_screening",
-      "dispara_clave1_si": "no",
-      "accion_si_respira": "Clave 1 igual — paciente inconsciente que respira. Instrucción de pre-arribo: colocar en posición de seguridad.",
-      "accion_si_no_respira": "Clave 1 — paciente inconsciente que no respira. Instrucción de pre-arribo: iniciar RCP.",
-      "condicion_activacion": "solo_si_inconsciente"
-    }
-  ],
   "campos_schema": {
     "tipo_episodio": "Descripción de cómo fue el episodio: si el paciente se desmayó de golpe, sintió que se iba antes de caer, o fue algo diferente.",
     "edad": "Edad del paciente según la descripción del socio.",

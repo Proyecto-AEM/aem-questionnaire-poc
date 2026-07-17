@@ -2,7 +2,6 @@
   "cuadro": "fiebre",
   "descripcion": "Paciente con fiebre, con o sin síntomas acompañantes. La clasificación base es siempre Clave 3, salvo que durante el cuestionario emerjan señales de alarma que indiquen que el cuadro real es otro.",
   "clasificacion_fija": "Clave 3",
-  "preguntas_deterministas": [],
   "campos_schema": {
     "temperatura": "Valor de temperatura registrado con termómetro, o ausencia de medición disponible.",
     "sintomas_respiratorios": "Presencia o ausencia de dificultad respiratoria o sensación de falta de aire.",
